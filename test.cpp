@@ -69,13 +69,6 @@ int main(int argc, char** argv)
 		SDL_RenderClear(renderer);
 		SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
         drawTubes(renderer, 50,20,3);
-		//hershey(renderer, "TEMPEST", 100, 100, 3);
-        // SDL_RenderDrawLine(renderer, 256, 60, 316, 73);
-        // SDL_RenderDrawLine(renderer, 368, 108, 403, 160);
-        // SDL_RenderDrawLine(renderer, 256, 255, 264, 257);
-        // SDL_RenderDrawLine(renderer, 256, 60, 256, 255);
-        // SDL_RenderDrawLine(renderer, 316, 73, 368, 108);
-        // SDL_RenderDrawLine(renderer, 316, 73, 264, 257);
 		//draw(renderer);
 		SDL_RenderPresent(renderer);
 	}
