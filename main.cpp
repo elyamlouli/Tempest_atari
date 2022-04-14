@@ -8,7 +8,13 @@ int Tube_Circle[34][2]= {
     256, 255, 264, 257, 273, 262, 277, 270, 280, 279, 277, 289, 273, 296, 264, 301, 256, 303, 247, 301, 238, 296, 234, 289, 231, 279, 234, 270, 238, 262, 247, 257, 256, 255,  
 };
 
-
+// void PointInit()
+// {
+//     Point *a = new Point(256, 60);
+//     Point *d = new Point(316, 73);
+//     Point *b = new Point(256, 255);
+//     Point *c = new Point(264, 257);
+// }
 
 int main(int argc, char** argv)
 {
@@ -41,8 +47,21 @@ int main(int argc, char** argv)
 		SDL_SetRenderDrawColor(renderer, 0,0,0,255);
 		SDL_RenderClear(renderer);
 		SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
-        drawTubes(renderer, 50,20,3);
+
+        //drawTubes(renderer, 50,20,3);
 		//draw(renderer);
+        // Point *a = new Point(256, 60);
+        // Point *d = new Point(316, 73);
+        // Point *b = new Point(256, 255);
+        // Point *c = new Point(264, 257);
+        // Tube *t1 = new Tube(*a, *b, *c, *d);
+        Point a = Point(256, 60);
+        Point d = Point(316, 73);
+        Point b = Point(256, 255);
+        Point c = Point(264, 257);
+        Tube t1 = Tube(a, b, c, d);
+        t1.draw(renderer, 100, 100, 2);
+
 		SDL_RenderPresent(renderer);
 	}
 	SDL_Quit();
