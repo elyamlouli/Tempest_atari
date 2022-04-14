@@ -1,4 +1,5 @@
 #include "utils.hpp"
+#include <iterator>
 
 
 Utils::Utils()
@@ -49,3 +50,22 @@ std::vector<float> Utils::addvector(std::vector<float> vec1,std::vector<float> v
     return vec;
 
 }
+Point Utils::TubeCenter(int tubeShape[][][])
+{
+    Point *g;
+    int x = tubeShape[1][0][0];
+    int y = tubeShape[1][0][1];
+    // std::size en c++17
+    for(auto i = 1; i < std::size(tubeShape[1])-1; i++)
+    {
+        x += tubeShape[1][i][0];
+        y += tubeShape[1][i][1];
+    }
+    x /= std::size(tubeShape[1])-1;
+    y /= std::size(tubeShape[1])-1;
+    g->x = x;
+    g->y = y;
+    return *g;
+}
+
+
