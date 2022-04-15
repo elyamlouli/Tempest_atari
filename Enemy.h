@@ -13,7 +13,7 @@ class Enemy{
 public:
     Enemy();
     ~Enemy();
-    void Movement(const float& x, const float& y);
+    //void Movement(const float& x, const float& y);
     bool isExploding(){return Explode;}
     bool isHit(){return Hit;}
     
