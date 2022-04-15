@@ -68,4 +68,12 @@ Point Utils::TubeCenter(int tubeShape[][][])
     return *g;
 }
 
-
+Drawlives(SDL_Renderer * renderer, int start_x, int start_y, int coeff)
+{
+    int i=0;
+        for ( i = 0; i < std::size(coords)-1;i++)
+        {
+            SDL_RenderDrawLine(renderer, (coords[i][0]+start_x)*coeff, (coords[i][1]+start_y)*coeff, (coords[i+1][0]+start_x)*coeff, (coords[i+1][1]+start_y)*coeff);
+        }
+        SDL_RenderDrawLine(renderer, (coords[i][0]+start_x)*coeff, (coords[i][1]+start_y)*coeff, (coords[0][0]+start_x)*coeff, (coords[0][1]+start_y)*coeff);
+}

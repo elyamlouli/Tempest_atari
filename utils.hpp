@@ -32,10 +32,9 @@ struct Utils
     // centre du tube qui dépend du shape du tube 
     Point TubeCenter (int tubeShape[][][]);      
 
-
-
-
 };
+
+Drawlives(SDL_Renderer * renderer, int start_x, int start_y, int coeff);
 
 
 #endif

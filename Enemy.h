@@ -32,5 +32,6 @@ protected:
 
     bool Explode(bool isDelete);
     void DetectCollision();
+    void move();
 };
 #endif
