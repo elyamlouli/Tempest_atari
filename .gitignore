@@ -1,3 +1,5 @@
+BuildSDLEx
+.DS_Store  
+SDL   
+CMakeLists.txt  
 test2.cpp
-test
-test2

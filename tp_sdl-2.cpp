@@ -110,9 +110,15 @@ int main(int argc, char** argv)
 			Blaster * blaster = new Blaster();
 			Forme f = Tube_Circle;
 			Tube * tube= new Tube(Tube_Circle);
-			Enemy * enemy = new Enemy();
+			
 			tube->affect_quads(Tube_Circle);
 			std::vector<Bullet *> bullets;
+			std::vector<Enemy *> enemies;
+			std::srand(std::time(nullptr));
+			int variable_ran = std::rand()%RAND_MAXIMUM;
+			enemies.push_back(new Enemy(variable_ran ));
+			variable_ran = std::rand()%RAND_MAXIMUM;
+			enemies.push_back(new Enemy(variable_ran ));
 			
 			Utils *utils=new Utils();
 			while(!quit_game)
@@ -203,19 +209,37 @@ int main(int argc, char** argv)
 				blaster->drawTubeQuads(renderer_game,2,-5,2);
 				
 				blaster->drawblaster(renderer_game,tube->tube_quads[quad],2,-5,2,10);
-				std::srand(std::time(nullptr));
-				int variable_ran = std::rand()%RAND_MAXIMUM;
-				float velocity_coef=0.003;
-
-				enemy->move(tube->tube_quads[variable_ran],2,velocity_coef);
-				enemy->draw_flipper(renderer_game);
-
 				
-			
-			
+				float velocity_coef=0.0003;
+				
+				for(auto & enemy:enemies)
+				{
 					
+					if(enemy->get_time() <= 10)
+					{
+						
+						enemy->move(tube->tube_quads[enemy->get_quad()],2,velocity_coef);
+						if(enemy->get_profondeur() <=0)
+						{
+							
+							delete enemy;
+							enemy = nullptr;
+						}
+						else{
+							enemy->draw_flipper(renderer_game);
+							
+						}
+					}
+					
+					
+					
+
+				}
+				enemies.erase(std::remove(enemies.begin(), enemies.end(), nullptr), enemies.end());
+				
+	
 					std::vector<float> vec = utils->mid_two_points(tube->tube_quads[quad][0][0],tube->tube_quads[quad][0][1],tube->tube_quads[quad][1][0],tube->tube_quads[quad][1][1]);
-					std::cout<<"xPos : "<<vec[0]<<"yPos : "<<vec[1]<<std::endl;
+					//std::cout<<"xPos : "<<vec[0]<<"yPos : "<<vec[1]<<std::endl;
 				for( auto &bullet:bullets)
 				{
 					std::vector<float> middle = utils->mid_two_points(tube->tube_quads[bullet->quad][2][0]*2,tube->tube_quads[bullet->quad][2][1]*2,tube->tube_quads[bullet->quad][3][0]*2,tube->tube_quads[bullet->quad][3][1]*2); 

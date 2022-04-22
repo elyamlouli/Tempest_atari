@@ -19,7 +19,7 @@ std::vector<float> Utils::WeightedMidpoint(int vec1[2],int vec2[2],float weight)
     //std::cout<<"x2"<<x2<<std::endl;
     const int y2 = vec2[1];
     //std::cout<<"x2"<<y2<<std::endl;
-    std::vector<float> vec={};
+    std::vector<float> vec;
     vec.push_back(x1*(1-weight) + x2*weight);
     vec.push_back(y1*(1-weight) +y2*weight);
     //std::cout<<"-------------------------"<<std::endl;
@@ -47,7 +47,7 @@ std::vector<float> Utils::orthogonalUnitVector(int vec1[2],int vec2[2],int scala
     const int y2 = vec2[1];
     const float x = (x2-x1) /this->distance(vec1,vec2)*scalar;
     const float y = (y2-y1)/this->distance(vec1,vec2)*scalar;
-    std::vector<float> vec={};
+    std::vector<float> vec;
     vec.push_back(x);
     vec.push_back(y);
     return vec;
@@ -59,7 +59,7 @@ std::vector<float> Utils::addvector(std::vector<float> vec1,std::vector<float> v
     const float y1 =vec1[1];
     const float x2 = vec2[0];
     const float y2 = vec2[1];
-    std::vector<float> vec={};
+    std::vector<float> vec;
     vec.push_back(x1+x2*scalar);
     vec.push_back(y1+y2*scalar);
     return vec;
@@ -168,7 +168,7 @@ std::vector<float> Utils::triangle_apartir_de_deux_points(int x1,int y1,int x2,i
     }
     std::cout<< "x_1  "<<findx_1<<std::endl;
     
-    std::vector<float> vec = {};
+    std::vector<float> vec ;
     vec.push_back(findx_1);
     vec.push_back(findy_1);
     vec.push_back(findx_2);
@@ -183,7 +183,7 @@ std::vector<float> Utils::mid_two_points(int x1,int y1,int x2,int y2)
 {
     float x =  (static_cast<float> (x1) + static_cast<float> (x2))/2;
     float y = (static_cast<float> (y1) + static_cast<float> (y2))/2;
-    std::vector<float> vec ={};
+    std::vector<float> vec ;
     vec.push_back(x);
     vec.push_back(y);
     return vec;
@@ -219,11 +219,11 @@ std::pair<double, double> Utils::find_position(int tubeQuad[4][2], int ax, int a
     }
     
 
-    int CDx = tubeQuad[1][0]*scale - tubeQuad[0][0]*scale;
-    int CDy = tubeQuad[1][1]*scale - tubeQuad[0][1]*scale;
-    double normAB = sqrt(CDx * CDx + CDy * CDy);
-    double ux = CDx / normAB;
-    double uy = CDy / normAB;
+    int ABx = tubeQuad[1][0]*scale - tubeQuad[0][0]*scale;
+    int ABy = tubeQuad[1][1]*scale - tubeQuad[0][1]*scale;
+    double normAB = sqrt(ABx * ABx + ABy * ABy);
+    double ux = ABx / normAB;
+    double uy = ABy / normAB;
 
     if (middle) {
         new_ax =  (ux * ax - uy * ay + (tubeQuad[0][0] + tubeQuad[1][0])*scale/2 - window_x) *profondeur+ window_x;
@@ -243,20 +243,20 @@ std::pair<double, double> Utils::find_position_enemy(int tubeQuad[4][2], int ax,
 {
     std::pair<double, double> D;
     double new_ax,new_ay;
-    std::vector<float> vec =this->mid_two_points(tubeQuad[0][0],tubeQuad[0][1],tubeQuad[1][0],tubeQuad[1][1])  ;
+    std::vector<float> vec =this->mid_two_points(tubeQuad[0][0]*scale,tubeQuad[0][1]*scale,tubeQuad[1][0]*scale,tubeQuad[1][1]*scale)  ;
     
-    
+   
     
 
-    int CDx = tubeQuad[1][0]*scale - tubeQuad[0][0]*scale;
-    int CDy = tubeQuad[1][1]*scale - tubeQuad[0][1]*scale;
+    int CDx = tubeQuad[3][0]*scale - tubeQuad[2][0]*scale;
+    int CDy = tubeQuad[3][1]*scale - tubeQuad[2][1]*scale;
     double normCD = sqrt(CDx * CDx + CDy * CDy);
     double ux = CDx / normCD;
     double uy = CDy / normCD;
 
     
-    new_ax =  (ux * ax - uy * ay + (tubeQuad[2][0] + tubeQuad[3][0])*scale/2 - vec[0]) *profondeur+ vec[0];
-    new_ay = (uy * ax + ux * ay + (tubeQuad[2][1] + tubeQuad[3][1])*scale/2 - vec[1])*profondeur + vec[1];
+    new_ax =  (uy * ax - ux * ay + (tubeQuad[2][0] + tubeQuad[3][0])*scale/2 - vec[0])*profondeur+ vec[0];
+    new_ay = (ux * ax + uy * ay + (tubeQuad[2][1] + tubeQuad[3][1])*scale/2 - vec[1])*profondeur + vec[1];
     
 
     

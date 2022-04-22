@@ -17,6 +17,8 @@ private:
     float profondeur;
     int pos_xinit;
     int pos_yinit;
+    double time;
+    int quad;
     
     
 
@@ -24,11 +26,14 @@ private:
 
 
 public:
-    Enemy();
+    Enemy(int quad);
     ~Enemy();
     void draw_flipper(SDL_Renderer *renderer);
     //int getPosition();
     void move(int tubeQuad[4][2],int scale,float velocity_coef);
+    double get_time();
+    float get_profondeur();
+    int get_quad();
     
 
 
