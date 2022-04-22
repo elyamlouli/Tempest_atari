@@ -18,6 +18,8 @@ struct Menu
     void quit(SDL_Renderer * renderer,int x,int y,int w,int h);
     void circle(SDL_Renderer * renderer, int rayon,int centreX,int centreY);
     void couloirs(SDL_Renderer * renderer,int x,int y,int rayon1,int rayon2,int nb_couloirs);
+    void draw_tubes(SDL_Renderer * renderer, int start_x, int start_y, int coeff);
+    
 
     //void print_cercle(int x, int y, int coeff);
 };

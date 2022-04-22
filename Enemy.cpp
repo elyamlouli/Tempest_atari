@@ -1,23 +1,34 @@
-#include "Enemy.h"
+#include "enemy.hpp"
 
-Enemy::Enemy(int xPos_, int xVel_, )
+Enemy::Enemy() 
 {
-    xPos = xPos_;
-    xVel = xVel_;
-    zPos = MAX_Z_POS;
-    xPosInTubeQuad = xPos % FLIPPER_POS;
-    tubeQuadIdx = floor(xPos / FLIPPER_POS);
-
+    utils = new Utils();
+    this->profondeur=0;
+    pos_xinit=15;
+    pos_yinit=15;
 
 }
-
-
-// void Enemy::Movement(const float x, const float y)
-// {
-//     position.x += x;
-//     position.y += y;
-// }
-void move()
+Enemy::~Enemy() 
 {
     
 }
+
+
+void Enemy::draw_flipper(SDL_Renderer *renderer)
+{
+    SDL_SetRenderDrawColor(renderer, 255,0,0,0);
+    SDL_RenderDrawLine (renderer,this->position.first-5, this->position.second-5, this->position.first+5, this->position.second+5 );
+    SDL_RenderDrawLine (renderer,this->position.first-5, this->position.second+5, this->position.first+5, this->position.second-5 );
+    
+}
+void Enemy::move(int tubeQuad[4][2],int scale,float velocity_coef)
+{
+    this->position = this->utils->find_position_enemy(tubeQuad,this->pos_xinit,this->pos_yinit,scale,this->profondeur);
+    this->profondeur += velocity_coef;
+
+}
+
+/*Enemy::getPosition()
+{
+    return position;
+}*/
