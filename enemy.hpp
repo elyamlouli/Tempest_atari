@@ -15,6 +15,7 @@ private:
     Utils * utils;
     std::pair<double,double> position;
     float profondeur;
+    double velocity;
     int pos_xinit;
     int pos_yinit;
     double time;
@@ -29,13 +30,12 @@ public:
     Enemy(int quad);
     ~Enemy();
     void draw_flipper(SDL_Renderer *renderer);
-    //int getPosition();
+    std::pair<double,double> getPosition();
     void move(int tubeQuad[4][2],int scale,float velocity_coef);
     double get_time();
     float get_profondeur();
     int get_quad();
-    
-
+    double get_velocity();
 
 };
 

@@ -1,4 +1,5 @@
 #include "utils.hpp"
+#include <cmath>
 
 
 Utils::Utils()
@@ -53,17 +54,30 @@ std::vector<float> Utils::orthogonalUnitVector(int vec1[2],int vec2[2],int scala
     return vec;
 
 }
-std::vector<float> Utils::addvector(std::vector<float> vec1,std::vector<float> vec2,int scalar )
-{
-    const float x1= vec1[0];
-    const float y1 =vec1[1];
-    const float x2 = vec2[0];
-    const float y2 = vec2[1];
-    std::vector<float> vec;
-    vec.push_back(x1+x2*scalar);
-    vec.push_back(y1+y2*scalar);
-    return vec;
+// std::vector<float> Utils::addvector(std::vector<float> vec1,std::vector<float> vec2,int scalar )
+// {
+//     const float x1= vec1[0];
+//     const float y1 =vec1[1];
+//     const float x2 = vec2[0];
+//     const float y2 = vec2[1];
+//     std::vector<float> vec;
+//     vec.push_back(x1+x2*scalar);
+//     vec.push_back(y1+y2*scalar);
+//     return vec;
 
+// }
+
+std::pair<double, double> Utils::vect(std::pair<double, double> a , std::pair<double, double> b, int scalar = 1)
+{
+    std::pair<double, double> vec = std::make_pair((b.first-a.first)*scalar, (b.second-a.second)*scalar);
+    return vec;
+}
+std::vector<float> Utils::vect(int a[2] , int b[2], int scalar = 1)
+{
+    std::vector<float> vec ;
+    vec.push_back((b[0]-a[0])*scalar); 
+    vec.push_back((b[1]-a[1])*scalar);
+    return vec;
 }
 std::vector<float> Utils::triangle_apartir_de_deux_points(int x1,int y1,int x2,int y2)
 {
@@ -265,3 +279,31 @@ std::pair<double, double> Utils::find_position_enemy(int tubeQuad[4][2], int ax,
     return D;
 
 }
+
+std::pair<double, double> addvector(std::pair<double, double> a , std::pair<double, double> b,int scalar)
+{
+    std::pair<double, double> vec = vec = std::make_pair(b.first+a.first*scalar, b.second+a.second*scalar);
+    return vec;
+}
+
+std::vector<float> addvector(int vec1[2],std::vector<float> vec2,int scalar)
+{
+    const float x1= vec1[0];
+    const float y1 =vec1[1];
+    const float x2 = vec2[0];
+    const float y2 = vec2[1];
+    std::vector<float> vec;
+    vec.push_back(x1+x2*scalar);
+    vec.push_back(y1+y2*scalar);
+    return vec;
+
+}
+
+// float theta(point1, point2, point3) {
+//     const a = Util.distanceBetweenPoints(point1, point2);
+//     const b = Util.distanceBetweenPoints(point2, point3);
+//     const c = Util.distanceBetweenPoints(point1, point3);
+//     float numerator = Math.pow(a, 2) + Math.pow(b, 2) - Math.pow(c, 2);
+//     float denominator = 2 * a * b;
+//     return Math.acos(numerator/denominator);
+// }

@@ -3,3 +3,5 @@ BuildSDLEx
 SDL   
 CMakeLists.txt  
 test2.cpp
+.vscode 
+test

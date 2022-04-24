@@ -3,13 +3,13 @@
 
 #include <SDL.h>
 #include <assert.h>
-
 #include <iostream>
 #include <string>
 #include <cmath>
 const double pi = std::acos(-1);
-struct Menu 
+class Menu 
 {
+public:
     SDL_Renderer * renderer;
     Menu(SDL_Renderer * renderer);
     ~Menu();
@@ -19,6 +19,7 @@ struct Menu
     void circle(SDL_Renderer * renderer, int rayon,int centreX,int centreY);
     void couloirs(SDL_Renderer * renderer,int x,int y,int rayon1,int rayon2,int nb_couloirs);
     void draw_tubes(SDL_Renderer * renderer, int start_x, int start_y, int coeff);
+    int first_interface( SDL_Renderer * renderer);
     
 
     //void print_cercle(int x, int y, int coeff);
