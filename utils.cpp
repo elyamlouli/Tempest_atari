@@ -286,7 +286,7 @@ std::pair<double, double> addvector(std::pair<double, double> a , std::pair<doub
     return vec;
 }
 
-std::vector<float> addvector(int vec1[2],std::vector<float> vec2,int scalar)
+std::vector<float> Utils::addvector(int vec1[2],std::vector<float> vec2,int scalar)
 {
     const float x1= vec1[0];
     const float y1 =vec1[1];
@@ -299,11 +299,12 @@ std::vector<float> addvector(int vec1[2],std::vector<float> vec2,int scalar)
 
 }
 
-// float theta(point1, point2, point3) {
-//     const a = Util.distanceBetweenPoints(point1, point2);
-//     const b = Util.distanceBetweenPoints(point2, point3);
-//     const c = Util.distanceBetweenPoints(point1, point3);
-//     float numerator = Math.pow(a, 2) + Math.pow(b, 2) - Math.pow(c, 2);
-//     float denominator = 2 * a * b;
-//     return Math.acos(numerator/denominator);
-// }
+float Utils::theta(int p1[2], int p2[2], int p3[2]) {
+    float a = distance(p1, p2);
+    float b = distance(p2, p3);
+    float c = distance(p1, p3);
+    float numerator = pow(a, 2) + pow(b, 2) - pow(c, 2);
+    float denominator = 2 * a * b;
+    return acos(numerator/denominator);
+}
+

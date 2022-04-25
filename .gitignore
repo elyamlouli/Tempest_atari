@@ -1,6 +1,6 @@
-BuildSDLEx
+
 .DS_Store  
-SDL   
+  
 CMakeLists.txt  
 test2.cpp
 .vscode 

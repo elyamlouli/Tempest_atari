@@ -24,6 +24,8 @@ struct Utils
     //std::pair<double, double> addvector(std::pair<double, double> a , std::pair<double, double> b,int scalar);
     std::vector<float> vect(int a[2] , int b[2], int scalar);
     std::vector<float> addvector(int vec1[2],std::vector<float> vec2,int scalar);
+    float distanceBetweenPoints(std::pair<float,float> a,std::pair<float,float> b );
+    float theta(int p1[2], int p2[2], int p3[2]);
 
 };
 

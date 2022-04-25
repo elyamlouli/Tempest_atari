@@ -38,7 +38,11 @@ void Enemy::draw_flipper(SDL_Renderer *renderer)
 {
     SDL_SetRenderDrawColor(renderer, 255,0,0,0);
     SDL_RenderDrawLine (renderer,(this->position.first-5)*1/this->profondeur, (this->position.second-5)*1/this->profondeur, (this->position.first+5)*1/this->profondeur, (this->position.second+5)*1/this->profondeur );
+    SDL_RenderDrawLine (renderer,(this->position.first-5)*1/this->profondeur, (this->position.second-5)*1/this->profondeur, (this->position.first-4)*1/this->profondeur, (this->position.second)*1/this->profondeur );
+    SDL_RenderDrawLine (renderer,(this->position.first-4)*1/this->profondeur, (this->position.second)*1/this->profondeur, (this->position.first-5)*1/this->profondeur, (this->position.second+5)*1/this->profondeur );
     SDL_RenderDrawLine (renderer,(this->position.first-5)*1/this->profondeur, (this->position.second+5)*1/this->profondeur, (this->position.first+5)*1/this->profondeur, (this->position.second-5)*1/this->profondeur );
+    SDL_RenderDrawLine (renderer,(this->position.first+5)*1/this->profondeur, (this->position.second-5)*1/this->profondeur, (this->position.first+4)*1/this->profondeur, (this->position.second)*1/this->profondeur );
+    SDL_RenderDrawLine (renderer,(this->position.first+4)*1/this->profondeur, (this->position.second)*1/this->profondeur, (this->position.first+5)*1/this->profondeur, (this->position.second+5)*1/this->profondeur );
     
 }
 void Enemy::move(int tubeQuad[4][2],int scale,float velocity_coef)
