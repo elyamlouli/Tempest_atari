@@ -1,9 +1,8 @@
-#include "game.hpp"
+#include "./game.hpp"
 
 Games::Games()
 {
-    score=new Score();
-
+    score = new Score();
 }
 Games::~Games()
 {
@@ -61,7 +60,7 @@ void Games::explode(Utils *utils)
                     delete bullet;
                     bullet = nullptr;
                 }
-                score->set_score(score->get_score()+150);
+                score->set_score(score->get_score() + 150);
             }
         }
     }
