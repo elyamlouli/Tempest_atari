@@ -5,6 +5,7 @@
 #include <SDL.h>
 #include <utility>
 #include "utils.hpp"
+#include <algorithm>
 
 
 class Enemy{
@@ -13,29 +14,41 @@ private:
     SDL_Renderer * renderer;
     Tube * tube;
     Utils * utils;
-    std::pair<double,double> position;
+    std::pair<double,double> position; //
     float profondeur;
-    double velocity;
+    float z;
     int pos_xinit;
     int pos_yinit;
-    double time;
+    double ennemies;
     int quad;
-    
-    
-
-
-
+    int quad_suivant;
+    int id;
+    int temp;
+    int tab_vivants[4];
+    bool alive;
+    int i;
 
 public:
-    Enemy(int quad);
+    
+    Enemy(int quad,int id);
     ~Enemy();
+    std::vector<int> get_tab_vivants();
+    void set_tab_vivants(int id);
     void draw_flipper(SDL_Renderer *renderer);
-    std::pair<double,double> getPosition();
+    //int getPosition();
     void move(int tubeQuad[4][2],int scale,float velocity_coef);
-    double get_time();
+    double get_ennemies();
     float get_profondeur();
     int get_quad();
-    double get_velocity();
+    int get_id();
+    int get_temp();
+    std::pair<double,double> get_position(); 
+    bool get_alive();
+    void set_alive(bool b);
+    void move_circle(SDL_Renderer *renderer,int scale);
+    void set_quad_suivant(int i);
+    int get_i();
+    //void move_enemies(SDL_Renderer * renderer_game,float velocity_coef,Enemy *enemy); 
 
 };
 

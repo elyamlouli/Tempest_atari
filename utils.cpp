@@ -1,9 +1,10 @@
 #include "utils.hpp"
-#include <cmath>
 
 
 Utils::Utils()
 {
+    this->time=0;
+    this->vivants=4;
 
 }
 Utils::~Utils()
@@ -20,7 +21,7 @@ std::vector<float> Utils::WeightedMidpoint(int vec1[2],int vec2[2],float weight)
     //std::cout<<"x2"<<x2<<std::endl;
     const int y2 = vec2[1];
     //std::cout<<"x2"<<y2<<std::endl;
-    std::vector<float> vec;
+    std::vector<float> vec={};
     vec.push_back(x1*(1-weight) + x2*weight);
     vec.push_back(y1*(1-weight) +y2*weight);
     //std::cout<<"-------------------------"<<std::endl;
@@ -48,36 +49,23 @@ std::vector<float> Utils::orthogonalUnitVector(int vec1[2],int vec2[2],int scala
     const int y2 = vec2[1];
     const float x = (x2-x1) /this->distance(vec1,vec2)*scalar;
     const float y = (y2-y1)/this->distance(vec1,vec2)*scalar;
-    std::vector<float> vec;
+    std::vector<float> vec={};
     vec.push_back(x);
     vec.push_back(y);
     return vec;
 
 }
-// std::vector<float> Utils::addvector(std::vector<float> vec1,std::vector<float> vec2,int scalar )
-// {
-//     const float x1= vec1[0];
-//     const float y1 =vec1[1];
-//     const float x2 = vec2[0];
-//     const float y2 = vec2[1];
-//     std::vector<float> vec;
-//     vec.push_back(x1+x2*scalar);
-//     vec.push_back(y1+y2*scalar);
-//     return vec;
-
-// }
-
-std::pair<double, double> Utils::vect(std::pair<double, double> a , std::pair<double, double> b, int scalar = 1)
+std::vector<float> Utils::addvector(std::vector<float> vec1,std::vector<float> vec2,int scalar )
 {
-    std::pair<double, double> vec = std::make_pair((b.first-a.first)*scalar, (b.second-a.second)*scalar);
+    const float x1= vec1[0];
+    const float y1 =vec1[1];
+    const float x2 = vec2[0];
+    const float y2 = vec2[1];
+    std::vector<float> vec={};
+    vec.push_back(x1+x2*scalar);
+    vec.push_back(y1+y2*scalar);
     return vec;
-}
-std::vector<float> Utils::vect(int a[2] , int b[2], int scalar = 1)
-{
-    std::vector<float> vec ;
-    vec.push_back((b[0]-a[0])*scalar); 
-    vec.push_back((b[1]-a[1])*scalar);
-    return vec;
+
 }
 std::vector<float> Utils::triangle_apartir_de_deux_points(int x1,int y1,int x2,int y2)
 {
@@ -182,7 +170,7 @@ std::vector<float> Utils::triangle_apartir_de_deux_points(int x1,int y1,int x2,i
     }
     std::cout<< "x_1  "<<findx_1<<std::endl;
     
-    std::vector<float> vec ;
+    std::vector<float> vec = {};
     vec.push_back(findx_1);
     vec.push_back(findy_1);
     vec.push_back(findx_2);
@@ -197,7 +185,7 @@ std::vector<float> Utils::mid_two_points(int x1,int y1,int x2,int y2)
 {
     float x =  (static_cast<float> (x1) + static_cast<float> (x2))/2;
     float y = (static_cast<float> (y1) + static_cast<float> (y2))/2;
-    std::vector<float> vec ;
+    std::vector<float> vec ={};
     vec.push_back(x);
     vec.push_back(y);
     return vec;
@@ -258,7 +246,8 @@ std::pair<double, double> Utils::find_position_enemy(int tubeQuad[4][2], int ax,
     std::pair<double, double> D;
     double new_ax,new_ay;
     std::vector<float> vec =this->mid_two_points(tubeQuad[0][0]*scale,tubeQuad[0][1]*scale,tubeQuad[1][0]*scale,tubeQuad[1][1]*scale)  ;
-    
+    /*vec[0]= vec[0]/profondeur;
+    vec[1]=vec[1]/profondeur;*/
    
     
 
@@ -279,32 +268,3 @@ std::pair<double, double> Utils::find_position_enemy(int tubeQuad[4][2], int ax,
     return D;
 
 }
-
-std::pair<double, double> addvector(std::pair<double, double> a , std::pair<double, double> b,int scalar)
-{
-    std::pair<double, double> vec = vec = std::make_pair(b.first+a.first*scalar, b.second+a.second*scalar);
-    return vec;
-}
-
-std::vector<float> Utils::addvector(int vec1[2],std::vector<float> vec2,int scalar)
-{
-    const float x1= vec1[0];
-    const float y1 =vec1[1];
-    const float x2 = vec2[0];
-    const float y2 = vec2[1];
-    std::vector<float> vec;
-    vec.push_back(x1+x2*scalar);
-    vec.push_back(y1+y2*scalar);
-    return vec;
-
-}
-
-float Utils::theta(int p1[2], int p2[2], int p3[2]) {
-    float a = distance(p1, p2);
-    float b = distance(p2, p3);
-    float c = distance(p1, p3);
-    float numerator = pow(a, 2) + pow(b, 2) - pow(c, 2);
-    float denominator = 2 * a * b;
-    return acos(numerator/denominator);
-}
-

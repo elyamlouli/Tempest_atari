@@ -1,5 +1,6 @@
 #include "blaster.hpp"
 
+
 Blaster::Blaster()
 {
     

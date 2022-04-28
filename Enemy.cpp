@@ -1,65 +1,176 @@
 #include "enemy.hpp"
+#define DEPTH_TUBE_COEF 0.07
 
-Enemy::Enemy(int quad) :quad(quad)
+
+Enemy::Enemy(int quad,int id) :quad(quad),id(id)
 {
     utils = new Utils();
-    this->profondeur=1;
+    this->profondeur=DEPTH_TUBE_COEF;
+    this->z=1;
     pos_xinit=15;
     pos_yinit=15;
-    this->time++;
+    this->ennemies++;
+    temp=0;
+    tab_vivants[id]=1;
+    alive = true;
+    quad_suivant=quad+1;
+    tube = new Tube(Tube_Circle);
+    tube->affect_quads(Tube_Circle);
+    i=0;
+   
+    
+    //this->profondeur=1;
+
+    
+
 }
-
 Enemy::~Enemy() 
-{}
+{
+    
+    
+}
+bool Enemy::get_alive()
+{
+    return alive;
+}
+void Enemy::set_alive(bool b)
+{
+    alive=b;
+}
+std::vector<int> Enemy::get_tab_vivants()
+{
+    std::vector<int>vec ;
+    for(int i=0;i<4;i++)
+    {
+        vec.push_back(tab_vivants[i]);
+    }
+    return vec;
+    
 
+}
+void Enemy::set_tab_vivants(int i)
+{
+    tab_vivants[i]=0;
+}
+std::pair<double,double> Enemy::get_position()
+{
+    return this->position;
+}
+int Enemy::get_id()
+{
+    return id;
+}
 int Enemy::get_quad()
 {
     return this->quad;
 }
     
-double Enemy::get_time()
+double Enemy::get_ennemies()
 {
-    return this->time;
+    return this->ennemies;
 }
+
 float Enemy::get_profondeur()
 {
     return this->profondeur;
 }
-double Enemy::get_velocity()
-{
-    return this->velocity;
-}
-std::pair<double,double> Enemy::getPosition()
-{
-    return std::make_pair(this->position.first, this->position.second);
-}
+
 
 void Enemy::draw_flipper(SDL_Renderer *renderer)
 {
+
     SDL_SetRenderDrawColor(renderer, 255,0,0,0);
-    SDL_RenderDrawLine (renderer,(this->position.first-5)*1/this->profondeur, (this->position.second-5)*1/this->profondeur, (this->position.first+5)*1/this->profondeur, (this->position.second+5)*1/this->profondeur );
-    SDL_RenderDrawLine (renderer,(this->position.first-5)*1/this->profondeur, (this->position.second-5)*1/this->profondeur, (this->position.first-4)*1/this->profondeur, (this->position.second)*1/this->profondeur );
-    SDL_RenderDrawLine (renderer,(this->position.first-4)*1/this->profondeur, (this->position.second)*1/this->profondeur, (this->position.first-5)*1/this->profondeur, (this->position.second+5)*1/this->profondeur );
-    SDL_RenderDrawLine (renderer,(this->position.first-5)*1/this->profondeur, (this->position.second+5)*1/this->profondeur, (this->position.first+5)*1/this->profondeur, (this->position.second-5)*1/this->profondeur );
-    SDL_RenderDrawLine (renderer,(this->position.first+5)*1/this->profondeur, (this->position.second-5)*1/this->profondeur, (this->position.first+4)*1/this->profondeur, (this->position.second)*1/this->profondeur );
-    SDL_RenderDrawLine (renderer,(this->position.first+4)*1/this->profondeur, (this->position.second)*1/this->profondeur, (this->position.first+5)*1/this->profondeur, (this->position.second+5)*1/this->profondeur );
+    SDL_RenderDrawLine (renderer,(this->position.first-5), (this->position.second-5), (this->position.first), (this->position.second) );
+    SDL_RenderDrawLine (renderer, (this->position.first), (this->position.second),(this->position.first+5), (this->position.second+5) );
+    SDL_RenderDrawLine (renderer, (this->position.first), (this->position.second),(this->position.first+5), (this->position.second-5));
+    SDL_RenderDrawLine (renderer, (this->position.first), (this->position.second),(this->position.first-5), (this->position.second+5 ));
     
 }
 void Enemy::move(int tubeQuad[4][2],int scale,float velocity_coef)
 {
     this->position = this->utils->find_position_enemy(tubeQuad,this->pos_xinit,this->pos_yinit,scale,this->profondeur);
-    this->profondeur -= velocity_coef;
-    std::cout << profondeur << std::endl;
-}
-
-
-// void draw(Utils * utils)
-// {
-//     std::pair<double, double> RR = utils->vect(tubeQuad[0][0], tubeQuad[3], 1);
-//     std::pair<double, double> RL = utils->vect(tubeQuad[1], tubeQuad[2], 1);
-//     std::pair<double, double> PPR = utils->addvector(tubeQuad[0], RR, 1);
-
-
+    std::vector<float> vec =utils->mid_two_points(tubeQuad[0][0]*scale,tubeQuad[0][1]*scale,tubeQuad[1][0]*scale,tubeQuad[1][1]*scale)  ;
+    /*if(fabs(utils->distance(this->position.first,this->position.second,vec[0],vec[1]))<=0.03)
+    {
+        std::cout<<"hi";
+        this->profondeur = -1;
+    }*/
+    /*
+    this->position.first = this->position.first/ this->profondeur;
+    this->position.second = this->position.second/ this->profondeur;*/
+    
 
     
-// }
+    this->z -= velocity_coef;
+    if (z >= 0)
+        profondeur= (1 - DEPTH_TUBE_COEF) * sqrt(z);
+    else 
+        profondeur = 0;
+
+    
+    
+
+}
+void Enemy::set_quad_suivant(int i)
+{
+    quad_suivant=i;
+}
+int Enemy::get_i()
+{
+    return i;
+}
+void Enemy::move_circle(SDL_Renderer *renderer,int scale)
+{
+    
+    //std::cout<<tube->tube_quads[this->quad+i][0][0]<<std::endl;
+    if(this->quad+i<=15)
+    {
+        this->position.first = tube->tube_quads[this->quad+i][0][0]*scale;
+        printf("%i\n",quad+i);
+        this->position.second = tube->tube_quads[this->quad+i][0][1]*scale;
+        draw_flipper(renderer);
+        i++;
+        
+        
+    }
+    else if(this->quad+i==15)
+    {
+        
+        this->position.first = tube->tube_quads[0][0][0]*scale;
+        this->position.second = tube->tube_quads[0][0][1]*scale;
+        draw_flipper(renderer);
+    }
+    
+    
+}
+/*
+void Enemy::move_enemies(SDL_Renderer * renderer_game,float velocity_coef,Enemy *enemy){
+    if(enemy->get_ennemies() <= 2)
+        {
+            
+            enemy->move(tube->tube_quads[enemy->get_quad()],2,velocity_coef);
+            if(enemy->get_profondeur() >=1)
+            {
+                std::cout<<enemy->get_profondeur()<<std::endl;
+                delete enemy;
+                enemy = nullptr;
+                
+                
+            }
+            else{
+                enemy->draw_flipper(renderer_game);
+                
+            }
+        }
+        
+        if (enemy->get_profondeur() == 1)
+            
+        
+
+    
+	
+
+
+}*/
+
+

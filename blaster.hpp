@@ -2,8 +2,10 @@
 #define BLASTER
 #include "utils.hpp"
 #include "menu.hpp"
+
 #include <SDL.h>
 #include <assert.h>
+
 #include <iostream>
 #include <cmath>
 #include "tube.hpp"
@@ -14,9 +16,8 @@
 
 
 
-class Blaster
+struct Blaster
 {
-  public:
   
   //static float xPos;
   //static float yPos ;

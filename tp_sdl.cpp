@@ -1,12 +1,23 @@
 #include <SDL.h>
 #include <assert.h>
 
-#include <iostream>
-#include "menu.hpp"
-#include "game.hpp"
-#include "blaster.hpp"
-#include "bullet.hpp"
+#include <ctime>
+#include <random>
 #include <algorithm>
+#include <string>
+#include <iostream>
+
+#include "./menu.hpp"
+#include "./game.hpp"
+#include "./blaster.hpp"
+#include "./bullet.hpp"
+#include "./tube.hpp"
+#include "./enemy.hpp"
+#include "./audio.hpp"
+
+
+
+#define RAND_MAXIMUM 5
 
 
 Uint8 color[4] = {255,255,0,255};
@@ -19,7 +30,7 @@ static int quad=0;
 
 int main(int argc, char** argv)
 {
-	if (SDL_Init(SDL_INIT_VIDEO) != 0)
+	if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO) != 0)
 	{
 		std::cerr<<"Pb init SDL"<< std::endl;
 		return 0;
@@ -32,8 +43,12 @@ int main(int argc, char** argv)
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1,SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
 
     Menu *menu = new Menu(renderer);
-	//Games * game = new Games();
-	//Text text(renderer,"/usr/share/fonts/X11/Type1/c0632bt_.pfb",30,"Rendering text",{255,0,0,255});
+	Games * game = new Games();
+	game->lives.push_back(new Score());
+	game->lives.push_back(new Score());
+	game->lives.push_back(new Score());
+	game->lives.push_back(new Score());
+	//Sound* CollisionSound= new Sound("/home/oumayma/Documents/mp3/shoot.mp3");
 	assert (renderer != NULL);
 
 	bool quit = false;
@@ -53,7 +68,9 @@ int main(int argc, char** argv)
 				{
 					case SDLK_s:
 						std::cout << "you clicked s"<<std::endl;
+						//Mix_PausedMusic() ? Mix_ResumeMusic() : Mix_PauseMusic();
 						start =1;
+						
 						
 						quit=true;
 						break;
@@ -72,7 +89,9 @@ int main(int argc, char** argv)
 		
 		SDL_SetRenderDrawColor(renderer, 0,0,0,255);
 		SDL_RenderClear(renderer);
+		
 		SDL_SetRenderDrawColor(renderer, 0,0,255,0);
+		
 		
 		menu->hershey(renderer, "Level 1", 350, 70, 1);
 		SDL_SetRenderDrawColor(renderer, 255,0,0,0);
@@ -83,13 +102,6 @@ int main(int argc, char** argv)
 		SDL_SetRenderDrawColor(renderer, 255,0,0,0);
 		menu->hershey(renderer, "FLIPPERS AREHARMLESS MID-FLIP", 150, 400, 1);
 		menu->hershey(renderer, "ENEMY BULLETS ARE DESTRUCTIBLE", 150, 450, 1);
-        /*menu->start(renderer,75,500,210,81);
-        menu->quit(renderer,500,500,210,81);
-        /*menu->circle(renderer,150,400,200);
-        menu->circle(renderer,50,400,200);
-        menu->couloirs(renderer,400,200,50,150,4);
-		menu->draw_tubes(renderer,150,0,1);*/
-
 		SDL_RenderPresent(renderer);
 		
 	}
@@ -102,8 +114,20 @@ int main(int argc, char** argv)
 			SDL_Renderer* renderer_game = SDL_CreateRenderer(window_game, -1,SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC);
 			Menu * menu2 = new Menu(renderer_game);
 			Blaster * blaster = new Blaster();
-			std::vector<Bullet *> bullets;
+			Forme f = Tube_Circle;
+			Tube * tube= new Tube(Tube_Circle);
 			
+			
+			tube->affect_quads(Tube_Circle);
+
+			std::random_device rd;  //Will be used to obtain a seed for the random number engine
+    		std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
+    		std::uniform_int_distribution<> distrib(1, 15);
+			game->enemies.push_back(new Enemy(distrib(gen),0));
+			game->enemies.push_back(new Enemy(distrib(gen),1));
+			game->enemies.push_back(new Enemy(distrib(gen),2));
+			game->enemies.push_back(new Enemy(distrib(gen),3));
+			int i=1;
 			Utils *utils=new Utils();
 			while(!quit_game)
 			{
@@ -115,27 +139,28 @@ int main(int argc, char** argv)
 						case SDL_QUIT:
 							quit_game = true;
 							break;
-						/*
-						case SDL_MOUSEMOTION:
+						
+						/*case SDL_MOUSEMOTION:
 							std::cout <<event_g.motion.x<<","<<event_g.motion.y<<'\n';
 							break;*/
 						case SDL_KEYDOWN:
 							switch(event_g.key.keysym.sym)
 							{
 								case SDLK_RIGHT:
+									//CollisionSound->PlaySound();
 									std::cout<<"right"<<std::endl;
 									if(quad <= 15) 
 									{
 										if(quad==15)
 										{
 											quad=0;
-											blaster->move_r(renderer_game,quad,tubeQuads,2,-5,2,10);
+											blaster->move_r(renderer_game,quad,tube->tube_quads,2,-5,2,10);
 										}
 										else
 										{
 											quad++;
 											
-											blaster->move_r(renderer_game,quad,tubeQuads,2,-5,2,10);
+											blaster->move_r(renderer_game,quad,tube->tube_quads,2,-5,2,10);
 
 										}
 										
@@ -148,84 +173,136 @@ int main(int argc, char** argv)
 										if(quad==0)
 										{
 											quad=15;
-											blaster->move_l(renderer_game,quad,tubeQuads,2,-5,2,10);
+											blaster->move_l(renderer_game,quad,tube->tube_quads,2,-5,2,10);
 										}
 										else
 										{
 											quad--;
-											blaster->move_l(renderer_game,quad,tubeQuads,2,-5,2,10);
+											blaster->move_l(renderer_game,quad,tube->tube_quads,2,-5,2,10);
 
 										}
-										
-										
 									}
 									break;
 								case SDLK_RETURN:
-									bullets.push_back(new Bullet(quad));
-									/*
-									std::cout << "enter"<<std::endl;
-									std::vector<float> vec = utils->mid_two_points(tubeQuads[quad][0][0],tubeQuads[quad][0][1],tubeQuads[quad][1][0],tubeQuads[quad][1][1]);
-									std::cout<<"xPos : "<<vec[0]<<"yPos : "<<vec[1]<<std::endl;
-
-									bullet->draw_bullet(renderer_game,vec[0],vec[1],2,-5,1,1);*/
-									
+									game->bullets.push_back(new Bullet(quad));
 									break;
-
-
-								
-									
-									
-									
 							}
 					}
-					
-						
-							
-				
+
 
 				}
 				SDL_SetRenderDrawColor(renderer_game, 0,0,0,255);
 				SDL_RenderClear(renderer_game);
 				SDL_SetRenderDrawColor(renderer_game, 0,0,255,0);
 				menu2->hershey(renderer_game,"Level 1",300,30,1);
-				
 				//blaster->defineTubeQuads();
 				blaster->drawTubeQuads(renderer_game,2,-5,2);
-				
-				blaster->drawblaster(renderer_game,tubeQuads[quad],2,-5,2,10);
+				blaster->drawblaster(renderer_game,tube->tube_quads[quad],2,-5,2,10);
+				SDL_SetRenderDrawColor(renderer_game, 54,244,11,0);
+				menu2->hershey(renderer_game,std::to_string(game->score->get_score()),100,30,1);
+				int i=10;
 
-				float velocity_coef=0.03;
-			
-			
-					/*
-					std::vector<float> vec = utils->mid_two_points(tubeQuads[quad][0][0],tubeQuads[quad][0][1],tubeQuads[quad][1][0],tubeQuads[quad][1][1]);
-					std::cout<<"xPos : "<<vec[0]<<"yPos : "<<vec[1]<<std::endl;*/
-				for( auto &bullet:bullets)
+				for(auto &live:game->lives)
 				{
-					std::vector<float> middle = utils->mid_two_points(tubeQuads[bullet->quad][2][0]*2,tubeQuads[bullet->quad][2][1]*2,tubeQuads[bullet->quad][3][0]*2,tubeQuads[bullet->quad][3][1]*2); 
+					live->draw_live(renderer_game,2,10+i,50);
+					i=i+50;
+					
+				}
+				
+				float velocity_coef=0.005;
+				/********generate ennemies******/
+				for(auto & enemy:game->enemies)
+				{
+					
+					if(enemy->get_id()<2)
+					{
+						
+						
+						enemy->move(tube->tube_quads[enemy->get_quad()],2,velocity_coef);
+
+						if(enemy->get_profondeur()<=1 && enemy->get_profondeur()>0 ) {
+								enemy->draw_flipper(renderer_game);
+							
+						}
+						else if(enemy->get_profondeur()==0)
+						{
+							
+								utils->time++;
+								utils->vivants--;
+								
+								enemy->move_circle(renderer_game,2);
+								
+								printf("i : %i\n",enemy->get_i());
+							
+							/*
+									enemy = nullptr;
+									delete enemy;
+									utils->time++;
+									utils->vivants--;*/
+	
+	
+						}
+						
+						printf("float : %f\n",enemy->get_profondeur());
+						
+					}
+					else 
+					{
+						if(utils->time ==2)
+						{
+							enemy->move(tube->tube_quads[enemy->get_quad()],2,velocity_coef);
+							if(enemy->get_profondeur() ==0)
+							{
+								enemy->move_circle(renderer_game,2);
+								
+										/*enemy = nullptr;
+										delete enemy;*/
+										utils->time++;
+										utils->vivants--;
+							}
+							else{
+								enemy->draw_flipper(renderer_game);	
+							}
+						}
+					}
+				}
+				game->enemies.erase(std::remove(game->enemies.begin(), game->enemies.end(), nullptr), game->enemies.end());
+				/****************************generate bullets****************/
+				std::vector<float> vec = utils->mid_two_points(tube->tube_quads[quad][0][0],tube->tube_quads[quad][0][1],tube->tube_quads[quad][1][0],tube->tube_quads[quad][1][1]);
+				for( auto &bullet:game->bullets)
+				{
+					std::vector<float> middle = utils->mid_two_points(tube->tube_quads[bullet->quad][2][0]*2,tube->tube_quads[bullet->quad][2][1]*2,tube->tube_quads[bullet->quad][3][0]*2,tube->tube_quads[bullet->quad][3][1]*2); 
 					float prev_dist = bullet->dist;
 					float dist = utils->distance(bullet->P.first,bullet->P.second,middle[0],middle[1]);
 					bullet->dist = dist;
-					bullet->move(tubeQuads[bullet->quad],2,velocity_coef);
-					std::cout<<prev_dist-dist<<std::endl;
-					if (prev_dist-dist< 0 && prev_dist != -1)
+					bullet->move(tube->tube_quads[bullet->quad],2,velocity_coef);
+					//std::cout<<"bullet"<<bullet->profondeur<<std::endl;
+					
+					if (prev_dist-dist< 0 && prev_dist != -1 )
 					{
-						delete bullet;
-						bullet = nullptr;
+						if( bullet->get_bullet()==true)
+						{
+							
+							bullet->set_bullet(false);
+							delete bullet;
+							bullet = nullptr;
+						}
+						
 					}
 					else {
-						bullet->draw_bullet(renderer_game,5);
+						if(bullet->get_bullet()==true)
+							bullet->draw_bullet(renderer_game,5);
 					}
 				}
-				bullets.erase(std::remove(bullets.begin(), bullets.end(), nullptr), bullets.end());
-				
-				
+				game->bullets.erase(std::remove(game->bullets.begin(), game->bullets.end(), nullptr), game->bullets.end());
+
+				/***************explode****************/
+				game->explode(utils);
+
 				SDL_RenderPresent(renderer_game);
 			}
 			SDL_Quit();
-
 		}
-	
-		
+
 	return 0;
 }
