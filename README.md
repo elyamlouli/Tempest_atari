@@ -1,19 +1,23 @@
 # SDL2_base_vectors
 
-Code de départ pour les projets utilisant la librarie SDL2 pour faire du rendu vectoriel
+Code de départ pour les projets utilisant la librarie SDL2 pour faire un remake du jeu Tempest Atari
 
 # Compilation
 
 Pout télécharger le code et le compiler sur tous les systèmes vous pouvez utiliser les instructions suivantes:
 
-	git clone --recurse-submodule git@git.unistra.fr:thery/sdl2_base_vectors.git
-	mkdir BuildSDLEx
-	cd BuildSDLEx
-	cmake ../sdl2_base_vectors
-	make -j 8
+	git clone git@git.unistra.fr:elyamlouli/tempest-atari.git
+	mkdir build
+	cd build
+	cmake -S .. -B .
+	make 
 
-Il est bien sur possible d'utiliser l'interface de cmake.
+.
 
 # Utilisation
 
-bouger la souris, clic bouton gauche, clavier _shift_ droit
+Appuyez sur "s" pour start ou "q" pour quit.
+Faite bouger votre vaisseau "le Blaster" en utilisant le pavé numérique
+Tirez sur vos ennemis "Flippers" en utilisant -Space
+
+Amusez vous bien!
