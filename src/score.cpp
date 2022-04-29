@@ -1,4 +1,4 @@
-#include "score.hpp"
+#include "../include/score.hpp"
 
 Score::Score(){
     nbLives = 4;

@@ -1,4 +1,4 @@
-#include "game.hpp"
+#include "../include/game.hpp"
 #include <algorithm>
 static int quad = 0;
 static int start = 0;
@@ -53,13 +53,10 @@ void Games::generate_enemies(SDL_Renderer *renderer, float velocity_coef)
     for (auto &enemy : this->enemies)
     {
 
-        if (enemy->get_id() < 2)
+        if (enemy->get_id() < 4)
         {
 
             enemy->move(this->tube->tube_quads[enemy->get_quad()], 2, velocity_coef);
-
-            printf("ennemy : %i\n", enemy->get_quad());
-            printf("quad : %i\n", quad);
             if (enemy->get_profondeur() == 0)
             {
                 if (enemy->get_quad() == quad)
@@ -67,11 +64,12 @@ void Games::generate_enemies(SDL_Renderer *renderer, float velocity_coef)
                     this->score->set_score(this->score->get_score() - 150);
                     delete lives[lives.size() - 1];
                     lives.erase(lives.begin() + (lives.size() - 1));
+                    score->set_nbLives(score->get_nbLives() - 1);
                 }
                 enemy = nullptr;
                 delete enemy;
                 this->utils->set_time(this->utils->get_time() + 1);
-                score->set_nbLives(score->get_nbLives() - 1);
+                
             }
             else
             {
@@ -79,9 +77,9 @@ void Games::generate_enemies(SDL_Renderer *renderer, float velocity_coef)
             }
         }
 
-        else
+        else if(enemy->get_id() >=4&& enemy->get_id() <=6)
         {
-            if (this->utils->get_time() == 2)
+            if (this->utils->get_time() == 4 || this->utils->get_time() == 5||this->utils->get_time() == 6)
             {
                 enemy->move(this->tube->tube_quads[enemy->get_quad()], 2, velocity_coef);
                 if (enemy->get_profondeur() == 0)
@@ -91,12 +89,12 @@ void Games::generate_enemies(SDL_Renderer *renderer, float velocity_coef)
                         this->score->set_score(this->score->get_score() - 150);
                         delete lives[lives.size() - 1];
                         lives.erase(lives.begin() + (lives.size() - 1));
+                        score->set_nbLives(score->get_nbLives() - 1);
                     }
-                    printf("%i\n", score->get_nbLives());
                     enemy = nullptr;
                     delete enemy;
                     this->utils->set_time(this->utils->get_time() + 1);
-                    score->set_nbLives(score->get_nbLives() - 1);
+                    
                 }
                 else
                 {
@@ -104,7 +102,60 @@ void Games::generate_enemies(SDL_Renderer *renderer, float velocity_coef)
                 }
             }
         }
-    }
+        else if(enemy->get_id() >=7 && enemy->get_id() <=8){
+            if(this->utils->get_time() == 7||this->utils->get_time() == 8)
+            {
+                enemy->move(this->tube->tube_quads[enemy->get_quad()], 2, velocity_coef);
+                if (enemy->get_profondeur() == 0)
+                {
+                    if (enemy->get_quad() == quad)
+                    {
+                        this->score->set_score(this->score->get_score() - 150);
+                        delete lives[lives.size() - 1];
+                        lives.erase(lives.begin() + (lives.size() - 1));
+                        score->set_nbLives(score->get_nbLives() - 1);
+                    }
+                    enemy = nullptr;
+                    delete enemy;
+                    this->utils->set_time(this->utils->get_time() + 1);
+                    
+                }
+                else
+                {
+                    enemy->draw_flipper(renderer);
+                }
+            }
+
+            }
+            else{
+                if(this->utils->get_time() == 9||this->utils->get_time() == 10)
+            {
+                enemy->move(this->tube->tube_quads[enemy->get_quad()], 2, velocity_coef);
+                if (enemy->get_profondeur() == 0)
+                {
+                    if (enemy->get_quad() == quad)
+                    {
+                        this->score->set_score(this->score->get_score() - 150);
+                        delete lives[lives.size() - 1];
+                        lives.erase(lives.begin() + (lives.size() - 1));
+                        score->set_nbLives(score->get_nbLives() - 1);
+                    }
+                    enemy = nullptr;
+                    delete enemy;
+                    this->utils->set_time(this->utils->get_time() + 1);
+                    
+                }
+                else
+                {
+                    enemy->draw_flipper(renderer);
+                }
+
+            }
+
+            }
+
+        }
+    
 
     this->enemies.erase(std::remove(this->enemies.begin(), this->enemies.end(), nullptr), this->enemies.end());
 }
@@ -194,15 +245,15 @@ void Games::explode(std::shared_ptr<Utils> utils)
             if ((enemy_viants_id[id] != -1) && bullet_id[id] && (bullet->get_profondeur() + enemies_profondeur[id]) >= 0.85 && (bullet->get_profondeur() + enemies_profondeur[id]) < 1)
             {
                 bullet_id[id] = false;
-                if (enemies[enemy_viants_id[id]]->get_alive() == true)
-                {
-                    enemies[enemy_viants_id[id]]->set_alive(false);
+                //if (enemies[enemy_viants_id[id]]->get_alive() == true)
+                //{
+                    //enemies[enemy_viants_id[id]]->set_alive(false);
                     enemies[enemy_viants_id[id]] = nullptr;
                     delete enemies[enemy_viants_id[id]];
                     this->utils->set_time(this->utils->get_time() + 1);
                     delete bullet;
                     bullet = nullptr;
-                }
+                //}
                 score->set_score(score->get_score() + 150);
             }
         }
@@ -226,6 +277,13 @@ void Games::jouer(float velocity_coef)
     this->enemies.push_back(new Enemy(distrib(gen), 1));
     this->enemies.push_back(new Enemy(distrib(gen), 2));
     this->enemies.push_back(new Enemy(distrib(gen), 3));
+    this->enemies.push_back(new Enemy(distrib(gen), 4));
+    this->enemies.push_back(new Enemy(distrib(gen), 5));
+    this->enemies.push_back(new Enemy(distrib(gen), 6));
+    this->enemies.push_back(new Enemy(distrib(gen), 7));
+    this->enemies.push_back(new Enemy(distrib(gen), 8));
+    this->enemies.push_back(new Enemy(distrib(gen), 9));
+    this->enemies.push_back(new Enemy(distrib(gen), 10));
     while (!quit_game)
     {
         SDL_Event event_g;
@@ -287,10 +345,14 @@ void Games::jouer(float velocity_coef)
         this->generate_bullets(renderer_game.get(), velocity_coef);
         this->explode(this->utils);
         SDL_RenderPresent(renderer_game.get());
-        if(this->score->get_score()<0)
+        //if(this->score->get_score()<0)
+        if(this->score->get_nbLives()<=0 || this->score->get_score()>=500)
         {
             quit_game=true;
         }
+        else if(enemies.size()==0)
+            quit_game=true;
+
     }
     SDL_Quit();
 }
@@ -371,11 +433,25 @@ void Games::game_over()
                 quit_game = true;
                 break;
             }
+            
         }
-    
         SDL_SetRenderDrawColor(renderer_game.get(), 255, 0, 0, 0);
-        this->menu->hershey(renderer_game.get(), "GAME OVER", 310, 480, 2);
+
+        if(this->score->get_score()>=500)
+        {
+            this->menu->hershey(renderer_game.get(), "WON LEVEL 1 !!!", 310, 480, 2);
+
+        }
+            
+        else if(this->score->get_nbLives()<=0)
+            this->menu->hershey(renderer_game.get(), "GAME OVER !", 310, 480, 2);
+        else
+            this->menu->hershey(renderer_game.get(), "GAME OVER !", 310, 480, 2);
+
         SDL_RenderPresent(renderer_game.get());
+        
+        
+        
     }    
     SDL_Quit();
 

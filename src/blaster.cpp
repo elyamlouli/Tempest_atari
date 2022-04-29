@@ -1,4 +1,4 @@
-#include "blaster.hpp"
+#include "../include/blaster.hpp"
 
 Blaster::Blaster()
 {

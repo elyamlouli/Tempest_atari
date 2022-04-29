@@ -1,4 +1,4 @@
-#include "bullet.hpp"
+#include "../include/bullet.hpp"
 
 Bullet::Bullet(int quad)
 {
