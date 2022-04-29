@@ -4,3 +4,5 @@ test2.cpp
 .vscode 
 test
 conf
+tsconfig.app.json
+tsconfig.json
