@@ -23,7 +23,7 @@ Pout télécharger le code et le compiler sur tous les systèmes vous pouvez uti
 	Amusez vous bien!\n
 .
 
-#Contributeur
+# Contributeur
 	Oumayma BENYAHYA
 	Fatima Zahra EL YAMLOULI
 .
