@@ -4,13 +4,15 @@ static int quad = 0;
 static int start = 0;
 
 //SDLApp *app;
-static void SDL_DelRes(SDL_Window   *r) { SDL_DestroyWindow(r);   }
+static void SDL_DelRes(SDL_Window *r) { SDL_DestroyWindow(r); }
 static void SDL_DelRes(SDL_Renderer *r) { SDL_DestroyRenderer(r); }
-static void SDL_DelRes(SDL_Texture  *r) { SDL_DestroyTexture(r);  }
-static void SDL_DelRes(SDL_Surface  *r) { SDL_FreeSurface(r);     }
+static void SDL_DelRes(SDL_Texture *r) { SDL_DestroyTexture(r); }
+static void SDL_DelRes(SDL_Surface *r) { SDL_FreeSurface(r); }
 template <typename T>
-std::shared_ptr<T> sdl_shared(T *t) {
-    return std::shared_ptr<T>(t, [](T *t) { SDL_DelRes(t); });
+std::shared_ptr<T> sdl_shared(T *t)
+{
+    return std::shared_ptr<T>(t, [](T *t)
+                              { SDL_DelRes(t); });
 }
 
 Games::Games()
@@ -69,7 +71,6 @@ void Games::generate_enemies(SDL_Renderer *renderer, float velocity_coef)
                 enemy = nullptr;
                 delete enemy;
                 this->utils->set_time(this->utils->get_time() + 1);
-                
             }
             else
             {
@@ -77,9 +78,9 @@ void Games::generate_enemies(SDL_Renderer *renderer, float velocity_coef)
             }
         }
 
-        else if(enemy->get_id() >=4&& enemy->get_id() <=6)
+        else if (enemy->get_id() >= 4 && enemy->get_id() <= 6)
         {
-            if (this->utils->get_time() == 4 || this->utils->get_time() == 5||this->utils->get_time() == 6)
+            if (this->utils->get_time() == 4 || this->utils->get_time() == 5 || this->utils->get_time() == 6)
             {
                 enemy->move(this->tube->tube_quads[enemy->get_quad()], 2, velocity_coef);
                 if (enemy->get_profondeur() == 0)
@@ -94,7 +95,6 @@ void Games::generate_enemies(SDL_Renderer *renderer, float velocity_coef)
                     enemy = nullptr;
                     delete enemy;
                     this->utils->set_time(this->utils->get_time() + 1);
-                    
                 }
                 else
                 {
@@ -102,8 +102,9 @@ void Games::generate_enemies(SDL_Renderer *renderer, float velocity_coef)
                 }
             }
         }
-        else if(enemy->get_id() >=7 && enemy->get_id() <=8){
-            if(this->utils->get_time() == 7||this->utils->get_time() == 8)
+        else if (enemy->get_id() >= 7 && enemy->get_id() <= 8)
+        {
+            if (this->utils->get_time() == 7 || this->utils->get_time() == 8)
             {
                 enemy->move(this->tube->tube_quads[enemy->get_quad()], 2, velocity_coef);
                 if (enemy->get_profondeur() == 0)
@@ -118,44 +119,38 @@ void Games::generate_enemies(SDL_Renderer *renderer, float velocity_coef)
                     enemy = nullptr;
                     delete enemy;
                     this->utils->set_time(this->utils->get_time() + 1);
-                    
                 }
                 else
                 {
                     enemy->draw_flipper(renderer);
                 }
             }
-
-            }
-            else{
-                if(this->utils->get_time() == 9||this->utils->get_time() == 10)
-            {
-                enemy->move(this->tube->tube_quads[enemy->get_quad()], 2, velocity_coef);
-                if (enemy->get_profondeur() == 0)
-                {
-                    if (enemy->get_quad() == quad)
-                    {
-                        this->score->set_score(this->score->get_score() - 150);
-                        delete lives[lives.size() - 1];
-                        lives.erase(lives.begin() + (lives.size() - 1));
-                        score->set_nbLives(score->get_nbLives() - 1);
-                    }
-                    enemy = nullptr;
-                    delete enemy;
-                    this->utils->set_time(this->utils->get_time() + 1);
-                    
-                }
-                else
-                {
-                    enemy->draw_flipper(renderer);
-                }
-
-            }
-
-            }
-
         }
-    
+        else
+        {
+            if (this->utils->get_time() == 9 || this->utils->get_time() == 10)
+            {
+                enemy->move(this->tube->tube_quads[enemy->get_quad()], 2, velocity_coef);
+                if (enemy->get_profondeur() == 0)
+                {
+                    if (enemy->get_quad() == quad)
+                    {
+                        this->score->set_score(this->score->get_score() - 150);
+                        delete lives[lives.size() - 1];
+                        lives.erase(lives.begin() + (lives.size() - 1));
+                        score->set_nbLives(score->get_nbLives() - 1);
+                    }
+                    enemy = nullptr;
+                    delete enemy;
+                    this->utils->set_time(this->utils->get_time() + 1);
+                }
+                else
+                {
+                    enemy->draw_flipper(renderer);
+                }
+            }
+        }
+    }
 
     this->enemies.erase(std::remove(this->enemies.begin(), this->enemies.end(), nullptr), this->enemies.end());
 }
@@ -247,12 +242,12 @@ void Games::explode(std::shared_ptr<Utils> utils)
                 bullet_id[id] = false;
                 //if (enemies[enemy_viants_id[id]]->get_alive() == true)
                 //{
-                    //enemies[enemy_viants_id[id]]->set_alive(false);
-                    enemies[enemy_viants_id[id]] = nullptr;
-                    delete enemies[enemy_viants_id[id]];
-                    this->utils->set_time(this->utils->get_time() + 1);
-                    delete bullet;
-                    bullet = nullptr;
+                //enemies[enemy_viants_id[id]]->set_alive(false);
+                enemies[enemy_viants_id[id]] = nullptr;
+                delete enemies[enemy_viants_id[id]];
+                this->utils->set_time(this->utils->get_time() + 1);
+                delete bullet;
+                bullet = nullptr;
                 //}
                 score->set_score(score->get_score() + 150);
             }
@@ -267,8 +262,8 @@ void Games::jouer(float velocity_coef)
 {
     bool quit_game = false;
     auto window_game(sdl_shared(SDL_CreateWindow("Test_SDL_GAME", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1000, 800,
-                                                                    SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI)));
-    auto renderer_game(sdl_shared( SDL_CreateRenderer(window_game.get(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC)));
+                                                 SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI)));
+    auto renderer_game(sdl_shared(SDL_CreateRenderer(window_game.get(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC)));
     this->tube->affect_quads(Tube_Circle);
     std::random_device rd;  // Will be used to obtain a seed for the random number engine
     std::mt19937 gen(rd()); // Standard mersenne_twister_engine seeded with rd()
@@ -298,10 +293,10 @@ void Games::jouer(float velocity_coef)
                 switch (event_g.key.keysym.sym)
                 {
                 case SDLK_RIGHT:
-                    
+
                     //CollisionSound->PlaySound();
                     //CollisionSound->SetupDevice();
-                    
+
                     std::cout << "right" << std::endl;
                     if (quad <= 15)
                     {
@@ -346,13 +341,12 @@ void Games::jouer(float velocity_coef)
         this->explode(this->utils);
         SDL_RenderPresent(renderer_game.get());
         //if(this->score->get_score()<0)
-        if(this->score->get_nbLives()<=0 || this->score->get_score()>=500)
+        if (this->score->get_nbLives() <= 0 || this->score->get_score() >= 500)
         {
-            quit_game=true;
+            quit_game = true;
         }
-        else if(enemies.size()==0)
-            quit_game=true;
-
+        else if (enemies.size() == 0)
+            quit_game = true;
     }
     SDL_Quit();
 }
@@ -366,7 +360,7 @@ int Games::genere_menu()
     }
 
     auto window(sdl_shared(SDL_CreateWindow("Test_SDL", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600,
-                                          SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI)));
+                                            SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI)));
 
     auto renderer(sdl_shared(SDL_CreateRenderer(window.get(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC)));
 
@@ -408,20 +402,18 @@ int Games::genere_menu()
             }
         }
         this->menu_principal(renderer.get()); // affiche la page principal
-        
     }
-       
-    
-    SDL_Quit();    
+
+    SDL_Quit();
     return start;
 }
 void Games::game_over()
 {
     auto window_game(sdl_shared(SDL_CreateWindow("Test_SDL_GAME", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1000, 800,
-                                                                    SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI)));
-    auto renderer_game(sdl_shared( SDL_CreateRenderer(window_game.get(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC)));
-    bool quit_game=false;
-    
+                                                 SDL_WINDOW_SHOWN | SDL_WINDOW_ALLOW_HIGHDPI)));
+    auto renderer_game(sdl_shared(SDL_CreateRenderer(window_game.get(), -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC)));
+    bool quit_game = false;
+
     while (!quit_game)
     {
         SDL_Event event;
@@ -433,28 +425,20 @@ void Games::game_over()
                 quit_game = true;
                 break;
             }
-            
         }
         SDL_SetRenderDrawColor(renderer_game.get(), 255, 0, 0, 0);
 
-        if(this->score->get_score()>=500)
+        if (this->score->get_score() >= 500)
         {
             this->menu->hershey(renderer_game.get(), "WON LEVEL 1 !!!", 310, 480, 2);
-
         }
-            
-        else if(this->score->get_nbLives()<=0)
+
+        else if (this->score->get_nbLives() <= 0)
             this->menu->hershey(renderer_game.get(), "GAME OVER !", 310, 480, 2);
         else
             this->menu->hershey(renderer_game.get(), "GAME OVER !", 310, 480, 2);
 
         SDL_RenderPresent(renderer_game.get());
-        
-        
-        
-    }    
+    }
     SDL_Quit();
-
-    
-
 }
