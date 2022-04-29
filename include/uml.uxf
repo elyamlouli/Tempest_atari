@@ -1,0 +1,126 @@
+<diagram program="umletino" version="14.4.0-SNAPSHOT"><zoom_level>10</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>2</x><y>210</y><w>210</w><h>240</h></coordinates><panel_attributes>Bullet
+--
+ bool vivant_bullet;
+ std::pair&lt;double, double&gt; P;
+ float profondeur;
+ std::shared_ptr&lt;Utils&gt;utils;
+ int quad;
+ float dist;
+--
+void draw_bullet()
+void move()
+void set_bullet()
+bool get_bullet()
+void set_P()
+std::pair&lt;double, double&gt; get_P();
+float get_profondeur();
+void set_profondeur()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>292</x><y>200</y><w>210</w><h>390</h></coordinates><panel_attributes>Enemy
+--
+std::shared_ptr&lt;Tube&gt;tube;
+std::shared_ptr&lt;Utils&gt;utils;
+std::shared_ptr&lt;UtilsEnemy&gt;
+utils_enemy;
+std::pair&lt;double, double&gt; position; 
+float profondeur;
+float z;
+int pos_xinit;
+int pos_yinit;
+double ennemies;
+int quad;
+int quad_suivant;
+int id;
+int temp;
+int tab_vivants[4];
+bool alive;
+int i;
+
+--
+Enemy(int quad, int id);
+~Enemy();
+getters();
+setters()
+void move_circle();
+void draw_flipper();
+void move();
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>572</x><y>0</y><w>210</w><h>320</h></coordinates><panel_attributes>Game
+--
+std::vector&lt;Score * &gt; lives;
+std::vector&lt;Bullet * &gt; bullets;
+std::vector&lt;Enemy * &gt; enemies;
+std::shared_ptr&lt;Menu&gt; menu;
+std::shared_ptr&lt;Score&gt;score;
+std::shared_ptr&lt;Blaster&gt;blaster;
+std::shared_ptr&lt;Tube&gt;tube;
+std::shared_ptr&lt;Utils&gt;utils;
+--
+Games();
+~Games();
+void menu_principal();
+void menu_jeu();
+int genere_menu()
+void explode()
+void draw_lives();
+void generate_enemies();
+void generate_bullets();
+void jouer();
+void game_over();
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>572</x><y>330</y><w>210</w><h>70</h></coordinates><panel_attributes>Menu
+--
+Menu();
+~Menu();
+void hershey();
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>572</x><y>410</y><w>210</w><h>180</h></coordinates><panel_attributes>Score
+--
+int nbLives;
+int score;
+Menu * menu;
+int id;
+--
+Score();
+Score(int id);
+~Score();
+void draw_live()
+getters()
+setters()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2</x><y>460</y><w>210</w><h>120</h></coordinates><panel_attributes>Tube
+--
+ std::array
+&lt;std::array&lt;std::pair&lt;int, int&gt;, 4&gt;, 16&gt;
+ tube_quads;
+Forme forme;
+--
+Tube(Forme f);
+~Tube();
+void affect_quads(Forme f);</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>290</x><y>0</y><w>210</w><h>190</h></coordinates><panel_attributes>Utils
+--
+double time;
+--
+Utils();
+~Utils()
+float distance(int vec1[2], int vec2[2]);
+float distance(int x1, int y1, int x2, int y2);
+std::vector&lt;float&gt; mid_two_points();
+std::pair&lt;double, double&gt; find_position();
+void hershey();
+double get_time();
+void set_time(int t)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>590</y><w>210</w><h>90</h></coordinates><panel_attributes>UtilsEnemy
+--
+UtilsEnemy();
+~UtilsEnemy()
+std::pair&lt;double, double&gt;
+ find_position()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2</x><y>0</y><w>210</w><h>200</h></coordinates><panel_attributes>Blaster
+
+--
+  int targetPos;
+  int changingXPos;
+  std::shared_ptr&lt;Utils&gt;utils;
+--
+Blaster()
+~Blaster()
+void drawTubeQuads()
+void drawblaster()
+void drawblaster_bleu()
+void move_r()
+void move_l()
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>270</y><w>90</w><h>140</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;120;70;10</additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>350</y><w>100</w><h>190</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>80;10;10;170</additional_attributes></element><element><id>Relation</id><coordinates><x>230</x><y>90</y><w>70</w><h>180</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>50;160;10;80;50;10</additional_attributes></element><element><id>Relation</id><coordinates><x>210</x><y>450</y><w>90</w><h>170</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>70;10;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>770</x><y>150</y><w>140</w><h>390</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;120;120;10;370</additional_attributes></element><element><id>Relation</id><coordinates><x>500</x><y>110</y><w>90</w><h>220</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>70;10;10;200</additional_attributes></element><element><id>Relation</id><coordinates><x>490</x><y>70</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>80;10;10;10</additional_attributes></element></diagram>
