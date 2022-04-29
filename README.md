@@ -21,3 +21,8 @@ Pout télécharger le code et le compiler sur tous les systèmes vous pouvez uti
 	Tirez sur vos ennemis "Flippers" en utilisant -Space
 
 	Amusez vous bien!\n
+.
+
+#Contributeur
+Oumayma BENYAHYA\n
+Fatima Zahra EL YAMLOULI
