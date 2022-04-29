@@ -1,0 +1,434 @@
+\hypertarget{class_enemy}{}\doxysection{Enemy Class Reference}
+\label{class_enemy}\index{Enemy@{Enemy}}
+
+
+Classe de l\textquotesingle{}ennemi qui sort du centre de la map pour se diriger en ligne droite vers le bout du tube, il est mort si il y a collision avec le missile.  
+
+
+
+
+{\ttfamily \#include $<$enemy.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_enemy_adfd2f8c366e4ba9ee01bb23a001be70c}{Enemy}} (int quad, int id)
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{class_enemy_acaf17ac5a78094035edaadd2956bce47}{get\+\_\+tab\+\_\+vivants}} ()
+\item 
+double \mbox{\hyperlink{class_enemy_a464f5a7a854cfbacc13b5f6168d03f83}{get\+\_\+ennemies}} ()
+\item 
+float \mbox{\hyperlink{class_enemy_a0b345f5675b1b0f2f3f6846c0f7c5efc}{get\+\_\+profondeur}} ()
+\item 
+int \mbox{\hyperlink{class_enemy_a034f4fd10ac6152989de2369984cc97d}{get\+\_\+quad}} ()
+\item 
+int \mbox{\hyperlink{class_enemy_a39ae2e2226a8062b6f24712d077dbcc9}{get\+\_\+id}} ()
+\item 
+\mbox{\Hypertarget{class_enemy_a94c9769ece946a6d4368720cf2746a9c}\label{class_enemy_a94c9769ece946a6d4368720cf2746a9c}} 
+int {\bfseries get\+\_\+temp} ()
+\item 
+std\+::pair$<$ double, double $>$ \mbox{\hyperlink{class_enemy_afe7daedb1c5e1d6d116ee456a8cf5c38}{get\+\_\+position}} ()
+\item 
+bool \mbox{\hyperlink{class_enemy_a48e105b9d3508c0fb3001a99ca95ab69}{get\+\_\+alive}} ()
+\item 
+void \mbox{\hyperlink{class_enemy_a4fe2479354985637a84310796a4df2a8}{set\+\_\+tab\+\_\+vivants}} (int id)
+\item 
+void \mbox{\hyperlink{class_enemy_add06873983cb78be8226dd483f8a22f4}{set\+\_\+alive}} (bool b)
+\item 
+void \mbox{\hyperlink{class_enemy_a0273bc01f6dd8d5b2a392d39f11016d4}{set\+\_\+quad\+\_\+suivant}} (int i)
+\item 
+int \mbox{\hyperlink{class_enemy_a71ff4bb757055b6325f86d11a7bfbca4}{get\+\_\+i}} ()
+\item 
+void \mbox{\hyperlink{class_enemy_af0abf46d7b6cf2fce2effffaba110bce}{set\+\_\+quad}} (int i)
+\item 
+void \mbox{\hyperlink{class_enemy_a2ddad945ffdde5ac0ffb5327d425a1fb}{move\+\_\+circle}} (SDL\+\_\+\+Renderer $\ast$renderer, int scale, int tube\+Quads\mbox{[}16\mbox{]}\mbox{[}4\mbox{]}\mbox{[}2\mbox{]}, float velocity\+\_\+coef)
+\item 
+void \mbox{\hyperlink{class_enemy_a8ced1d04826f1f02ec38e9965e3dbbc8}{draw\+\_\+flipper}} (SDL\+\_\+\+Renderer $\ast$renderer)
+\item 
+void \mbox{\hyperlink{class_enemy_a6f8c64e2dbaeeaa892cc02c87fa33a3a}{move}} (std\+::array$<$ std\+::pair$<$ int, int $>$, 4 $>$ tube\+Quad, int scale, float velocity\+\_\+coef)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe de l\textquotesingle{}ennemi qui sort du centre de la map pour se diriger en ligne droite vers le bout du tube, il est mort si il y a collision avec le missile. 
+
+Definition at line \mbox{\hyperlink{enemy_8hpp_source_l00016}{16}} of file \mbox{\hyperlink{enemy_8hpp_source}{enemy.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_enemy_adfd2f8c366e4ba9ee01bb23a001be70c}\label{class_enemy_adfd2f8c366e4ba9ee01bb23a001be70c}} 
+\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\index{Enemy@{Enemy}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{Enemy()}{Enemy()}}
+{\footnotesize\ttfamily Enemy\+::\+Enemy (\begin{DoxyParamCaption}\item[{int}]{quad,  }\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{enemy_8cpp_source_l00005}{5}} of file \mbox{\hyperlink{enemy_8cpp_source}{enemy.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00005                             :quad(quad),id(\textcolor{keywordtype}{id})}
+\DoxyCodeLine{00006 \{}
+\DoxyCodeLine{00007     utils = std::shared\_ptr<Utils>(\textcolor{keyword}{new} \mbox{\hyperlink{class_utils}{Utils}}());}
+\DoxyCodeLine{00008     tube = std::shared\_ptr<Tube>(\textcolor{keyword}{new} \mbox{\hyperlink{class_tube}{Tube}}(Tube\_Circle));}
+\DoxyCodeLine{00009     utils\_enemy = std::shared\_ptr<UtilsEnemy>(\textcolor{keyword}{new} \mbox{\hyperlink{class_utils_enemy}{UtilsEnemy}}());    }
+\DoxyCodeLine{00010     this-\/>profondeur=DEPTH\_TUBE\_COEF;}
+\DoxyCodeLine{00011     this-\/>z=1;}
+\DoxyCodeLine{00012     pos\_xinit=15;}
+\DoxyCodeLine{00013     pos\_yinit=15;}
+\DoxyCodeLine{00014     this-\/>ennemies++;}
+\DoxyCodeLine{00015     temp=0;}
+\DoxyCodeLine{00016     tab\_vivants[id]=1;}
+\DoxyCodeLine{00017     alive = \textcolor{keyword}{true};}
+\DoxyCodeLine{00018     quad\_suivant=quad+1;}
+\DoxyCodeLine{00019     \textcolor{comment}{//tube = new Tube(Tube\_Circle);}}
+\DoxyCodeLine{00020     \textcolor{comment}{//tube-\/>affect\_quads(Tube\_Circle);}}
+\DoxyCodeLine{00021     \textcolor{comment}{//i=0;}}
+\DoxyCodeLine{00022    }
+\DoxyCodeLine{00023     }
+\DoxyCodeLine{00024     \textcolor{comment}{//this-\/>profondeur=1;}}
+\DoxyCodeLine{00025 }
+\DoxyCodeLine{00026     }
+\DoxyCodeLine{00027 }
+\DoxyCodeLine{00028 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_enemy_ac0eec4755e28c02688065f9657150ac3}\label{class_enemy_ac0eec4755e28c02688065f9657150ac3}} 
+\index{Enemy@{Enemy}!````~Enemy@{$\sim$Enemy}}
+\index{````~Enemy@{$\sim$Enemy}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{$\sim$Enemy()}{~Enemy()}}
+{\footnotesize\ttfamily Enemy\+::$\sim$\+Enemy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{enemy_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{enemy_8cpp_source}{enemy.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030 \{}
+\DoxyCodeLine{00031     }
+\DoxyCodeLine{00032     }
+\DoxyCodeLine{00033 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_enemy_a8ced1d04826f1f02ec38e9965e3dbbc8}\label{class_enemy_a8ced1d04826f1f02ec38e9965e3dbbc8}} 
+\index{Enemy@{Enemy}!draw\_flipper@{draw\_flipper}}
+\index{draw\_flipper@{draw\_flipper}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{draw\_flipper()}{draw\_flipper()}}
+{\footnotesize\ttfamily void Enemy\+::draw\+\_\+flipper (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{enemy_8cpp_source_l00081}{81}} of file \mbox{\hyperlink{enemy_8cpp_source}{enemy.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00082 \{}
+\DoxyCodeLine{00083 }
+\DoxyCodeLine{00084     SDL\_SetRenderDrawColor(renderer, 255,0,0,0);}
+\DoxyCodeLine{00085     SDL\_RenderDrawLine (renderer,(this-\/>position.first-\/5), (this-\/>position.second-\/5), (this-\/>position.first), (this-\/>position.second) );}
+\DoxyCodeLine{00086     SDL\_RenderDrawLine (renderer, (this-\/>position.first), (this-\/>position.second),(this-\/>position.first+5), (this-\/>position.second+5) );}
+\DoxyCodeLine{00087     SDL\_RenderDrawLine (renderer, (this-\/>position.first), (this-\/>position.second),(this-\/>position.first+5), (this-\/>position.second-\/5));}
+\DoxyCodeLine{00088     SDL\_RenderDrawLine (renderer, (this-\/>position.first), (this-\/>position.second),(this-\/>position.first-\/5), (this-\/>position.second+5 ));}
+\DoxyCodeLine{00089     }
+\DoxyCodeLine{00090 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_enemy_a48e105b9d3508c0fb3001a99ca95ab69}\label{class_enemy_a48e105b9d3508c0fb3001a99ca95ab69}} 
+\index{Enemy@{Enemy}!get\_alive@{get\_alive}}
+\index{get\_alive@{get\_alive}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{get\_alive()}{get\_alive()}}
+{\footnotesize\ttfamily bool Enemy\+::get\+\_\+alive (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{enemy_8cpp_source_l00034}{34}} of file \mbox{\hyperlink{enemy_8cpp_source}{enemy.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00035 \{}
+\DoxyCodeLine{00036     \textcolor{keywordflow}{return} alive;}
+\DoxyCodeLine{00037 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_enemy_a464f5a7a854cfbacc13b5f6168d03f83}\label{class_enemy_a464f5a7a854cfbacc13b5f6168d03f83}} 
+\index{Enemy@{Enemy}!get\_ennemies@{get\_ennemies}}
+\index{get\_ennemies@{get\_ennemies}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{get\_ennemies()}{get\_ennemies()}}
+{\footnotesize\ttfamily double Enemy\+::get\+\_\+ennemies (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{enemy_8cpp_source_l00070}{70}} of file \mbox{\hyperlink{enemy_8cpp_source}{enemy.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00071 \{}
+\DoxyCodeLine{00072     \textcolor{keywordflow}{return} this-\/>ennemies;}
+\DoxyCodeLine{00073 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_enemy_a71ff4bb757055b6325f86d11a7bfbca4}\label{class_enemy_a71ff4bb757055b6325f86d11a7bfbca4}} 
+\index{Enemy@{Enemy}!get\_i@{get\_i}}
+\index{get\_i@{get\_i}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{get\_i()}{get\_i()}}
+{\footnotesize\ttfamily int Enemy\+::get\+\_\+i (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{enemy_8cpp_source_l00120}{120}} of file \mbox{\hyperlink{enemy_8cpp_source}{enemy.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00121 \{}
+\DoxyCodeLine{00122     \textcolor{keywordflow}{return} i;}
+\DoxyCodeLine{00123 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_enemy_a39ae2e2226a8062b6f24712d077dbcc9}\label{class_enemy_a39ae2e2226a8062b6f24712d077dbcc9}} 
+\index{Enemy@{Enemy}!get\_id@{get\_id}}
+\index{get\_id@{get\_id}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{get\_id()}{get\_id()}}
+{\footnotesize\ttfamily int Enemy\+::get\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{enemy_8cpp_source_l00061}{61}} of file \mbox{\hyperlink{enemy_8cpp_source}{enemy.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00062 \{}
+\DoxyCodeLine{00063     \textcolor{keywordflow}{return} id;}
+\DoxyCodeLine{00064 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_enemy_afe7daedb1c5e1d6d116ee456a8cf5c38}\label{class_enemy_afe7daedb1c5e1d6d116ee456a8cf5c38}} 
+\index{Enemy@{Enemy}!get\_position@{get\_position}}
+\index{get\_position@{get\_position}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{get\_position()}{get\_position()}}
+{\footnotesize\ttfamily std\+::pair$<$ double, double $>$ Enemy\+::get\+\_\+position (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{enemy_8cpp_source_l00057}{57}} of file \mbox{\hyperlink{enemy_8cpp_source}{enemy.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00058 \{}
+\DoxyCodeLine{00059     \textcolor{keywordflow}{return} this-\/>position;}
+\DoxyCodeLine{00060 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_enemy_a0b345f5675b1b0f2f3f6846c0f7c5efc}\label{class_enemy_a0b345f5675b1b0f2f3f6846c0f7c5efc}} 
+\index{Enemy@{Enemy}!get\_profondeur@{get\_profondeur}}
+\index{get\_profondeur@{get\_profondeur}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{get\_profondeur()}{get\_profondeur()}}
+{\footnotesize\ttfamily float Enemy\+::get\+\_\+profondeur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{enemy_8cpp_source_l00075}{75}} of file \mbox{\hyperlink{enemy_8cpp_source}{enemy.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00076 \{}
+\DoxyCodeLine{00077     \textcolor{keywordflow}{return} this-\/>profondeur;}
+\DoxyCodeLine{00078 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_enemy_a034f4fd10ac6152989de2369984cc97d}\label{class_enemy_a034f4fd10ac6152989de2369984cc97d}} 
+\index{Enemy@{Enemy}!get\_quad@{get\_quad}}
+\index{get\_quad@{get\_quad}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{get\_quad()}{get\_quad()}}
+{\footnotesize\ttfamily int Enemy\+::get\+\_\+quad (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{enemy_8cpp_source_l00065}{65}} of file \mbox{\hyperlink{enemy_8cpp_source}{enemy.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00066 \{}
+\DoxyCodeLine{00067     \textcolor{keywordflow}{return} this-\/>quad;}
+\DoxyCodeLine{00068 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_enemy_acaf17ac5a78094035edaadd2956bce47}\label{class_enemy_acaf17ac5a78094035edaadd2956bce47}} 
+\index{Enemy@{Enemy}!get\_tab\_vivants@{get\_tab\_vivants}}
+\index{get\_tab\_vivants@{get\_tab\_vivants}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{get\_tab\_vivants()}{get\_tab\_vivants()}}
+{\footnotesize\ttfamily std\+::vector$<$ int $>$ Enemy\+::get\+\_\+tab\+\_\+vivants (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{enemy_8cpp_source_l00042}{42}} of file \mbox{\hyperlink{enemy_8cpp_source}{enemy.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00043 \{}
+\DoxyCodeLine{00044     std::vector<int>vec ;}
+\DoxyCodeLine{00045     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0;i<4;i++)}
+\DoxyCodeLine{00046     \{}
+\DoxyCodeLine{00047         vec.push\_back(tab\_vivants[i]);}
+\DoxyCodeLine{00048     \}}
+\DoxyCodeLine{00049     \textcolor{keywordflow}{return} vec;}
+\DoxyCodeLine{00050     }
+\DoxyCodeLine{00051 }
+\DoxyCodeLine{00052 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_enemy_a6f8c64e2dbaeeaa892cc02c87fa33a3a}\label{class_enemy_a6f8c64e2dbaeeaa892cc02c87fa33a3a}} 
+\index{Enemy@{Enemy}!move@{move}}
+\index{move@{move}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void Enemy\+::move (\begin{DoxyParamCaption}\item[{std\+::array$<$ std\+::pair$<$ int, int $>$, 4 $>$}]{tube\+Quad,  }\item[{int}]{scale,  }\item[{float}]{velocity\+\_\+coef }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{enemy_8cpp_source_l00091}{91}} of file \mbox{\hyperlink{enemy_8cpp_source}{enemy.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00092 \{}
+\DoxyCodeLine{00093     this-\/>position = this-\/>utils\_enemy-\/>find\_position(tubeQuad,this-\/>pos\_xinit,this-\/>pos\_yinit,scale,this-\/>profondeur);}
+\DoxyCodeLine{00094     std::vector<float> vec =utils-\/>mid\_two\_points(tubeQuad[0].first*scale,tubeQuad[0].second*scale,tubeQuad[1].first*scale,tubeQuad[1].second*scale)  ;}
+\DoxyCodeLine{00095     \textcolor{comment}{/*if(fabs(utils-\/>distance(this-\/>position.first,this-\/>position.second,vec[0],vec[1]))<=0.03)}}
+\DoxyCodeLine{00096 \textcolor{comment}{    \{}}
+\DoxyCodeLine{00097 \textcolor{comment}{        std::cout<<"{}hi"{};}}
+\DoxyCodeLine{00098 \textcolor{comment}{        this-\/>profondeur = -\/1;}}
+\DoxyCodeLine{00099 \textcolor{comment}{    \}*/}}
+\DoxyCodeLine{00100     \textcolor{comment}{/*}}
+\DoxyCodeLine{00101 \textcolor{comment}{    this-\/>position.first = this-\/>position.first/ this-\/>profondeur;}}
+\DoxyCodeLine{00102 \textcolor{comment}{    this-\/>position.second = this-\/>position.second/ this-\/>profondeur;*/}}
+\DoxyCodeLine{00103     }
+\DoxyCodeLine{00104 }
+\DoxyCodeLine{00105     }
+\DoxyCodeLine{00106     this-\/>z -\/= velocity\_coef;}
+\DoxyCodeLine{00107     \textcolor{keywordflow}{if} (z >= 0)}
+\DoxyCodeLine{00108         profondeur= (1 -\/ DEPTH\_TUBE\_COEF) * sqrt(z);}
+\DoxyCodeLine{00109     \textcolor{keywordflow}{else} }
+\DoxyCodeLine{00110         profondeur = 0;}
+\DoxyCodeLine{00111 }
+\DoxyCodeLine{00112     }
+\DoxyCodeLine{00113     }
+\DoxyCodeLine{00114 }
+\DoxyCodeLine{00115 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_enemy_a2ddad945ffdde5ac0ffb5327d425a1fb}\label{class_enemy_a2ddad945ffdde5ac0ffb5327d425a1fb}} 
+\index{Enemy@{Enemy}!move\_circle@{move\_circle}}
+\index{move\_circle@{move\_circle}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{move\_circle()}{move\_circle()}}
+{\footnotesize\ttfamily void Enemy\+::move\+\_\+circle (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{scale,  }\item[{int}]{tube\+Quads\mbox{[}16\mbox{]}\mbox{[}4\mbox{]}\mbox{[}2\mbox{]},  }\item[{float}]{velocity\+\_\+coef }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{enemy_8cpp_source_l00128}{128}} of file \mbox{\hyperlink{enemy_8cpp_source}{enemy.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00129 \{}
+\DoxyCodeLine{00130     }
+\DoxyCodeLine{00131     \textcolor{comment}{//std::cout<<tube-\/>tube\_quads[this-\/>quad+i][0][0]<<std::endl;}}
+\DoxyCodeLine{00132     \textcolor{keywordflow}{if}(this-\/>quad<15)}
+\DoxyCodeLine{00133     \{}
+\DoxyCodeLine{00134         this-\/>position.first = tubeQuads[this-\/>quad+1][0][0]*scale;}
+\DoxyCodeLine{00135         printf(\textcolor{stringliteral}{"{}\%i\(\backslash\)n"{}},quad+i);}
+\DoxyCodeLine{00136         this-\/>position.second = tubeQuads[this-\/>quad+1][0][1]*scale;}
+\DoxyCodeLine{00137         set\_quad(quad+1);}
+\DoxyCodeLine{00138         }
+\DoxyCodeLine{00139         }
+\DoxyCodeLine{00140         }
+\DoxyCodeLine{00141     \}}
+\DoxyCodeLine{00142     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(this-\/>quad==15)}
+\DoxyCodeLine{00143     \{}
+\DoxyCodeLine{00144         }
+\DoxyCodeLine{00145         this-\/>position.first = tube-\/>tube\_quads[0][0].first*scale;}
+\DoxyCodeLine{00146         this-\/>position.second = tube-\/>tube\_quads[0][0].second*scale;}
+\DoxyCodeLine{00147         set\_quad(0);}
+\DoxyCodeLine{00148         }
+\DoxyCodeLine{00149     \}}
+\DoxyCodeLine{00150     }
+\DoxyCodeLine{00151     }
+\DoxyCodeLine{00152 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_enemy_add06873983cb78be8226dd483f8a22f4}\label{class_enemy_add06873983cb78be8226dd483f8a22f4}} 
+\index{Enemy@{Enemy}!set\_alive@{set\_alive}}
+\index{set\_alive@{set\_alive}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{set\_alive()}{set\_alive()}}
+{\footnotesize\ttfamily void Enemy\+::set\+\_\+alive (\begin{DoxyParamCaption}\item[{bool}]{b }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{enemy_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{enemy_8cpp_source}{enemy.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039 \{}
+\DoxyCodeLine{00040     alive=b;}
+\DoxyCodeLine{00041 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_enemy_af0abf46d7b6cf2fce2effffaba110bce}\label{class_enemy_af0abf46d7b6cf2fce2effffaba110bce}} 
+\index{Enemy@{Enemy}!set\_quad@{set\_quad}}
+\index{set\_quad@{set\_quad}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{set\_quad()}{set\_quad()}}
+{\footnotesize\ttfamily void Enemy\+::set\+\_\+quad (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{enemy_8cpp_source_l00124}{124}} of file \mbox{\hyperlink{enemy_8cpp_source}{enemy.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00125 \{}
+\DoxyCodeLine{00126     this-\/>quad=i;}
+\DoxyCodeLine{00127 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_enemy_a0273bc01f6dd8d5b2a392d39f11016d4}\label{class_enemy_a0273bc01f6dd8d5b2a392d39f11016d4}} 
+\index{Enemy@{Enemy}!set\_quad\_suivant@{set\_quad\_suivant}}
+\index{set\_quad\_suivant@{set\_quad\_suivant}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{set\_quad\_suivant()}{set\_quad\_suivant()}}
+{\footnotesize\ttfamily void Enemy\+::set\+\_\+quad\+\_\+suivant (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{enemy_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{enemy_8cpp_source}{enemy.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00117 \{}
+\DoxyCodeLine{00118     quad\_suivant=i;}
+\DoxyCodeLine{00119 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_enemy_a4fe2479354985637a84310796a4df2a8}\label{class_enemy_a4fe2479354985637a84310796a4df2a8}} 
+\index{Enemy@{Enemy}!set\_tab\_vivants@{set\_tab\_vivants}}
+\index{set\_tab\_vivants@{set\_tab\_vivants}!Enemy@{Enemy}}
+\doxysubsubsection{\texorpdfstring{set\_tab\_vivants()}{set\_tab\_vivants()}}
+{\footnotesize\ttfamily void Enemy\+::set\+\_\+tab\+\_\+vivants (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{enemy_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{enemy_8cpp_source}{enemy.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00054 \{}
+\DoxyCodeLine{00055     tab\_vivants[i]=0;}
+\DoxyCodeLine{00056 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+enemy.\+hpp\item 
+enemy.\+cpp\end{DoxyCompactItemize}

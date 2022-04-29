@@ -1,0 +1,459 @@
+\hypertarget{struct_utils}{}\doxysection{Utils Struct Reference}
+\label{struct_utils}\index{Utils@{Utils}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{struct_utils_a74cf0d1fdc8e9993796c18a98e781925}{Weighted\+Midpoint}} (int vec1\mbox{[}2\mbox{]}, int vec2\mbox{[}2\mbox{]}, float weight)
+\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{struct_utils_a39eb7fdf819e1e9612fcdb7d89cc7059}{orthogonal\+Unit\+Vector}} (int vec1\mbox{[}2\mbox{]}, int vec2\mbox{[}2\mbox{]}, int scalar)
+\item 
+float \mbox{\hyperlink{struct_utils_a69114624bcd1c9e0b48f7b7265c9c9b0}{distance}} (int vec1\mbox{[}2\mbox{]}, int vec2\mbox{[}2\mbox{]})
+\item 
+float \mbox{\hyperlink{struct_utils_a7b40a3f4908a10155e25aee66fc12f35}{distance}} (int x1, int y1, int x2, int y2)
+\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{struct_utils_ae57b0fbe75aa24f12e52857400dfe12d}{mid\+\_\+two\+\_\+points}} (int x1, int y1, int x2, int y2)
+\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{struct_utils_add73fd7f357224113ad2373a8589e3dd}{addvector}} (std\+::vector$<$ float $>$ vec1, std\+::vector$<$ float $>$ vec2, int scalar)
+\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{struct_utils_ac66ec64fc242fdd92ab9dc6d96d10473}{triangle\+\_\+apartir\+\_\+de\+\_\+deux\+\_\+points}} (int x1, int y1, int x2, int y2)
+\item 
+std\+::pair$<$ double, double $>$ \mbox{\hyperlink{struct_utils_a5c47e336efe31a329ca1d09f58bd0e34}{find\+\_\+position}} (int tube\+Quad\mbox{[}4\mbox{]}\mbox{[}2\mbox{]}, int ax, int ay, int scale, float profondeur, bool middle)
+\item 
+std\+::pair$<$ double, double $>$ \mbox{\hyperlink{struct_utils_a008f13f8e177ba6d1a7292de1ecce1d1}{find\+\_\+position\+\_\+enemy}} (int tube\+Quad\mbox{[}4\mbox{]}\mbox{[}2\mbox{]}, int ax, int ay, int scale, float profondeur)
+\item 
+\mbox{\Hypertarget{struct_utils_af564d9901c1536b980beb22bbf83f2f9}\label{struct_utils_af564d9901c1536b980beb22bbf83f2f9}} 
+void {\bfseries hershey} (SDL\+\_\+\+Renderer $\ast$renderer, std\+::string str, int start\+\_\+x, int start\+\_\+y, int coeff)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \mbox{\hyperlink{struct_utils_a87397d1ee94b565fec3b565cbc040033}{time}}
+\item 
+int \mbox{\hyperlink{struct_utils_a41aeb0e316e66698197619de26aee3f6}{vivants}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{utils_8hpp_source_l00010}{10}} of file \mbox{\hyperlink{utils_8hpp_source}{utils.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_utils_a452e78692c87ed5c7c993b6c6ac4981a}\label{struct_utils_a452e78692c87ed5c7c993b6c6ac4981a}} 
+\index{Utils@{Utils}!Utils@{Utils}}
+\index{Utils@{Utils}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{Utils()}{Utils()}}
+{\footnotesize\ttfamily Utils\+::\+Utils (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00004 \{}
+\DoxyCodeLine{00005     this-\/>time = 0;}
+\DoxyCodeLine{00006     this-\/>vivants = 4;}
+\DoxyCodeLine{00007 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_utils_afa5e70facffc286607498e7edb639b8a}\label{struct_utils_afa5e70facffc286607498e7edb639b8a}} 
+\index{Utils@{Utils}!````~Utils@{$\sim$Utils}}
+\index{````~Utils@{$\sim$Utils}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{$\sim$Utils()}{~Utils()}}
+{\footnotesize\ttfamily Utils\+::$\sim$\+Utils (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00009 \{}
+\DoxyCodeLine{00010 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_utils_add73fd7f357224113ad2373a8589e3dd}\label{struct_utils_add73fd7f357224113ad2373a8589e3dd}} 
+\index{Utils@{Utils}!addvector@{addvector}}
+\index{addvector@{addvector}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{addvector()}{addvector()}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ Utils\+::addvector (\begin{DoxyParamCaption}\item[{std\+::vector$<$ float $>$}]{vec1,  }\item[{std\+::vector$<$ float $>$}]{vec2,  }\item[{int}]{scalar }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00054 \{}
+\DoxyCodeLine{00055     \textcolor{keyword}{const} \textcolor{keywordtype}{float} x1 = vec1[0];}
+\DoxyCodeLine{00056     \textcolor{keyword}{const} \textcolor{keywordtype}{float} y1 = vec1[1];}
+\DoxyCodeLine{00057     \textcolor{keyword}{const} \textcolor{keywordtype}{float} x2 = vec2[0];}
+\DoxyCodeLine{00058     \textcolor{keyword}{const} \textcolor{keywordtype}{float} y2 = vec2[1];}
+\DoxyCodeLine{00059     std::vector<float> vec = \{\};}
+\DoxyCodeLine{00060     vec.push\_back(x1 + x2 * scalar);}
+\DoxyCodeLine{00061     vec.push\_back(y1 + y2 * scalar);}
+\DoxyCodeLine{00062     \textcolor{keywordflow}{return} vec;}
+\DoxyCodeLine{00063 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_utils_a69114624bcd1c9e0b48f7b7265c9c9b0}\label{struct_utils_a69114624bcd1c9e0b48f7b7265c9c9b0}} 
+\index{Utils@{Utils}!distance@{distance}}
+\index{distance@{distance}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{distance()}{distance()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily float Utils\+::distance (\begin{DoxyParamCaption}\item[{int}]{vec1\mbox{[}2\mbox{]},  }\item[{int}]{vec2\mbox{[}2\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00029 \{}
+\DoxyCodeLine{00030     \textcolor{keyword}{const} \textcolor{keywordtype}{int} x1 = vec1[0];}
+\DoxyCodeLine{00031     \textcolor{keyword}{const} \textcolor{keywordtype}{int} y1 = vec1[1];}
+\DoxyCodeLine{00032     \textcolor{keyword}{const} \textcolor{keywordtype}{int} x2 = vec2[0];}
+\DoxyCodeLine{00033     \textcolor{keyword}{const} \textcolor{keywordtype}{int} y2 = vec2[1];}
+\DoxyCodeLine{00034     \textcolor{keywordflow}{return} sqrt(((y2 -\/ y1) * (y2 -\/ y1)) + ((x2 -\/ x1) * (x2 -\/ x1)));}
+\DoxyCodeLine{00035 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_utils_a7b40a3f4908a10155e25aee66fc12f35}\label{struct_utils_a7b40a3f4908a10155e25aee66fc12f35}} 
+\index{Utils@{Utils}!distance@{distance}}
+\index{distance@{distance}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{distance()}{distance()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily float Utils\+::distance (\begin{DoxyParamCaption}\item[{int}]{x1,  }\item[{int}]{y1,  }\item[{int}]{x2,  }\item[{int}]{y2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037 \{}
+\DoxyCodeLine{00038     \textcolor{keywordflow}{return} sqrt(((y2 -\/ y1) * (y2 -\/ y1)) + ((x2 -\/ x1) * (x2 -\/ x1)));}
+\DoxyCodeLine{00039 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_utils_a5c47e336efe31a329ca1d09f58bd0e34}\label{struct_utils_a5c47e336efe31a329ca1d09f58bd0e34}} 
+\index{Utils@{Utils}!find\_position@{find\_position}}
+\index{find\_position@{find\_position}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{find\_position()}{find\_position()}}
+{\footnotesize\ttfamily std\+::pair$<$ double, double $>$ Utils\+::find\+\_\+position (\begin{DoxyParamCaption}\item[{int}]{tube\+Quad\mbox{[}4\mbox{]}\mbox{[}2\mbox{]},  }\item[{int}]{ax,  }\item[{int}]{ay,  }\item[{int}]{scale,  }\item[{float}]{profondeur,  }\item[{bool}]{middle }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00176}{176}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00177 \{}
+\DoxyCodeLine{00178     std::pair<double, double> D;}
+\DoxyCodeLine{00179     \textcolor{keywordtype}{double} new\_ax, new\_ay;}
+\DoxyCodeLine{00180     \textcolor{keywordtype}{int} window\_x;}
+\DoxyCodeLine{00181     \textcolor{keywordtype}{int} window\_y;}
+\DoxyCodeLine{00182     \textcolor{keywordflow}{if} (tubeQuad[0][0] < tubeQuad[1][0] \&\& tubeQuad[0][1] < tubeQuad[1][1])}
+\DoxyCodeLine{00183     \{}
+\DoxyCodeLine{00184         window\_x = 523;}
+\DoxyCodeLine{00185         window\_y = 563;}
+\DoxyCodeLine{00186     \}}
+\DoxyCodeLine{00187     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (tubeQuad[0][0] > tubeQuad[1][0] \&\& tubeQuad[0][1] < tubeQuad[1][1])}
+\DoxyCodeLine{00188     \{}
+\DoxyCodeLine{00189         window\_x = 517;}
+\DoxyCodeLine{00190         window\_y = 570;}
+\DoxyCodeLine{00191     \}}
+\DoxyCodeLine{00192     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (tubeQuad[0][0] < tubeQuad[1][0] \&\& tubeQuad[0][1] > tubeQuad[1][1])}
+\DoxyCodeLine{00193     \{}
+\DoxyCodeLine{00194         window\_x = 512;}
+\DoxyCodeLine{00195         window\_y = 558;}
+\DoxyCodeLine{00196     \}}
+\DoxyCodeLine{00197     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00198     \{}
+\DoxyCodeLine{00199         window\_x = 520;}
+\DoxyCodeLine{00200         window\_y = 570;}
+\DoxyCodeLine{00201     \}}
+\DoxyCodeLine{00202 }
+\DoxyCodeLine{00203     \textcolor{keywordtype}{int} ABx = tubeQuad[1][0] * scale -\/ tubeQuad[0][0] * scale;}
+\DoxyCodeLine{00204     \textcolor{keywordtype}{int} ABy = tubeQuad[1][1] * scale -\/ tubeQuad[0][1] * scale;}
+\DoxyCodeLine{00205     \textcolor{keywordtype}{double} normAB = sqrt(ABx * ABx + ABy * ABy);}
+\DoxyCodeLine{00206     \textcolor{keywordtype}{double} ux = ABx / normAB;}
+\DoxyCodeLine{00207     \textcolor{keywordtype}{double} uy = ABy / normAB;}
+\DoxyCodeLine{00208 }
+\DoxyCodeLine{00209     \textcolor{keywordflow}{if} (middle)}
+\DoxyCodeLine{00210     \{}
+\DoxyCodeLine{00211         new\_ax = (ux * ax -\/ uy * ay + (tubeQuad[0][0] + tubeQuad[1][0]) * scale / 2 -\/ window\_x) * profondeur + window\_x;}
+\DoxyCodeLine{00212         new\_ay = (uy * ax + ux * ay + (tubeQuad[0][1] + tubeQuad[1][1]) * scale / 2 -\/ window\_y) * profondeur + window\_y;}
+\DoxyCodeLine{00213     \}}
+\DoxyCodeLine{00214 }
+\DoxyCodeLine{00215     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00216     \{}
+\DoxyCodeLine{00217         new\_ax = (ux * ax -\/ uy * ay + tubeQuad[0][0] * scale -\/ window\_x) + window\_x;}
+\DoxyCodeLine{00218         new\_ay = (uy * ax + ux * ay + tubeQuad[0][1] * scale -\/ window\_y) + window\_y;}
+\DoxyCodeLine{00219     \}}
+\DoxyCodeLine{00220     D.first = new\_ax;}
+\DoxyCodeLine{00221     D.second = new\_ay;}
+\DoxyCodeLine{00222     \textcolor{keywordflow}{return} D;}
+\DoxyCodeLine{00223 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_utils_a008f13f8e177ba6d1a7292de1ecce1d1}\label{struct_utils_a008f13f8e177ba6d1a7292de1ecce1d1}} 
+\index{Utils@{Utils}!find\_position\_enemy@{find\_position\_enemy}}
+\index{find\_position\_enemy@{find\_position\_enemy}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{find\_position\_enemy()}{find\_position\_enemy()}}
+{\footnotesize\ttfamily std\+::pair$<$ double, double $>$ Utils\+::find\+\_\+position\+\_\+enemy (\begin{DoxyParamCaption}\item[{int}]{tube\+Quad\mbox{[}4\mbox{]}\mbox{[}2\mbox{]},  }\item[{int}]{ax,  }\item[{int}]{ay,  }\item[{int}]{scale,  }\item[{float}]{profondeur }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00224}{224}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00225 \{}
+\DoxyCodeLine{00226     std::pair<double, double> D;}
+\DoxyCodeLine{00227     \textcolor{keywordtype}{double} new\_ax, new\_ay;}
+\DoxyCodeLine{00228     std::vector<float> vec = this-\/>mid\_two\_points(tubeQuad[0][0] * scale, tubeQuad[0][1] * scale, tubeQuad[1][0] * scale, tubeQuad[1][1] * scale);}
+\DoxyCodeLine{00229     \textcolor{comment}{/*vec[0]= vec[0]/profondeur;}}
+\DoxyCodeLine{00230 \textcolor{comment}{    vec[1]=vec[1]/profondeur;*/}}
+\DoxyCodeLine{00231 }
+\DoxyCodeLine{00232     \textcolor{keywordtype}{int} CDx = tubeQuad[3][0] * scale -\/ tubeQuad[2][0] * scale;}
+\DoxyCodeLine{00233     \textcolor{keywordtype}{int} CDy = tubeQuad[3][1] * scale -\/ tubeQuad[2][1] * scale;}
+\DoxyCodeLine{00234     \textcolor{keywordtype}{double} normCD = sqrt(CDx * CDx + CDy * CDy);}
+\DoxyCodeLine{00235     \textcolor{keywordtype}{double} ux = CDx / normCD;}
+\DoxyCodeLine{00236     \textcolor{keywordtype}{double} uy = CDy / normCD;}
+\DoxyCodeLine{00237 }
+\DoxyCodeLine{00238     new\_ax = (uy * ax -\/ ux * ay + (tubeQuad[2][0] + tubeQuad[3][0]) * scale / 2 -\/ vec[0]) * profondeur + vec[0];}
+\DoxyCodeLine{00239     new\_ay = (ux * ax + uy * ay + (tubeQuad[2][1] + tubeQuad[3][1]) * scale / 2 -\/ vec[1]) * profondeur + vec[1];}
+\DoxyCodeLine{00240 }
+\DoxyCodeLine{00241     D.first = new\_ax;}
+\DoxyCodeLine{00242     D.second = new\_ay;}
+\DoxyCodeLine{00243     \textcolor{keywordflow}{return} D;}
+\DoxyCodeLine{00244 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_utils_ae57b0fbe75aa24f12e52857400dfe12d}\label{struct_utils_ae57b0fbe75aa24f12e52857400dfe12d}} 
+\index{Utils@{Utils}!mid\_two\_points@{mid\_two\_points}}
+\index{mid\_two\_points@{mid\_two\_points}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{mid\_two\_points()}{mid\_two\_points()}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ Utils\+::mid\+\_\+two\+\_\+points (\begin{DoxyParamCaption}\item[{int}]{x1,  }\item[{int}]{y1,  }\item[{int}]{x2,  }\item[{int}]{y2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00167}{167}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00168 \{}
+\DoxyCodeLine{00169     \textcolor{keywordtype}{float} x = (\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(x1) + \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(x2)) / 2;}
+\DoxyCodeLine{00170     \textcolor{keywordtype}{float} y = (\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(y1) + \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(y2)) / 2;}
+\DoxyCodeLine{00171     std::vector<float> vec = \{\};}
+\DoxyCodeLine{00172     vec.push\_back(x);}
+\DoxyCodeLine{00173     vec.push\_back(y);}
+\DoxyCodeLine{00174     \textcolor{keywordflow}{return} vec;}
+\DoxyCodeLine{00175 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_utils_a39eb7fdf819e1e9612fcdb7d89cc7059}\label{struct_utils_a39eb7fdf819e1e9612fcdb7d89cc7059}} 
+\index{Utils@{Utils}!orthogonalUnitVector@{orthogonalUnitVector}}
+\index{orthogonalUnitVector@{orthogonalUnitVector}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{orthogonalUnitVector()}{orthogonalUnitVector()}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ Utils\+::orthogonal\+Unit\+Vector (\begin{DoxyParamCaption}\item[{int}]{vec1\mbox{[}2\mbox{]},  }\item[{int}]{vec2\mbox{[}2\mbox{]},  }\item[{int}]{scalar }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00040}{40}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00041 \{}
+\DoxyCodeLine{00042     \textcolor{keyword}{const} \textcolor{keywordtype}{int} x1 = vec1[0];}
+\DoxyCodeLine{00043     \textcolor{keyword}{const} \textcolor{keywordtype}{int} y1 = vec1[1];}
+\DoxyCodeLine{00044     \textcolor{keyword}{const} \textcolor{keywordtype}{int} x2 = vec2[0];}
+\DoxyCodeLine{00045     \textcolor{keyword}{const} \textcolor{keywordtype}{int} y2 = vec2[1];}
+\DoxyCodeLine{00046     \textcolor{keyword}{const} \textcolor{keywordtype}{float} x = (x2 -\/ x1) / this-\/>distance(vec1, vec2) * scalar;}
+\DoxyCodeLine{00047     \textcolor{keyword}{const} \textcolor{keywordtype}{float} y = (y2 -\/ y1) / this-\/>distance(vec1, vec2) * scalar;}
+\DoxyCodeLine{00048     std::vector<float> vec = \{\};}
+\DoxyCodeLine{00049     vec.push\_back(x);}
+\DoxyCodeLine{00050     vec.push\_back(y);}
+\DoxyCodeLine{00051     \textcolor{keywordflow}{return} vec;}
+\DoxyCodeLine{00052 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_utils_ac66ec64fc242fdd92ab9dc6d96d10473}\label{struct_utils_ac66ec64fc242fdd92ab9dc6d96d10473}} 
+\index{Utils@{Utils}!triangle\_apartir\_de\_deux\_points@{triangle\_apartir\_de\_deux\_points}}
+\index{triangle\_apartir\_de\_deux\_points@{triangle\_apartir\_de\_deux\_points}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{triangle\_apartir\_de\_deux\_points()}{triangle\_apartir\_de\_deux\_points()}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ Utils\+::triangle\+\_\+apartir\+\_\+de\+\_\+deux\+\_\+points (\begin{DoxyParamCaption}\item[{int}]{x1,  }\item[{int}]{y1,  }\item[{int}]{x2,  }\item[{int}]{y2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00064}{64}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00065 \{}
+\DoxyCodeLine{00066     \textcolor{keywordtype}{float} x\_1 = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(x1);}
+\DoxyCodeLine{00067     \textcolor{keywordtype}{float} x\_2 = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(x2);}
+\DoxyCodeLine{00068     \textcolor{keywordtype}{float} y\_1 = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(y1);}
+\DoxyCodeLine{00069     \textcolor{keywordtype}{float} y\_2 = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(y2);}
+\DoxyCodeLine{00070 }
+\DoxyCodeLine{00071     \textcolor{comment}{//std::cout<< "{}y\_1 "{}<<y\_1<<"{}y\_2 "{}<<y\_2<<std::endl;}}
+\DoxyCodeLine{00072     \textcolor{keywordtype}{float} findx\_1, findy\_1, findx\_2, findy\_2;}
+\DoxyCodeLine{00073     \textcolor{keywordtype}{float} sidelength1 = x\_1 -\/ x\_2;}
+\DoxyCodeLine{00074     \textcolor{keywordtype}{float} sidelength2 = y\_1 -\/ y\_2;}
+\DoxyCodeLine{00075 }
+\DoxyCodeLine{00076     \textcolor{keywordtype}{float} sidelength = sqrt(sidelength1 * sidelength1 + sidelength2 * sidelength2);}
+\DoxyCodeLine{00077 }
+\DoxyCodeLine{00078     \textcolor{comment}{//point median}}
+\DoxyCodeLine{00079     \textcolor{keywordtype}{float} tempx, tempy;}
+\DoxyCodeLine{00080     tempx = (x\_1 + x\_2) / 2;}
+\DoxyCodeLine{00081     tempy = (y\_1 + y\_2) / 2;}
+\DoxyCodeLine{00082 }
+\DoxyCodeLine{00083     \textcolor{keywordflow}{if} (fabs(x\_1 -\/ x\_2) < 0.001) \textcolor{comment}{//  Vertical}}
+\DoxyCodeLine{00084     \{}
+\DoxyCodeLine{00085 }
+\DoxyCodeLine{00086         findy\_1 = tempy;}
+\DoxyCodeLine{00087         findy\_2 = tempy;}
+\DoxyCodeLine{00088 }
+\DoxyCodeLine{00089         \textcolor{keywordtype}{float} temp\_len = sqrt(3.0) / 2 * sidelength;}
+\DoxyCodeLine{00090 }
+\DoxyCodeLine{00091         findx\_1 = tempx + temp\_len;}
+\DoxyCodeLine{00092         findx\_2 = tempx -\/ temp\_len;}
+\DoxyCodeLine{00093     \}}
+\DoxyCodeLine{00094     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (fabs(y\_1 -\/ y\_2) < 0.001) \textcolor{comment}{//  En parallèle}}
+\DoxyCodeLine{00095     \{}
+\DoxyCodeLine{00096 }
+\DoxyCodeLine{00097         findx\_1 = tempx;}
+\DoxyCodeLine{00098         findx\_2 = tempx;}
+\DoxyCodeLine{00099 }
+\DoxyCodeLine{00100         \textcolor{keywordtype}{float} temp\_len = sqrt(3.0) / 2 * sidelength;}
+\DoxyCodeLine{00101 }
+\DoxyCodeLine{00102         findy\_1 = tempy + temp\_len;}
+\DoxyCodeLine{00103         findy\_2 = tempy -\/ temp\_len;}
+\DoxyCodeLine{00104     \}}
+\DoxyCodeLine{00105     \textcolor{comment}{//pente}}
+\DoxyCodeLine{00106     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00107     \{}
+\DoxyCodeLine{00108         \textcolor{keywordtype}{float} k, k1;}
+\DoxyCodeLine{00109         \textcolor{keywordtype}{float} b, b1;}
+\DoxyCodeLine{00110         k = (y\_2 -\/ y\_1) / (x\_2 -\/ x\_1);}
+\DoxyCodeLine{00111         std::cout << \textcolor{stringliteral}{"{}y\_2-\/y\_1  "{}} << y\_2 -\/ y\_1 << std::endl;}
+\DoxyCodeLine{00112         std::cout << \textcolor{stringliteral}{"{}x\_2-\/x\_1 "{}} << x\_2 -\/ x\_1 << std::endl;}
+\DoxyCodeLine{00113         std::cout << \textcolor{stringliteral}{"{}k  "{}} << (y\_2 -\/ y\_1) / (x\_2 -\/ x\_1) << std::endl;}
+\DoxyCodeLine{00114         b = y\_1 -\/ k * x\_1;}
+\DoxyCodeLine{00115 }
+\DoxyCodeLine{00116         k1 = -\/1 / k;}
+\DoxyCodeLine{00117         b1 = tempy -\/ k1 * tempx;}
+\DoxyCodeLine{00118 }
+\DoxyCodeLine{00119         \textcolor{keywordtype}{float} db;}
+\DoxyCodeLine{00120         db = 2 * k1 * (b1 -\/ tempy) -\/ 2 * tempx;}
+\DoxyCodeLine{00121 }
+\DoxyCodeLine{00122         \textcolor{keywordtype}{float} da;}
+\DoxyCodeLine{00123         da = k1 * k1 + 1;}
+\DoxyCodeLine{00124 }
+\DoxyCodeLine{00125         \textcolor{keywordtype}{float} dc;}
+\DoxyCodeLine{00126         dc = tempx * tempx + (b1 -\/ tempy) * (b1 -\/ tempy) -\/ (3.0 / 4) * sidelength * sidelength;}
+\DoxyCodeLine{00127 }
+\DoxyCodeLine{00128         \textcolor{keywordtype}{float} dx;}
+\DoxyCodeLine{00129         dx = db * db -\/ 4 * da * dc;}
+\DoxyCodeLine{00130         dx = sqrt(db * db -\/ 4 * da * dc);}
+\DoxyCodeLine{00131 }
+\DoxyCodeLine{00132         \textcolor{keywordtype}{float} xa, xb, ya, yb;}
+\DoxyCodeLine{00133         xa = ((-\/db + dx) / (2 * da));}
+\DoxyCodeLine{00134         xb = ((-\/db -\/ dx) / (2 * da));}
+\DoxyCodeLine{00135 }
+\DoxyCodeLine{00136         ya = xa * k1 + b1;}
+\DoxyCodeLine{00137         yb = xb * k1 + b1;}
+\DoxyCodeLine{00138 }
+\DoxyCodeLine{00139         \textcolor{keywordflow}{if} (x1 > x2)}
+\DoxyCodeLine{00140         \{}
+\DoxyCodeLine{00141             findx\_1 = xb;}
+\DoxyCodeLine{00142             findy\_1 = yb;}
+\DoxyCodeLine{00143             findx\_2 = xa;}
+\DoxyCodeLine{00144             findy\_2 = ya;}
+\DoxyCodeLine{00145         \}}
+\DoxyCodeLine{00146 }
+\DoxyCodeLine{00147         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00148         \{}
+\DoxyCodeLine{00149 }
+\DoxyCodeLine{00150             findx\_1 = xa;}
+\DoxyCodeLine{00151             findy\_1 = ya;}
+\DoxyCodeLine{00152             findx\_2 = xb;}
+\DoxyCodeLine{00153             findy\_2 = yb;}
+\DoxyCodeLine{00154         \}}
+\DoxyCodeLine{00155     \}}
+\DoxyCodeLine{00156     std::cout << \textcolor{stringliteral}{"{}x\_1  "{}} << findx\_1 << std::endl;}
+\DoxyCodeLine{00157 }
+\DoxyCodeLine{00158     std::vector<float> vec = \{\};}
+\DoxyCodeLine{00159     vec.push\_back(findx\_1);}
+\DoxyCodeLine{00160     vec.push\_back(findy\_1);}
+\DoxyCodeLine{00161     vec.push\_back(findx\_2);}
+\DoxyCodeLine{00162     vec.push\_back(findy\_2);}
+\DoxyCodeLine{00163 }
+\DoxyCodeLine{00164     \textcolor{keywordflow}{return} vec;}
+\DoxyCodeLine{00165 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_utils_a74cf0d1fdc8e9993796c18a98e781925}\label{struct_utils_a74cf0d1fdc8e9993796c18a98e781925}} 
+\index{Utils@{Utils}!WeightedMidpoint@{WeightedMidpoint}}
+\index{WeightedMidpoint@{WeightedMidpoint}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{WeightedMidpoint()}{WeightedMidpoint()}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ Utils\+::\+Weighted\+Midpoint (\begin{DoxyParamCaption}\item[{int}]{vec1\mbox{[}2\mbox{]},  }\item[{int}]{vec2\mbox{[}2\mbox{]},  }\item[{float}]{weight }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012 \{}
+\DoxyCodeLine{00013     \textcolor{keyword}{const} \textcolor{keywordtype}{int} x1 = vec1[0];}
+\DoxyCodeLine{00014     \textcolor{comment}{//std::cout<<"{}x1"{}<<x1<<std::endl;}}
+\DoxyCodeLine{00015     \textcolor{keyword}{const} \textcolor{keywordtype}{int} y1 = vec1[1];}
+\DoxyCodeLine{00016     \textcolor{comment}{//std::cout<<"{}y1"{}<<y1<<std::endl;}}
+\DoxyCodeLine{00017     \textcolor{keyword}{const} \textcolor{keywordtype}{int} x2 = vec2[0];}
+\DoxyCodeLine{00018     \textcolor{comment}{//std::cout<<"{}x2"{}<<x2<<std::endl;}}
+\DoxyCodeLine{00019     \textcolor{keyword}{const} \textcolor{keywordtype}{int} y2 = vec2[1];}
+\DoxyCodeLine{00020     \textcolor{comment}{//std::cout<<"{}x2"{}<<y2<<std::endl;}}
+\DoxyCodeLine{00021     std::vector<float> vec = \{\};}
+\DoxyCodeLine{00022     vec.push\_back(x1 * (1 -\/ weight) + x2 * weight);}
+\DoxyCodeLine{00023     vec.push\_back(y1 * (1 -\/ weight) + y2 * weight);}
+\DoxyCodeLine{00024     \textcolor{comment}{//std::cout<<"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}<<std::endl;}}
+\DoxyCodeLine{00025     \textcolor{comment}{//std::cout<<"{}("{}<<x1*(1-\/weight) + x2*weight<<"{}, "{}<<y1*(1-\/weight) +y2*weight<<"{})"{}<<std::endl;}}
+\DoxyCodeLine{00026     \textcolor{keywordflow}{return} vec;}
+\DoxyCodeLine{00027 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_utils_a87397d1ee94b565fec3b565cbc040033}\label{struct_utils_a87397d1ee94b565fec3b565cbc040033}} 
+\index{Utils@{Utils}!time@{time}}
+\index{time@{time}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{time}{time}}
+{\footnotesize\ttfamily double Utils\+::time}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{utils_8hpp_source}{utils.\+hpp}}.
+
+\mbox{\Hypertarget{struct_utils_a41aeb0e316e66698197619de26aee3f6}\label{struct_utils_a41aeb0e316e66698197619de26aee3f6}} 
+\index{Utils@{Utils}!vivants@{vivants}}
+\index{vivants@{vivants}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{vivants}{vivants}}
+{\footnotesize\ttfamily int Utils\+::vivants}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8hpp_source_l00025}{25}} of file \mbox{\hyperlink{utils_8hpp_source}{utils.\+hpp}}.
+
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+utils.\+hpp\item 
+utils.\+cpp\end{DoxyCompactItemize}

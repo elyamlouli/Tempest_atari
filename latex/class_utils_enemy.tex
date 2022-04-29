@@ -1,0 +1,104 @@
+\hypertarget{class_utils_enemy}{}\doxysection{Utils\+Enemy Class Reference}
+\label{class_utils_enemy}\index{UtilsEnemy@{UtilsEnemy}}
+
+
+Classe dérivée de la classe \mbox{\hyperlink{class_utils}{Utils}} permettant de surcharger la fonction find\+\_\+position pour un ennemi.  
+
+
+
+
+{\ttfamily \#include $<$utils.\+hpp$>$}
+
+Inheritance diagram for Utils\+Enemy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_utils_enemy}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::pair$<$ double, double $>$ \mbox{\hyperlink{class_utils_enemy_a4e3c89ad6d759304bd9a21097002c2ab}{find\+\_\+position}} (std\+::array$<$ std\+::pair$<$ int, int $>$, 4 $>$ tube\+Quad, int ax, int ay, int scale, float profondeur)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe dérivée de la classe \mbox{\hyperlink{class_utils}{Utils}} permettant de surcharger la fonction find\+\_\+position pour un ennemi. 
+
+Definition at line \mbox{\hyperlink{utils_8hpp_source_l00075}{75}} of file \mbox{\hyperlink{utils_8hpp_source}{utils.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_utils_enemy_aa51edf35ff67c32f2a60e0d582a58bac}\label{class_utils_enemy_aa51edf35ff67c32f2a60e0d582a58bac}} 
+\index{UtilsEnemy@{UtilsEnemy}!UtilsEnemy@{UtilsEnemy}}
+\index{UtilsEnemy@{UtilsEnemy}!UtilsEnemy@{UtilsEnemy}}
+\doxysubsubsection{\texorpdfstring{UtilsEnemy()}{UtilsEnemy()}}
+{\footnotesize\ttfamily Utils\+Enemy\+::\+Utils\+Enemy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00100}{100}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00101 \{}
+\DoxyCodeLine{00102 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_utils_enemy_afd2977f80991a5735470f5f78749fd17}\label{class_utils_enemy_afd2977f80991a5735470f5f78749fd17}} 
+\index{UtilsEnemy@{UtilsEnemy}!````~UtilsEnemy@{$\sim$UtilsEnemy}}
+\index{````~UtilsEnemy@{$\sim$UtilsEnemy}!UtilsEnemy@{UtilsEnemy}}
+\doxysubsubsection{\texorpdfstring{$\sim$UtilsEnemy()}{~UtilsEnemy()}}
+{\footnotesize\ttfamily Utils\+Enemy\+::$\sim$\+Utils\+Enemy (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00103}{103}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00104 \{}
+\DoxyCodeLine{00105 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_utils_enemy_a4e3c89ad6d759304bd9a21097002c2ab}\label{class_utils_enemy_a4e3c89ad6d759304bd9a21097002c2ab}} 
+\index{UtilsEnemy@{UtilsEnemy}!find\_position@{find\_position}}
+\index{find\_position@{find\_position}!UtilsEnemy@{UtilsEnemy}}
+\doxysubsubsection{\texorpdfstring{find\_position()}{find\_position()}}
+{\footnotesize\ttfamily std\+::pair$<$ double, double $>$ Utils\+Enemy\+::find\+\_\+position (\begin{DoxyParamCaption}\item[{std\+::array$<$ std\+::pair$<$ int, int $>$, 4 $>$}]{tube\+Quad,  }\item[{int}]{ax,  }\item[{int}]{ay,  }\item[{int}]{scale,  }\item[{float}]{profondeur }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00082}{82}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00083 \{}
+\DoxyCodeLine{00084     std::pair<double, double> D;}
+\DoxyCodeLine{00085     \textcolor{keywordtype}{double} new\_ax, new\_ay;}
+\DoxyCodeLine{00086     std::vector<float> vec = this-\/>\mbox{\hyperlink{class_utils_ae57b0fbe75aa24f12e52857400dfe12d}{mid\_two\_points}}(tubeQuad[0].first * scale, tubeQuad[0].second * scale, tubeQuad[1].first * scale, tubeQuad[1].second * scale);}
+\DoxyCodeLine{00087     \textcolor{keywordtype}{int} CDx = tubeQuad[3].first * scale -\/ tubeQuad[2].first * scale;}
+\DoxyCodeLine{00088     \textcolor{keywordtype}{int} CDy = tubeQuad[3].second * scale -\/ tubeQuad[2].second * scale;}
+\DoxyCodeLine{00089     \textcolor{keywordtype}{double} normCD = sqrt(CDx * CDx + CDy * CDy);}
+\DoxyCodeLine{00090     \textcolor{keywordtype}{double} ux = CDx / normCD;}
+\DoxyCodeLine{00091     \textcolor{keywordtype}{double} uy = CDy / normCD;}
+\DoxyCodeLine{00092 }
+\DoxyCodeLine{00093     new\_ax = (uy * ax -\/ ux * ay + (tubeQuad[2].first + tubeQuad[3].first) * scale / 2 -\/ vec[0]) * profondeur + vec[0];}
+\DoxyCodeLine{00094     new\_ay = (ux * ax + uy * ay + (tubeQuad[2].second + tubeQuad[3].second) * scale / 2 -\/ vec[1]) * profondeur + vec[1];}
+\DoxyCodeLine{00095 }
+\DoxyCodeLine{00096     D.first = new\_ax;}
+\DoxyCodeLine{00097     D.second = new\_ay;}
+\DoxyCodeLine{00098     \textcolor{keywordflow}{return} D;}
+\DoxyCodeLine{00099 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+utils.\+hpp\item 
+utils.\+cpp\end{DoxyCompactItemize}

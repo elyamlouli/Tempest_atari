@@ -1,0 +1,46 @@
+\hypertarget{tube_8hpp_source}{}\doxysection{tube.\+hpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef TUBE}}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define TUBE}}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <array>}}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00007}00007 \textcolor{keyword}{static} std::array<std::array<std::pair<int, int>, 4>, 16> tubeQuads = \{}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00008}00008     \{}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00009}00009         \{\{\{256, 60\}, \{316, 73\}, \{264, 257\}, \{256, 255\}\}\},}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00010}00010         \{\{\{316, 73\}, \{368, 108\}, \{273, 262\}, \{264, 257\}\}\},}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00011}00011         \{\{\{368, 108\}, \{403, 160\}, \{277, 270\}, \{273, 262\}\}\},}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00012}00012         \{\{\{403, 160\}, \{416, 221\}, \{280, 279\}, \{277, 270\}\}\},}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00013}00013         \{\{\{416, 221\}, \{403, 281\}, \{277, 289\}, \{280, 279\}\}\},}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00014}00014         \{\{\{403, 281\}, \{368, 334\}, \{273, 296\}, \{277, 289\}\}\}, }
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00015}00015         \{\{\{368, 334\}, \{315, 368\}, \{264, 301\}, \{273, 296\}\}\}, }
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00016}00016         \{\{\{315, 368\}, \{256, 381\}, \{256, 303\}, \{264, 301\}\}\}, }
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00017}00017         \{\{\{256, 381\}, \{195, 368\}, \{247, 301\}, \{256, 303\}\}\},}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00018}00018         \{\{\{195, 368\}, \{143, 334\}, \{238, 296\}, \{247, 301\}\}\},}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00019}00019         \{\{\{143, 334\}, \{108, 281\}, \{234, 289\}, \{238, 296\}\}\},}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00020}00020         \{\{\{108, 281\}, \{95, 221\}, \{231, 279\}, \{234, 289\}\}\},}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00021}00021         \{\{\{95, 221\}, \{108, 160\}, \{234, 270\}, \{231, 279\}\}\},}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00022}00022         \{\{\{108, 160\}, \{143, 108\}, \{238, 262\}, \{234, 270\}\}\}, }
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00023}00023         \{\{\{143, 108\}, \{195, 73\}, \{247, 257\}, \{238, 262\}\}\},  }
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00024}00024         \{\{\{195, 73\}, \{256, 60\}, \{256, 255\}, \{247, 257\}\}\}    }
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00025}00025     \}}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00027}00027 \};}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00029}00029 \textcolor{keyword}{enum} Forme \{Tube\_Circle = 0 \};}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00031}\mbox{\hyperlink{class_tube}{00031}} \textcolor{keyword}{class }\mbox{\hyperlink{class_tube}{Tube}}}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00032}00032 \{}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00033}00033 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00038}\mbox{\hyperlink{class_tube_a875d3ed860f138d0e169b202b5f0d6ea}{00038}}   std::array<std::array<std::pair<int, int>, 4>, 16> \mbox{\hyperlink{class_tube_a875d3ed860f138d0e169b202b5f0d6ea}{tube\_quads}};}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00043}\mbox{\hyperlink{class_tube_a03db5f725184ca3d17c0c94f2c483d78}{00043}}   Forme \mbox{\hyperlink{class_tube_a03db5f725184ca3d17c0c94f2c483d78}{forme}};}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00044}00044   \mbox{\hyperlink{class_tube}{Tube}}(Forme f);}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00045}00045   \mbox{\hyperlink{class_tube}{\string~Tube}}();}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00051}00051   \textcolor{keywordtype}{void} \mbox{\hyperlink{class_tube_a9979fa8d29c988d264e36c9cba2fd82e}{affect\_quads}}(Forme f);}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00052}00052 \};}
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{tube_8hpp_source_l00054}00054 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

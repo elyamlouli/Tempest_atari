@@ -1,0 +1,216 @@
+\hypertarget{class_score}{}\doxysection{Score Class Reference}
+\label{class_score}\index{Score@{Score}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_score_af6751baf043365d55b4fa9908c5d381b}{Score}} (int id)
+\item 
+void \mbox{\hyperlink{class_score_aa9a15e176825da3f0a55d8791b3f1911}{draw\+\_\+live}} (SDL\+\_\+\+Renderer $\ast$renderer, int coef, int x, int y)
+\begin{DoxyCompactList}\small\item\em Permet de tracer la forme d\textquotesingle{}une vie avec une translation de x et y et un coefficient coef. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_score_a7c7295b6963d371e63c9389a312a8442}{get\+\_\+nb\+Lives}} ()
+\item 
+void \mbox{\hyperlink{class_score_a7545c1a7b097fbc7c51bfcf356122b22}{set\+\_\+nb\+Lives}} (int i)
+\item 
+int \mbox{\hyperlink{class_score_a0edd6880a4747e9ec07751030bdd4689}{get\+\_\+score}} ()
+\item 
+void \mbox{\hyperlink{class_score_a31d13eada627201791b6d41609db9e71}{set\+\_\+score}} (int s)
+\item 
+int \mbox{\hyperlink{class_score_a48fb81e085d79386edd38ad32da1bc67}{get\+\_\+id}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{score_8hpp_source_l00022}{22}} of file \mbox{\hyperlink{score_8hpp_source}{score.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_score_a039c99843551e5e4b512ecee99e46617}\label{class_score_a039c99843551e5e4b512ecee99e46617}} 
+\index{Score@{Score}!Score@{Score}}
+\index{Score@{Score}!Score@{Score}}
+\doxysubsubsection{\texorpdfstring{Score()}{Score()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Score\+::\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{score_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{score_8cpp_source}{score.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003             \{}
+\DoxyCodeLine{00004     nbLives = 4;}
+\DoxyCodeLine{00005     score = 0;}
+\DoxyCodeLine{00006 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_score_af6751baf043365d55b4fa9908c5d381b}\label{class_score_af6751baf043365d55b4fa9908c5d381b}} 
+\index{Score@{Score}!Score@{Score}}
+\index{Score@{Score}!Score@{Score}}
+\doxysubsubsection{\texorpdfstring{Score()}{Score()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Score\+::\+Score (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{score_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{score_8cpp_source}{score.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00007                   \{}
+\DoxyCodeLine{00008     \textcolor{keywordtype}{id} = id;}
+\DoxyCodeLine{00009     nbLives = 4;}
+\DoxyCodeLine{00010     score = 0;}
+\DoxyCodeLine{00011 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_score_a54ab36a6fdd88696f0176d9534a76883}\label{class_score_a54ab36a6fdd88696f0176d9534a76883}} 
+\index{Score@{Score}!````~Score@{$\sim$Score}}
+\index{````~Score@{$\sim$Score}!Score@{Score}}
+\doxysubsubsection{\texorpdfstring{$\sim$Score()}{~Score()}}
+{\footnotesize\ttfamily Score\+::$\sim$\+Score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{score_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{score_8cpp_source}{score.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00013              \{}
+\DoxyCodeLine{00014 }
+\DoxyCodeLine{00015 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_score_aa9a15e176825da3f0a55d8791b3f1911}\label{class_score_aa9a15e176825da3f0a55d8791b3f1911}} 
+\index{Score@{Score}!draw\_live@{draw\_live}}
+\index{draw\_live@{draw\_live}!Score@{Score}}
+\doxysubsubsection{\texorpdfstring{draw\_live()}{draw\_live()}}
+{\footnotesize\ttfamily void Score\+::draw\+\_\+live (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{coef,  }\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})}
+
+
+
+Permet de tracer la forme d\textquotesingle{}une vie avec une translation de x et y et un coefficient coef. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & \\
+\hline
+{\em coef} & \\
+\hline
+{\em x} & \\
+\hline
+{\em y} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{score_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{score_8cpp_source}{score.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00039 \{}
+\DoxyCodeLine{00040     SDL\_SetRenderDrawColor(renderer, 255,250,42,0);}
+\DoxyCodeLine{00041     \textcolor{keywordtype}{int} i ;}
+\DoxyCodeLine{00042     \textcolor{keywordflow}{for} ( i=0;i<coords.size()-\/1;i++)}
+\DoxyCodeLine{00043     \{  }
+\DoxyCodeLine{00044         SDL\_RenderDrawLine(renderer, coords[i][0]*coef+x, coords[i][1]*coef+y, coords[i+1][0]*coef+x, coords[i+1][1]*coef+y);}
+\DoxyCodeLine{00045     \}}
+\DoxyCodeLine{00046     SDL\_RenderDrawLine(renderer, coords[i][0]*coef+x, coords[i][1]*coef+y, coords[0][0]*coef+x, coords[0][1]*coef+y);}
+\DoxyCodeLine{00047     }
+\DoxyCodeLine{00048 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_score_a48fb81e085d79386edd38ad32da1bc67}\label{class_score_a48fb81e085d79386edd38ad32da1bc67}} 
+\index{Score@{Score}!get\_id@{get\_id}}
+\index{get\_id@{get\_id}!Score@{Score}}
+\doxysubsubsection{\texorpdfstring{get\_id()}{get\_id()}}
+{\footnotesize\ttfamily int Score\+::get\+\_\+id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{score_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{score_8cpp_source}{score.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017 \{}
+\DoxyCodeLine{00018     \textcolor{keywordflow}{return} this-\/>id;}
+\DoxyCodeLine{00019 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_score_a7c7295b6963d371e63c9389a312a8442}\label{class_score_a7c7295b6963d371e63c9389a312a8442}} 
+\index{Score@{Score}!get\_nbLives@{get\_nbLives}}
+\index{get\_nbLives@{get\_nbLives}!Score@{Score}}
+\doxysubsubsection{\texorpdfstring{get\_nbLives()}{get\_nbLives()}}
+{\footnotesize\ttfamily int Score\+::get\+\_\+nb\+Lives (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{score_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{score_8cpp_source}{score.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00022 \{}
+\DoxyCodeLine{00023     \textcolor{keywordflow}{return} nbLives;}
+\DoxyCodeLine{00024 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_score_a0edd6880a4747e9ec07751030bdd4689}\label{class_score_a0edd6880a4747e9ec07751030bdd4689}} 
+\index{Score@{Score}!get\_score@{get\_score}}
+\index{get\_score@{get\_score}!Score@{Score}}
+\doxysubsubsection{\texorpdfstring{get\_score()}{get\_score()}}
+{\footnotesize\ttfamily int Score\+::get\+\_\+score (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{score_8cpp_source_l00029}{29}} of file \mbox{\hyperlink{score_8cpp_source}{score.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00030 \{}
+\DoxyCodeLine{00031     \textcolor{keywordflow}{return} score;}
+\DoxyCodeLine{00032 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_score_a7545c1a7b097fbc7c51bfcf356122b22}\label{class_score_a7545c1a7b097fbc7c51bfcf356122b22}} 
+\index{Score@{Score}!set\_nbLives@{set\_nbLives}}
+\index{set\_nbLives@{set\_nbLives}!Score@{Score}}
+\doxysubsubsection{\texorpdfstring{set\_nbLives()}{set\_nbLives()}}
+{\footnotesize\ttfamily void Score\+::set\+\_\+nb\+Lives (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{score_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{score_8cpp_source}{score.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00026 \{}
+\DoxyCodeLine{00027     nbLives=i;}
+\DoxyCodeLine{00028 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_score_a31d13eada627201791b6d41609db9e71}\label{class_score_a31d13eada627201791b6d41609db9e71}} 
+\index{Score@{Score}!set\_score@{set\_score}}
+\index{set\_score@{set\_score}!Score@{Score}}
+\doxysubsubsection{\texorpdfstring{set\_score()}{set\_score()}}
+{\footnotesize\ttfamily void Score\+::set\+\_\+score (\begin{DoxyParamCaption}\item[{int}]{s }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{score_8cpp_source_l00033}{33}} of file \mbox{\hyperlink{score_8cpp_source}{score.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034 \{}
+\DoxyCodeLine{00035     this-\/>score = s;}
+\DoxyCodeLine{00036 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+score.\+hpp\item 
+score.\+cpp\end{DoxyCompactItemize}

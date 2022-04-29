@@ -2,26 +2,35 @@
 #define MENU
 
 #include <SDL.h>
-#include <assert.h> // SOUCIS
+#include <assert.h>
 
 #include <iostream>
 #include <string>
 #include <cmath>
 
 const double pi = std::acos(-1);
-struct Menu
-{
-    SDL_Renderer *renderer;
-    Menu(SDL_Renderer *renderer);
-    ~Menu();
-    void hershey(SDL_Renderer *renderer, std::string str, int start_x, int start_y, int coeff);
-    void start(SDL_Renderer *renderer, int x, int y, int w, int h);
-    void quit(SDL_Renderer *renderer, int x, int y, int w, int h);
-    void circle(SDL_Renderer *renderer, int rayon, int centreX, int centreY);
-    void couloirs(SDL_Renderer *renderer, int x, int y, int rayon1, int rayon2, int nb_couloirs);
-    void draw_tubes(SDL_Renderer *renderer, int start_x, int start_y, int coeff);
+/**
+ * @brief 
+ * Classe Menu qui sert pour l'affichage du texte et le dessin des tubes
+ */
 
-    //void print_cercle(int x, int y, int coeff);
+class Menu
+{
+public:
+    Menu();
+    ~Menu();
+    /**
+     * @brief 
+     * Permet l'ecriture en utilisant les fontes de hersheys
+     * @param renderer 
+     * @param str : chaîne de caractère à écrire 
+     * @param start_x : abssice de départ
+     * @param start_y : ordonnée de départ
+     * @param coeff : taille de la forme 
+     */
+    void hershey(SDL_Renderer *renderer, std::string str, int start_x, int start_y, int coeff);
+
+    
 };
 
 #endif

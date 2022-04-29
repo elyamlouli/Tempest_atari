@@ -4,7 +4,9 @@
 
 Enemy::Enemy(int quad,int id) :quad(quad),id(id)
 {
-    utils = new Utils();
+    utils = std::shared_ptr<Utils>(new Utils());
+    tube = std::shared_ptr<Tube>(new Tube(Tube_Circle));
+    utils_enemy = std::shared_ptr<UtilsEnemy>(new UtilsEnemy());    
     this->profondeur=DEPTH_TUBE_COEF;
     this->z=1;
     pos_xinit=15;
@@ -14,9 +16,9 @@ Enemy::Enemy(int quad,int id) :quad(quad),id(id)
     tab_vivants[id]=1;
     alive = true;
     quad_suivant=quad+1;
-    tube = new Tube(Tube_Circle);
-    tube->affect_quads(Tube_Circle);
-    i=0;
+    //tube = new Tube(Tube_Circle);
+    //tube->affect_quads(Tube_Circle);
+    //i=0;
    
     
     //this->profondeur=1;
@@ -86,10 +88,10 @@ void Enemy::draw_flipper(SDL_Renderer *renderer)
     SDL_RenderDrawLine (renderer, (this->position.first), (this->position.second),(this->position.first-5), (this->position.second+5 ));
     
 }
-void Enemy::move(int tubeQuad[4][2],int scale,float velocity_coef)
+void Enemy::move(std::array<std::pair<int,int>,4> tubeQuad,int scale,float velocity_coef)
 {
-    this->position = this->utils->find_position_enemy(tubeQuad,this->pos_xinit,this->pos_yinit,scale,this->profondeur);
-    std::vector<float> vec =utils->mid_two_points(tubeQuad[0][0]*scale,tubeQuad[0][1]*scale,tubeQuad[1][0]*scale,tubeQuad[1][1]*scale)  ;
+    this->position = this->utils_enemy->find_position(tubeQuad,this->pos_xinit,this->pos_yinit,scale,this->profondeur);
+    std::vector<float> vec =utils->mid_two_points(tubeQuad[0].first*scale,tubeQuad[0].second*scale,tubeQuad[1].first*scale,tubeQuad[1].second*scale)  ;
     /*if(fabs(utils->distance(this->position.first,this->position.second,vec[0],vec[1]))<=0.03)
     {
         std::cout<<"hi";
@@ -119,58 +121,35 @@ int Enemy::get_i()
 {
     return i;
 }
-void Enemy::move_circle(SDL_Renderer *renderer,int scale)
+void Enemy::set_quad(int i)
+{
+    this->quad=i;
+}
+void Enemy::move_circle(SDL_Renderer *renderer,int scale,int tubeQuads[16][4][2],float velocity_coef)
 {
     
     //std::cout<<tube->tube_quads[this->quad+i][0][0]<<std::endl;
-    if(this->quad+i<=15)
+    if(this->quad<15)
     {
-        this->position.first = tube->tube_quads[this->quad+i][0][0]*scale;
+        this->position.first = tubeQuads[this->quad+1][0][0]*scale;
         printf("%i\n",quad+i);
-        this->position.second = tube->tube_quads[this->quad+i][0][1]*scale;
-        draw_flipper(renderer);
-        i++;
+        this->position.second = tubeQuads[this->quad+1][0][1]*scale;
+        set_quad(quad+1);
+        
         
         
     }
-    else if(this->quad+i==15)
+    else if(this->quad==15)
     {
         
-        this->position.first = tube->tube_quads[0][0][0]*scale;
-        this->position.second = tube->tube_quads[0][0][1]*scale;
-        draw_flipper(renderer);
+        this->position.first = tube->tube_quads[0][0].first*scale;
+        this->position.second = tube->tube_quads[0][0].second*scale;
+        set_quad(0);
+        
     }
     
     
 }
-/*
-void Enemy::move_enemies(SDL_Renderer * renderer_game,float velocity_coef,Enemy *enemy){
-    if(enemy->get_ennemies() <= 2)
-        {
-            
-            enemy->move(tube->tube_quads[enemy->get_quad()],2,velocity_coef);
-            if(enemy->get_profondeur() >=1)
-            {
-                std::cout<<enemy->get_profondeur()<<std::endl;
-                delete enemy;
-                enemy = nullptr;
-                
-                
-            }
-            else{
-                enemy->draw_flipper(renderer_game);
-                
-            }
-        }
-        
-        if (enemy->get_profondeur() == 1)
-            
-        
 
-    
-	
-
-
-}*/
 
 

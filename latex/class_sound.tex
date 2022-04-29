@@ -1,0 +1,144 @@
+\hypertarget{class_sound}{}\doxysection{Sound Class Reference}
+\label{class_sound}\index{Sound@{Sound}}
+Inheritance diagram for Sound\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_sound}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sound_a1bfca58e1c528992a32945774e5b2754}{Sound}} (std\+::string filepath)
+\item 
+void \mbox{\hyperlink{class_sound_a7f9c91aa25f50fb3276e7d4b4af5cac1}{Play\+Sound}} ()
+\item 
+void \mbox{\hyperlink{class_sound_aec0e2a5ced3b77ad920de88b269b8ae2}{Stop\+Sound}} ()
+\item 
+void \mbox{\hyperlink{class_sound_a705916a16d8c0fdd70c6d156cd0177fe}{Setup\+Device}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{audio_8hpp_source_l00019}{19}} of file \mbox{\hyperlink{audio_8hpp_source}{audio.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_sound_a1bfca58e1c528992a32945774e5b2754}\label{class_sound_a1bfca58e1c528992a32945774e5b2754}} 
+\index{Sound@{Sound}!Sound@{Sound}}
+\index{Sound@{Sound}!Sound@{Sound}}
+\doxysubsubsection{\texorpdfstring{Sound()}{Sound()}}
+{\footnotesize\ttfamily Sound\+::\+Sound (\begin{DoxyParamCaption}\item[{std\+::string}]{filepath }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{audio_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{audio_8cpp_source}{audio.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00006                               \{}
+\DoxyCodeLine{00007     \textcolor{keywordflow}{if}(SDL\_LoadWAV(filepath.c\_str(), \&m\_audioSpec, \&m\_waveStart, \&m\_waveLength) == \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{00008         std::cerr << \textcolor{stringliteral}{"{}sound loading error: "{}} << SDL\_GetError() << std::endl;}
+\DoxyCodeLine{00009     \}}
+\DoxyCodeLine{00010 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_sound_a0907389078bf740be2a5763366ad3376}\label{class_sound_a0907389078bf740be2a5763366ad3376}} 
+\index{Sound@{Sound}!````~Sound@{$\sim$Sound}}
+\index{````~Sound@{$\sim$Sound}!Sound@{Sound}}
+\doxysubsubsection{\texorpdfstring{$\sim$Sound()}{~Sound()}}
+{\footnotesize\ttfamily Sound\+::$\sim$\+Sound (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{audio_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{audio_8cpp_source}{audio.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012              \{}
+\DoxyCodeLine{00013     SDL\_FreeWAV(m\_waveStart);}
+\DoxyCodeLine{00014     SDL\_CloseAudioDevice(m\_device);}
+\DoxyCodeLine{00015 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_sound_a7f9c91aa25f50fb3276e7d4b4af5cac1}\label{class_sound_a7f9c91aa25f50fb3276e7d4b4af5cac1}} 
+\index{Sound@{Sound}!PlaySound@{PlaySound}}
+\index{PlaySound@{PlaySound}!Sound@{Sound}}
+\doxysubsubsection{\texorpdfstring{PlaySound()}{PlaySound()}}
+{\footnotesize\ttfamily void Sound\+::\+Play\+Sound (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_sound}{ISound}}.
+
+
+
+Definition at line \mbox{\hyperlink{audio_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{audio_8cpp_source}{audio.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00017                      \{}
+\DoxyCodeLine{00018     \textcolor{comment}{// Queue the audio (so we play when available,}}
+\DoxyCodeLine{00019     \textcolor{comment}{//                  as oppososed to a callback function)}}
+\DoxyCodeLine{00020     \textcolor{keywordtype}{int} status = SDL\_QueueAudio(m\_device, m\_waveStart, m\_waveLength);}
+\DoxyCodeLine{00021     SDL\_PauseAudioDevice(m\_device,0);}
+\DoxyCodeLine{00022 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_sound_a705916a16d8c0fdd70c6d156cd0177fe}\label{class_sound_a705916a16d8c0fdd70c6d156cd0177fe}} 
+\index{Sound@{Sound}!SetupDevice@{SetupDevice}}
+\index{SetupDevice@{SetupDevice}!Sound@{Sound}}
+\doxysubsubsection{\texorpdfstring{SetupDevice()}{SetupDevice()}}
+{\footnotesize\ttfamily void Sound\+::\+Setup\+Device (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{audio_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{audio_8cpp_source}{audio.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028                        \{}
+\DoxyCodeLine{00029     \textcolor{comment}{// Request the most reasonable default device}}
+\DoxyCodeLine{00030     \textcolor{comment}{// Set the device for playback for 0, or '1' for recording.}}
+\DoxyCodeLine{00031     m\_device = SDL\_OpenAudioDevice(\textcolor{keyword}{nullptr}, 0, \&m\_audioSpec, \textcolor{keyword}{nullptr}, SDL\_AUDIO\_ALLOW\_ANY\_CHANGE);}
+\DoxyCodeLine{00032     \textcolor{comment}{// Error message if no suitable device is found to play}}
+\DoxyCodeLine{00033     \textcolor{comment}{// audio on.}}
+\DoxyCodeLine{00034     \textcolor{keywordflow}{if}(0 == m\_device)\{}
+\DoxyCodeLine{00035         std::cerr << \textcolor{stringliteral}{"{}sound device error: "{}} << SDL\_GetError() << std::endl; }
+\DoxyCodeLine{00036     \}}
+\DoxyCodeLine{00037 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_sound_aec0e2a5ced3b77ad920de88b269b8ae2}\label{class_sound_aec0e2a5ced3b77ad920de88b269b8ae2}} 
+\index{Sound@{Sound}!StopSound@{StopSound}}
+\index{StopSound@{StopSound}!Sound@{Sound}}
+\doxysubsubsection{\texorpdfstring{StopSound()}{StopSound()}}
+{\footnotesize\ttfamily void Sound\+::\+Stop\+Sound (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_i_sound}{ISound}}.
+
+
+
+Definition at line \mbox{\hyperlink{audio_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{audio_8cpp_source}{audio.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024                      \{}
+\DoxyCodeLine{00025     SDL\_PauseAudioDevice(m\_device,1);}
+\DoxyCodeLine{00026 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+audio.\+hpp\item 
+audio.\+cpp\end{DoxyCompactItemize}

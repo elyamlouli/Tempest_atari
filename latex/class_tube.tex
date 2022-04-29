@@ -1,0 +1,135 @@
+\hypertarget{class_tube}{}\doxysection{Tube Class Reference}
+\label{class_tube}\index{Tube@{Tube}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_tube_a7b412190ae660d6c42cb43f3962af476}{Tube}} (Forme f)
+\item 
+void \mbox{\hyperlink{class_tube_a9979fa8d29c988d264e36c9cba2fd82e}{affect\+\_\+quads}} (Forme f)
+\begin{DoxyCompactList}\small\item\em Permet de remplir le tableau tube\+\_\+quads à partir de tube\+Quads. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::array$<$ std\+::array$<$ std\+::pair$<$ int, int $>$, 4 $>$, 16 $>$ \mbox{\hyperlink{class_tube_a875d3ed860f138d0e169b202b5f0d6ea}{tube\+\_\+quads}}
+\begin{DoxyCompactList}\small\item\em Array des coordonnées des points des tubes. \end{DoxyCompactList}\item 
+Forme \mbox{\hyperlink{class_tube_a03db5f725184ca3d17c0c94f2c483d78}{forme}}
+\begin{DoxyCompactList}\small\item\em Forme de la map. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{tube_8hpp_source_l00031}{31}} of file \mbox{\hyperlink{tube_8hpp_source}{tube.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_tube_a7b412190ae660d6c42cb43f3962af476}\label{class_tube_a7b412190ae660d6c42cb43f3962af476}} 
+\index{Tube@{Tube}!Tube@{Tube}}
+\index{Tube@{Tube}!Tube@{Tube}}
+\doxysubsubsection{\texorpdfstring{Tube()}{Tube()}}
+{\footnotesize\ttfamily Tube\+::\+Tube (\begin{DoxyParamCaption}\item[{Forme}]{f }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{tube_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{tube_8cpp_source}{tube.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003                   : \mbox{\hyperlink{class_tube_a03db5f725184ca3d17c0c94f2c483d78}{forme}}(f)}
+\DoxyCodeLine{00004 \{}
+\DoxyCodeLine{00005 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_tube_ae1797d38bd4ca695e6e87e0cb4f8cd15}\label{class_tube_ae1797d38bd4ca695e6e87e0cb4f8cd15}} 
+\index{Tube@{Tube}!````~Tube@{$\sim$Tube}}
+\index{````~Tube@{$\sim$Tube}!Tube@{Tube}}
+\doxysubsubsection{\texorpdfstring{$\sim$Tube()}{~Tube()}}
+{\footnotesize\ttfamily Tube\+::$\sim$\+Tube (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{tube_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{tube_8cpp_source}{tube.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00008 \{}
+\DoxyCodeLine{00009 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_tube_a9979fa8d29c988d264e36c9cba2fd82e}\label{class_tube_a9979fa8d29c988d264e36c9cba2fd82e}} 
+\index{Tube@{Tube}!affect\_quads@{affect\_quads}}
+\index{affect\_quads@{affect\_quads}!Tube@{Tube}}
+\doxysubsubsection{\texorpdfstring{affect\_quads()}{affect\_quads()}}
+{\footnotesize\ttfamily void Tube\+::affect\+\_\+quads (\begin{DoxyParamCaption}\item[{Forme}]{f }\end{DoxyParamCaption})}
+
+
+
+Permet de remplir le tableau tube\+\_\+quads à partir de tube\+Quads. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em f} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{tube_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{tube_8cpp_source}{tube.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012 \{}
+\DoxyCodeLine{00013     \textcolor{keywordflow}{if} (f == 0)}
+\DoxyCodeLine{00014     \{}
+\DoxyCodeLine{00015         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 16; i++)}
+\DoxyCodeLine{00016         \{}
+\DoxyCodeLine{00017             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < 4; j++)}
+\DoxyCodeLine{00018             \{}
+\DoxyCodeLine{00019                 this-\/>\mbox{\hyperlink{class_tube_a875d3ed860f138d0e169b202b5f0d6ea}{tube\_quads}}[i][j].first = tubeQuads[i][j].first;}
+\DoxyCodeLine{00020                 this-\/>\mbox{\hyperlink{class_tube_a875d3ed860f138d0e169b202b5f0d6ea}{tube\_quads}}[i][j].second = tubeQuads[i][j].second;}
+\DoxyCodeLine{00021             \}}
+\DoxyCodeLine{00022         \}}
+\DoxyCodeLine{00023     \}}
+\DoxyCodeLine{00024 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_tube_a03db5f725184ca3d17c0c94f2c483d78}\label{class_tube_a03db5f725184ca3d17c0c94f2c483d78}} 
+\index{Tube@{Tube}!forme@{forme}}
+\index{forme@{forme}!Tube@{Tube}}
+\doxysubsubsection{\texorpdfstring{forme}{forme}}
+{\footnotesize\ttfamily Forme Tube\+::forme}
+
+
+
+Forme de la map. 
+
+
+
+Definition at line \mbox{\hyperlink{tube_8hpp_source_l00043}{43}} of file \mbox{\hyperlink{tube_8hpp_source}{tube.\+hpp}}.
+
+\mbox{\Hypertarget{class_tube_a875d3ed860f138d0e169b202b5f0d6ea}\label{class_tube_a875d3ed860f138d0e169b202b5f0d6ea}} 
+\index{Tube@{Tube}!tube\_quads@{tube\_quads}}
+\index{tube\_quads@{tube\_quads}!Tube@{Tube}}
+\doxysubsubsection{\texorpdfstring{tube\_quads}{tube\_quads}}
+{\footnotesize\ttfamily std\+::array$<$std\+::array$<$std\+::pair$<$int, int$>$, 4$>$, 16$>$ Tube\+::tube\+\_\+quads}
+
+
+
+Array des coordonnées des points des tubes. 
+
+
+
+Definition at line \mbox{\hyperlink{tube_8hpp_source_l00038}{38}} of file \mbox{\hyperlink{tube_8hpp_source}{tube.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+tube.\+hpp\item 
+tube.\+cpp\end{DoxyCompactItemize}

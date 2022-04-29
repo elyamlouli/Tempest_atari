@@ -1,0 +1,64 @@
+\hypertarget{sdlapp_8hpp_source}{}\doxysection{sdlapp.\+hpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef SDLAPP\_HPP}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define SDLAPP\_HPP}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <functional>}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00006}00006 \textcolor{comment}{// Third Party}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include <SDL.h>} \textcolor{comment}{// For Mac, use <SDL.h>}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00009}\mbox{\hyperlink{class_s_d_l_app}{00009}} \textcolor{keyword}{class }\mbox{\hyperlink{class_s_d_l_app}{SDLApp}}\{}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00010}00010     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00011}00011         \textcolor{comment}{// Constructor}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00012}00012         \mbox{\hyperlink{class_s_d_l_app}{SDLApp}}(Uint32 subsystemFlags, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* title,\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h);}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00013}00013         \textcolor{comment}{// Destructor}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00014}00014         \mbox{\hyperlink{class_s_d_l_app}{\string~SDLApp}}();}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00015}00015         \textcolor{comment}{// Handle Events}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00016}00016         \textcolor{keywordtype}{void} SetEventCallback(std::function<\textcolor{keywordtype}{void}(\textcolor{keywordtype}{void})> func);}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00017}00017         \textcolor{comment}{// Handle Updates}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00018}00018         \textcolor{keywordtype}{void} SetUpdateCallback(std::function<\textcolor{keywordtype}{void}(\textcolor{keywordtype}{void})> func);}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00019}00019         \textcolor{comment}{// Handle Render}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00020}00020         \textcolor{keywordtype}{void} SetRenderCallback(std::function<\textcolor{keywordtype}{void}(\textcolor{keywordtype}{void})> func);}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00021}00021         \textcolor{comment}{// Loop our application}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00022}00022         \textcolor{keywordtype}{void} RunLoop();}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00023}00023         \textcolor{comment}{// Set the maximum render rate of each frame}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00024}00024         \textcolor{comment}{// This is a frame cap in terms of milliseconds that}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00025}00025         \textcolor{comment}{// each iteration of our main loop will not exceed}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00026}00026         \textcolor{keywordtype}{void} SetMaxFrameRate(\textcolor{keywordtype}{int} frameRate);}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00027}00027         \textcolor{comment}{// Retrive the renderer}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00028}00028         SDL\_Renderer* GetRenderer() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00029}00029         \textcolor{comment}{// Return mouse positions}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00030}00030         \textcolor{keywordtype}{int} GetMouseX();}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00031}00031         \textcolor{keywordtype}{int} GetMouseY();}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00032}00032         \textcolor{comment}{// Return the window dimensions}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00033}00033         \textcolor{keywordtype}{int} GetWindowWidth();}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00034}00034         \textcolor{keywordtype}{int} GetWindowHeight();}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00035}00035         \textcolor{comment}{// Stop the main loop of our application}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00036}00036         \textcolor{keywordtype}{void} StopAppLoop();}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00038}00038     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00039}00039             \textcolor{comment}{// Pointer to our SDL Window}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00040}00040             SDL\_Window* m\_window=\textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00041}00041             \textcolor{comment}{// Pointer to our SDL renderer}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00042}00042             SDL\_Renderer* m\_renderer = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00043}00043             \textcolor{comment}{// Set the maximum frame cap;}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00044}00044             \textcolor{keywordtype}{int} m\_maxFrameRate;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00045}00045             \textcolor{comment}{// Infinite loop for our application}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00046}00046             \textcolor{keywordtype}{bool} m\_gameIsRunning = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00047}00047             \textcolor{comment}{// Store mouse Coordinates by default}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00048}00048             \textcolor{keywordtype}{int} m\_mouseX;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00049}00049             \textcolor{keywordtype}{int} m\_mouseY;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00050}00050             \textcolor{comment}{// Store width and height of window}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00051}00051             \textcolor{keywordtype}{int} m\_width;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00052}00052             \textcolor{keywordtype}{int} m\_height;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00053}00053             \textcolor{comment}{// Store our callback functions}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00054}00054             std::function<void(\textcolor{keywordtype}{void})> m\_EventCallback;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00055}00055             std::function<void(\textcolor{keywordtype}{void})> m\_UpdateCallback;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00056}00056             std::function<void(\textcolor{keywordtype}{void})> m\_RenderCallback;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00057}00057 \};}
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8hpp_source_l00059}00059 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

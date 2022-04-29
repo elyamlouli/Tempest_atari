@@ -1,0 +1,120 @@
+\hypertarget{sdlapp_8cpp_source}{}\doxysection{sdlapp.\+cpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}sdlapp.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00005}00005 \textcolor{comment}{// Constructor}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00006}00006 SDLApp::SDLApp(Uint32 subsystemFlags, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* title,\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} w, \textcolor{keywordtype}{int} h)\{}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00008}00008     m\_width= w;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00009}00009     m\_height= h;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00011}00011     \textcolor{comment}{// Default value}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00012}00012     m\_maxFrameRate = 60;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00014}00014     \textcolor{comment}{// Initialize the video subsystem.}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00015}00015     \textcolor{comment}{// iF it returns less than 1, then an}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00016}00016     \textcolor{comment}{// error code will be received.}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00017}00017     \textcolor{keywordflow}{if}(SDL\_Init(subsystemFlags) < 0)\{}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00018}00018         std::cout << \textcolor{stringliteral}{"{}SDL could not be initialized: "{}} <<}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00019}00019                   SDL\_GetError();}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00020}00020     \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00021}00021         std::cout << \textcolor{stringliteral}{"{}SDL video system is ready to go\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00022}00022     \}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00023}00023     \textcolor{comment}{// Request a window to be created for our platform}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00024}00024     \textcolor{comment}{// The parameters are for the title, x and y position,}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00025}00025     \textcolor{comment}{// and the width and height of the window.}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00026}00026     m\_window = SDL\_CreateWindow(title,x,y,w,h,SDL\_WINDOW\_SHOWN);}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00028}00028     m\_renderer = SDL\_CreateRenderer(m\_window,-\/1,SDL\_RENDERER\_ACCELERATED);}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00029}00029 \}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00030}00030 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00031}00031 \textcolor{comment}{// Destructor}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00032}00032 SDLApp::\string~SDLApp()\{}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00033}00033     \textcolor{comment}{// Destroy our m\_window}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00034}00034     SDL\_DestroyWindow(m\_window);}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00035}00035     \textcolor{comment}{// Quit our SDL application}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00036}00036     SDL\_Quit();}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00037}00037 \}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00039}00039 \textcolor{comment}{// Handle Events}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00040}00040 \textcolor{keywordtype}{void} SDLApp::SetEventCallback(std::function<\textcolor{keywordtype}{void}(\textcolor{keywordtype}{void})> func)\{}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00041}00041     m\_EventCallback = func;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00042}00042 \}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00043}00043 \textcolor{comment}{// Handle Events}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00044}00044 \textcolor{keywordtype}{void} SDLApp::SetUpdateCallback(std::function<\textcolor{keywordtype}{void}(\textcolor{keywordtype}{void})> func)\{}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00045}00045     m\_UpdateCallback = func;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00046}00046 \}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00048}00048 \textcolor{comment}{// Handle Render}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00049}00049 \textcolor{keywordtype}{void} SDLApp::SetRenderCallback(std::function<\textcolor{keywordtype}{void}(\textcolor{keywordtype}{void})> func)\{}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00050}00050     m\_RenderCallback = func;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00051}00051     }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00052}00052 \}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00054}00054 \textcolor{comment}{// Loop our application}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00055}00055 \textcolor{keywordtype}{void} SDLApp::RunLoop()\{}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00056}00056     \textcolor{keywordflow}{while}(m\_gameIsRunning)\{}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00057}00057         Uint32 start = SDL\_GetTicks();}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00059}00059         \textcolor{comment}{// }}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00060}00060         Uint32 buttons;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00061}00061         buttons = SDL\_GetMouseState(\&m\_mouseX,\&m\_mouseY);}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00062}00062         \textcolor{comment}{// (1) Handle events first}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00063}00063         \textcolor{comment}{// User specifies what to do in the events callback}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00064}00064         m\_EventCallback();}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00066}00066         \textcolor{comment}{// (2) Then handle any updates}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00067}00067         m\_UpdateCallback();}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00068}00068         \textcolor{comment}{// (3) Then handle our rendering}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00069}00069         \textcolor{comment}{// Clear and Draw the Screen}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00070}00070         \textcolor{comment}{// Gives us a clear "{}canvas"{}}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00071}00071         SDL\_SetRenderDrawColor(m\_renderer,0,0,0,SDL\_ALPHA\_OPAQUE);}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00072}00072         SDL\_RenderClear(m\_renderer);}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00073}00073 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00074}00074         \textcolor{comment}{// Do our drawing}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00075}00075         SDL\_SetRenderDrawColor(m\_renderer,255,255,255,SDL\_ALPHA\_OPAQUE);}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00076}00076         \textcolor{comment}{// What the user specifies to happen during the rendering}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00077}00077         \textcolor{comment}{// stage in this callback function}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00078}00078         m\_RenderCallback();}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00079}00079         \textcolor{comment}{// Finally show what we've drawn}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00080}00080         SDL\_RenderPresent(m\_renderer);}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00082}00082         \textcolor{comment}{// Perform the frame capping step}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00083}00083         Uint32 elapsedTime = SDL\_GetTicks() -\/ start;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00084}00084         \textcolor{keywordflow}{if}(elapsedTime < m\_maxFrameRate)\{}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00085}00085             SDL\_Delay(m\_maxFrameRate -\/ elapsedTime);}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00086}00086         \}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00087}00087     \}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00088}00088 \}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00090}00090 \textcolor{keywordtype}{void} SDLApp::SetMaxFrameRate(\textcolor{keywordtype}{int} frameRate)\{}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00091}00091     m\_maxFrameRate = frameRate;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00092}00092 \}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00094}00094 SDL\_Renderer* SDLApp::GetRenderer()\textcolor{keyword}{ const}\{}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00095}00095     \textcolor{keywordflow}{return} m\_renderer;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00096}00096 \}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00098}00098 \textcolor{keywordtype}{int} SDLApp::GetMouseX()\{}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00099}00099     \textcolor{keywordflow}{return} m\_mouseX;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00100}00100 \}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00101}00101 \textcolor{keywordtype}{int} SDLApp::GetMouseY()\{}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00102}00102     \textcolor{keywordflow}{return} m\_mouseY;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00103}00103 \}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00104}00104 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00105}00105 \textcolor{keywordtype}{int} SDLApp::GetWindowWidth()\{}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00106}00106     \textcolor{keywordflow}{return} m\_width;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00107}00107 \}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00109}00109 \textcolor{keywordtype}{int} SDLApp::GetWindowHeight()\{}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00110}00110     \textcolor{keywordflow}{return} m\_height;}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00111}00111 \}}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00112}00112 }
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00113}00113 \textcolor{keywordtype}{void} SDLApp::StopAppLoop()\{}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00114}00114     m\_gameIsRunning = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{sdlapp_8cpp_source_l00115}00115 \}}
+
+\end{DoxyCode}

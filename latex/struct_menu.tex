@@ -1,0 +1,303 @@
+\hypertarget{struct_menu}{}\doxysection{Menu Struct Reference}
+\label{struct_menu}\index{Menu@{Menu}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{struct_menu_a493cdbed19c667ca7cd9b8140a393c3d}{Menu}} (SDL\+\_\+\+Renderer $\ast$renderer)
+\item 
+void \mbox{\hyperlink{struct_menu_a1548daef77890d18d14f21d48a7655ef}{hershey}} (SDL\+\_\+\+Renderer $\ast$renderer, std\+::string str, int start\+\_\+x, int start\+\_\+y, int coeff)
+\item 
+void \mbox{\hyperlink{struct_menu_a8a9c814369d4df193e3739fe543509ca}{start}} (SDL\+\_\+\+Renderer $\ast$renderer, int x, int y, int w, int h)
+\item 
+void \mbox{\hyperlink{struct_menu_a0ea1e76f6aa783abc170d52348ab791d}{quit}} (SDL\+\_\+\+Renderer $\ast$renderer, int x, int y, int w, int h)
+\item 
+void \mbox{\hyperlink{struct_menu_a55d992434d51feee33de90b08a21f38c}{circle}} (SDL\+\_\+\+Renderer $\ast$renderer, int rayon, int centreX, int centreY)
+\item 
+void \mbox{\hyperlink{struct_menu_ac84abae58291ae808655fbc2bb073ac9}{couloirs}} (SDL\+\_\+\+Renderer $\ast$renderer, int x, int y, int rayon1, int rayon2, int nb\+\_\+couloirs)
+\item 
+void \mbox{\hyperlink{struct_menu_aa1bbf0ed223db172e3f2e524656bffb8}{draw\+\_\+tubes}} (SDL\+\_\+\+Renderer $\ast$renderer, int start\+\_\+x, int start\+\_\+y, int coeff)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Renderer $\ast$ \mbox{\hyperlink{struct_menu_a3494e32f2b07260b94e05c730049a907}{renderer}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{menu_8hpp_source_l00011}{11}} of file \mbox{\hyperlink{menu_8hpp_source}{menu.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_menu_a493cdbed19c667ca7cd9b8140a393c3d}\label{struct_menu_a493cdbed19c667ca7cd9b8140a393c3d}} 
+\index{Menu@{Menu}!Menu@{Menu}}
+\index{Menu@{Menu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{Menu()}{Menu()}}
+{\footnotesize\ttfamily Menu\+::\+Menu (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{menu_8cpp_source_l00582}{582}} of file \mbox{\hyperlink{menu_8cpp_source}{menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00582                                  :renderer(renderer)}
+\DoxyCodeLine{00583 \{    }
+\DoxyCodeLine{00584 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_menu_a831387f51358cfb88cd018e1777bc980}\label{struct_menu_a831387f51358cfb88cd018e1777bc980}} 
+\index{Menu@{Menu}!````~Menu@{$\sim$Menu}}
+\index{````~Menu@{$\sim$Menu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{$\sim$Menu()}{~Menu()}}
+{\footnotesize\ttfamily Menu\+::$\sim$\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{menu_8cpp_source_l00585}{585}} of file \mbox{\hyperlink{menu_8cpp_source}{menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00586 \{    }
+\DoxyCodeLine{00587 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_menu_a55d992434d51feee33de90b08a21f38c}\label{struct_menu_a55d992434d51feee33de90b08a21f38c}} 
+\index{Menu@{Menu}!circle@{circle}}
+\index{circle@{circle}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{circle()}{circle()}}
+{\footnotesize\ttfamily void Menu\+::circle (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{rayon,  }\item[{int}]{centreX,  }\item[{int}]{centreY }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{menu_8cpp_source_l00640}{640}} of file \mbox{\hyperlink{menu_8cpp_source}{menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00641 \{}
+\DoxyCodeLine{00642     \textcolor{keyword}{const} int32\_t diameter = (rayon * 2);}
+\DoxyCodeLine{00643 }
+\DoxyCodeLine{00644    int32\_t x = (rayon -\/ 1);}
+\DoxyCodeLine{00645    int32\_t y = 0;}
+\DoxyCodeLine{00646    int32\_t tx = 1;}
+\DoxyCodeLine{00647    int32\_t ty = 1;}
+\DoxyCodeLine{00648    int32\_t error = (tx -\/ diameter);}
+\DoxyCodeLine{00649 }
+\DoxyCodeLine{00650    \textcolor{keywordflow}{while} (x >= y)}
+\DoxyCodeLine{00651    \{}
+\DoxyCodeLine{00652       \textcolor{comment}{//  Each of the following renders an octant of the circle}}
+\DoxyCodeLine{00653       SDL\_RenderDrawPoint(renderer, centreX + x, centreY -\/ y);}
+\DoxyCodeLine{00654       SDL\_RenderDrawPoint(renderer, centreX + x, centreY + y);}
+\DoxyCodeLine{00655       SDL\_RenderDrawPoint(renderer, centreX -\/ x, centreY -\/ y);}
+\DoxyCodeLine{00656       SDL\_RenderDrawPoint(renderer, centreX -\/ x, centreY + y);}
+\DoxyCodeLine{00657       SDL\_RenderDrawPoint(renderer, centreX + y, centreY -\/ x);}
+\DoxyCodeLine{00658       SDL\_RenderDrawPoint(renderer, centreX + y, centreY + x);}
+\DoxyCodeLine{00659       SDL\_RenderDrawPoint(renderer, centreX -\/ y, centreY -\/ x);}
+\DoxyCodeLine{00660       SDL\_RenderDrawPoint(renderer, centreX -\/ y, centreY + x);}
+\DoxyCodeLine{00661 }
+\DoxyCodeLine{00662       \textcolor{keywordflow}{if} (error <= 0)}
+\DoxyCodeLine{00663       \{}
+\DoxyCodeLine{00664          ++y;}
+\DoxyCodeLine{00665          error += ty;}
+\DoxyCodeLine{00666          ty += 2;}
+\DoxyCodeLine{00667       \}}
+\DoxyCodeLine{00668 }
+\DoxyCodeLine{00669       \textcolor{keywordflow}{if} (error > 0)}
+\DoxyCodeLine{00670       \{}
+\DoxyCodeLine{00671          -\/-\/x;}
+\DoxyCodeLine{00672          tx += 2;}
+\DoxyCodeLine{00673          error += (tx -\/ diameter);}
+\DoxyCodeLine{00674       \}}
+\DoxyCodeLine{00675    \}}
+\DoxyCodeLine{00676 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_menu_ac84abae58291ae808655fbc2bb073ac9}\label{struct_menu_ac84abae58291ae808655fbc2bb073ac9}} 
+\index{Menu@{Menu}!couloirs@{couloirs}}
+\index{couloirs@{couloirs}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{couloirs()}{couloirs()}}
+{\footnotesize\ttfamily void Menu\+::couloirs (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{rayon1,  }\item[{int}]{rayon2,  }\item[{int}]{nb\+\_\+couloirs }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{menu_8cpp_source_l00677}{677}} of file \mbox{\hyperlink{menu_8cpp_source}{menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00678 \{}
+\DoxyCodeLine{00679     }
+\DoxyCodeLine{00680     SDL\_RenderDrawLine(renderer,x+rayon1,y,x+rayon2,y);}
+\DoxyCodeLine{00681     SDL\_RenderDrawLine(renderer,x-\/rayon1,y,x-\/rayon2,y);}
+\DoxyCodeLine{00682     SDL\_RenderDrawLine(renderer,x,y+rayon1,x,y+rayon2);}
+\DoxyCodeLine{00683     SDL\_RenderDrawLine(renderer,x,y-\/rayon1,x,y-\/rayon2);}
+\DoxyCodeLine{00684     SDL\_RenderDrawLine(renderer,x+rayon1*std::cos(pi/4),y+rayon1* std::sin(pi/4),x+rayon2*std::cos(pi/4),y+rayon2* std::sin(pi/4));}
+\DoxyCodeLine{00685     SDL\_RenderDrawLine(renderer,x+rayon1*std::cos(-\/pi/4),y+rayon1*std::sin(-\/pi/4),x+rayon2*std::cos(-\/pi/4),y+rayon2*std::sin(-\/pi/4));}
+\DoxyCodeLine{00686     SDL\_RenderDrawLine(renderer,x-\/rayon1*std::cos(-\/pi/4),y+rayon1* std::sin(-\/pi/4),x-\/rayon2*std::cos(-\/pi/4),y+rayon2* std::sin(-\/pi/4));}
+\DoxyCodeLine{00687     SDL\_RenderDrawLine(renderer,x-\/rayon1*std::cos(-\/pi/4),y-\/rayon1*std::sin(-\/pi/4),x-\/rayon2*std::cos(-\/pi/4),y-\/rayon2*std::sin(-\/pi/4));}
+\DoxyCodeLine{00688     }
+\DoxyCodeLine{00689 }
+\DoxyCodeLine{00690 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_menu_aa1bbf0ed223db172e3f2e524656bffb8}\label{struct_menu_aa1bbf0ed223db172e3f2e524656bffb8}} 
+\index{Menu@{Menu}!draw\_tubes@{draw\_tubes}}
+\index{draw\_tubes@{draw\_tubes}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{draw\_tubes()}{draw\_tubes()}}
+{\footnotesize\ttfamily void Menu\+::draw\+\_\+tubes (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{start\+\_\+x,  }\item[{int}]{start\+\_\+y,  }\item[{int}]{coeff }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{menu_8cpp_source_l00691}{691}} of file \mbox{\hyperlink{menu_8cpp_source}{menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00692 \{}
+\DoxyCodeLine{00693     \textcolor{keywordtype}{int} old\_x = start\_x + Tube\_Circle[0][0]*coeff;  }
+\DoxyCodeLine{00694     \textcolor{keywordtype}{int} old\_y = start\_y + Tube\_Circle[0][1]*coeff;}
+\DoxyCodeLine{00695     \textcolor{keywordtype}{int} old\_u = start\_x + Tube\_Circle[17][0]*coeff;  }
+\DoxyCodeLine{00696     \textcolor{keywordtype}{int} old\_v = start\_y + Tube\_Circle[17][1]*coeff;}
+\DoxyCodeLine{00697     \textcolor{keywordtype}{int} new\_x = start\_x + Tube\_Circle[1][0]*coeff; }
+\DoxyCodeLine{00698     \textcolor{keywordtype}{int} new\_y = start\_y + Tube\_Circle[1][1]*coeff;}
+\DoxyCodeLine{00699     \textcolor{keywordtype}{int} new\_u = start\_x + Tube\_Circle[18][0]*coeff;  }
+\DoxyCodeLine{00700     \textcolor{keywordtype}{int} new\_v = start\_y + Tube\_Circle[18][1]*coeff;}
+\DoxyCodeLine{00701     SDL\_RenderDrawLine(renderer, old\_x, old\_y, new\_x, new\_y);}
+\DoxyCodeLine{00702     SDL\_RenderDrawLine(renderer, old\_x, old\_y, old\_u, old\_v);}
+\DoxyCodeLine{00703     SDL\_RenderDrawLine(renderer, old\_u, old\_v, new\_u, new\_v);}
+\DoxyCodeLine{00704     SDL\_RenderDrawLine(renderer, new\_x, new\_y, new\_u, new\_v);}
+\DoxyCodeLine{00705     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 2; i <= 16; i++)}
+\DoxyCodeLine{00706     \{}
+\DoxyCodeLine{00707         old\_x = new\_x;}
+\DoxyCodeLine{00708         old\_y = new\_y;}
+\DoxyCodeLine{00709         old\_u = new\_u;}
+\DoxyCodeLine{00710         old\_v = new\_v;}
+\DoxyCodeLine{00711         new\_x = start\_x + Tube\_Circle[i][0]*coeff;}
+\DoxyCodeLine{00712         new\_y = start\_y + Tube\_Circle[i][1]*coeff;}
+\DoxyCodeLine{00713         new\_u = start\_x + Tube\_Circle[i+17][0]*coeff;}
+\DoxyCodeLine{00714         new\_v = start\_y + Tube\_Circle[i+17][1]*coeff;}
+\DoxyCodeLine{00715         SDL\_RenderDrawLine(renderer, old\_x, old\_y, new\_x, new\_y);}
+\DoxyCodeLine{00716         SDL\_RenderDrawLine(renderer, old\_x, old\_y, old\_u, old\_v);}
+\DoxyCodeLine{00717         SDL\_RenderDrawLine(renderer, old\_u, old\_v, new\_u, new\_v);}
+\DoxyCodeLine{00718         SDL\_RenderDrawLine(renderer, new\_x, new\_y, new\_u, new\_v);}
+\DoxyCodeLine{00719     \}}
+\DoxyCodeLine{00720 }
+\DoxyCodeLine{00721 }
+\DoxyCodeLine{00722 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_menu_a1548daef77890d18d14f21d48a7655ef}\label{struct_menu_a1548daef77890d18d14f21d48a7655ef}} 
+\index{Menu@{Menu}!hershey@{hershey}}
+\index{hershey@{hershey}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{hershey()}{hershey()}}
+{\footnotesize\ttfamily void Menu\+::hershey (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{std\+::string}]{str,  }\item[{int}]{start\+\_\+x,  }\item[{int}]{start\+\_\+y,  }\item[{int}]{coeff }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{menu_8cpp_source_l00588}{588}} of file \mbox{\hyperlink{menu_8cpp_source}{menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00588                                                                                               \{}
+\DoxyCodeLine{00589     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0 ; i < str.size() ; i++) \{}
+\DoxyCodeLine{00590         \textcolor{keywordtype}{int} code\_ascii = int(str[i]);}
+\DoxyCodeLine{00591         \textcolor{keywordtype}{int} nb\_points = simplex[code\_ascii-\/32][0];}
+\DoxyCodeLine{00592         \textcolor{keywordtype}{int} x\_space = simplex[code\_ascii-\/32][1];}
+\DoxyCodeLine{00593 }
+\DoxyCodeLine{00594         \textcolor{keywordtype}{int} old\_x = start\_x + simplex[code\_ascii-\/32][2] * coeff;}
+\DoxyCodeLine{00595         \textcolor{keywordtype}{int} old\_y = start\_y -\/ simplex[code\_ascii-\/32][3] * coeff;}
+\DoxyCodeLine{00596         \textcolor{keywordtype}{int} new\_x = 0;}
+\DoxyCodeLine{00597         \textcolor{keywordtype}{int} new\_y = 0;}
+\DoxyCodeLine{00598         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 4 ; j <= (2*nb\_points) ; j+=2) \{}
+\DoxyCodeLine{00599             new\_x = simplex[code\_ascii-\/32][j];}
+\DoxyCodeLine{00600             new\_y = simplex[code\_ascii-\/32][j+1];}
+\DoxyCodeLine{00601 }
+\DoxyCodeLine{00602             \textcolor{keywordflow}{if} (new\_x == -\/1 \&\& new\_y == -\/1) \{}
+\DoxyCodeLine{00603                 j += 2;}
+\DoxyCodeLine{00604                 old\_x = start\_x + simplex[code\_ascii-\/32][j] * coeff;}
+\DoxyCodeLine{00605                 old\_y = start\_y -\/ simplex[code\_ascii-\/32][j+1] * coeff;}
+\DoxyCodeLine{00606             \}}
+\DoxyCodeLine{00607             \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{00608                 new\_x = start\_x + new\_x * coeff;}
+\DoxyCodeLine{00609                 new\_y = start\_y -\/ new\_y * coeff;}
+\DoxyCodeLine{00610                 SDL\_RenderDrawLine(renderer, old\_x, old\_y, new\_x, new\_y);}
+\DoxyCodeLine{00611 }
+\DoxyCodeLine{00612                 old\_x = new\_x;}
+\DoxyCodeLine{00613                 old\_y = new\_y;}
+\DoxyCodeLine{00614             \}}
+\DoxyCodeLine{00615         \}}
+\DoxyCodeLine{00616         start\_x += x\_space * coeff;}
+\DoxyCodeLine{00617     \}}
+\DoxyCodeLine{00618 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_menu_a0ea1e76f6aa783abc170d52348ab791d}\label{struct_menu_a0ea1e76f6aa783abc170d52348ab791d}} 
+\index{Menu@{Menu}!quit@{quit}}
+\index{quit@{quit}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{quit()}{quit()}}
+{\footnotesize\ttfamily void Menu\+::quit (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{w,  }\item[{int}]{h }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{menu_8cpp_source_l00629}{629}} of file \mbox{\hyperlink{menu_8cpp_source}{menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00630 \{}
+\DoxyCodeLine{00631     SDL\_Rect rectangle;}
+\DoxyCodeLine{00632     rectangle.x = x;}
+\DoxyCodeLine{00633     rectangle.y =y ;}
+\DoxyCodeLine{00634     rectangle.w =w ;}
+\DoxyCodeLine{00635     rectangle.h = h;}
+\DoxyCodeLine{00636     SDL\_RenderDrawRect(renderer,\&rectangle);}
+\DoxyCodeLine{00637     this-\/>hershey(renderer,\textcolor{stringliteral}{"{}QUIT"{}},x+30, y+60,2);}
+\DoxyCodeLine{00638 }
+\DoxyCodeLine{00639 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_menu_a8a9c814369d4df193e3739fe543509ca}\label{struct_menu_a8a9c814369d4df193e3739fe543509ca}} 
+\index{Menu@{Menu}!start@{start}}
+\index{start@{start}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily void Menu\+::start (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{w,  }\item[{int}]{h }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{menu_8cpp_source_l00619}{619}} of file \mbox{\hyperlink{menu_8cpp_source}{menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00620 \{}
+\DoxyCodeLine{00621     SDL\_Rect rectangle;}
+\DoxyCodeLine{00622     rectangle.x = x;}
+\DoxyCodeLine{00623     rectangle.y =y ;}
+\DoxyCodeLine{00624     rectangle.w =w ;}
+\DoxyCodeLine{00625     rectangle.h = h;}
+\DoxyCodeLine{00626     SDL\_RenderDrawRect(renderer,\&rectangle);}
+\DoxyCodeLine{00627     this-\/>hershey(renderer,\textcolor{stringliteral}{"{}START"{}},x+15, y+60,2);}
+\DoxyCodeLine{00628 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_menu_a3494e32f2b07260b94e05c730049a907}\label{struct_menu_a3494e32f2b07260b94e05c730049a907}} 
+\index{Menu@{Menu}!renderer@{renderer}}
+\index{renderer@{renderer}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{renderer}{renderer}}
+{\footnotesize\ttfamily SDL\+\_\+\+Renderer$\ast$ Menu\+::renderer}
+
+
+
+Definition at line \mbox{\hyperlink{menu_8hpp_source_l00013}{13}} of file \mbox{\hyperlink{menu_8hpp_source}{menu.\+hpp}}.
+
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+menu.\+hpp\item 
+menu.\+cpp\end{DoxyCompactItemize}

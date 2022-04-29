@@ -1,0 +1,129 @@
+\hypertarget{class_menu}{}\doxysection{Menu Class Reference}
+\label{class_menu}\index{Menu@{Menu}}
+
+
+Classe \mbox{\hyperlink{class_menu}{Menu}} qui sert pour l\textquotesingle{}affichage du texte et le dessin des tubes.  
+
+
+
+
+{\ttfamily \#include $<$menu.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_menu_a1548daef77890d18d14f21d48a7655ef}{hershey}} (SDL\+\_\+\+Renderer $\ast$renderer, std\+::string str, int start\+\_\+x, int start\+\_\+y, int coeff)
+\begin{DoxyCompactList}\small\item\em Permet l\textquotesingle{}ecriture en utilisant les fontes de hersheys. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe \mbox{\hyperlink{class_menu}{Menu}} qui sert pour l\textquotesingle{}affichage du texte et le dessin des tubes. 
+
+Definition at line \mbox{\hyperlink{menu_8hpp_source_l00017}{17}} of file \mbox{\hyperlink{menu_8hpp_source}{menu.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_menu_ad466dd83355124a6ed958430450bfe94}\label{class_menu_ad466dd83355124a6ed958430450bfe94}} 
+\index{Menu@{Menu}!Menu@{Menu}}
+\index{Menu@{Menu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{Menu()}{Menu()}}
+{\footnotesize\ttfamily Menu\+::\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{menu_8cpp_source_l00582}{582}} of file \mbox{\hyperlink{menu_8cpp_source}{menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00583 \{    }
+\DoxyCodeLine{00584 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_menu_a831387f51358cfb88cd018e1777bc980}\label{class_menu_a831387f51358cfb88cd018e1777bc980}} 
+\index{Menu@{Menu}!````~Menu@{$\sim$Menu}}
+\index{````~Menu@{$\sim$Menu}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{$\sim$Menu()}{~Menu()}}
+{\footnotesize\ttfamily Menu\+::$\sim$\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{menu_8cpp_source_l00585}{585}} of file \mbox{\hyperlink{menu_8cpp_source}{menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00586 \{    }
+\DoxyCodeLine{00587 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_menu_a1548daef77890d18d14f21d48a7655ef}\label{class_menu_a1548daef77890d18d14f21d48a7655ef}} 
+\index{Menu@{Menu}!hershey@{hershey}}
+\index{hershey@{hershey}!Menu@{Menu}}
+\doxysubsubsection{\texorpdfstring{hershey()}{hershey()}}
+{\footnotesize\ttfamily void Menu\+::hershey (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{std\+::string}]{str,  }\item[{int}]{start\+\_\+x,  }\item[{int}]{start\+\_\+y,  }\item[{int}]{coeff }\end{DoxyParamCaption})}
+
+
+
+Permet l\textquotesingle{}ecriture en utilisant les fontes de hersheys. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & \\
+\hline
+{\em str} & \+: chaîne de caractère à écrire \\
+\hline
+{\em start\+\_\+x} & \+: abssice de départ \\
+\hline
+{\em start\+\_\+y} & \+: ordonnée de départ \\
+\hline
+{\em coeff} & \+: taille de la forme \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{menu_8cpp_source_l00588}{588}} of file \mbox{\hyperlink{menu_8cpp_source}{menu.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00588                                                                                               \{}
+\DoxyCodeLine{00589     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0 ; i < str.size() ; i++) \{}
+\DoxyCodeLine{00590         \textcolor{keywordtype}{int} code\_ascii = int(str[i]);}
+\DoxyCodeLine{00591         \textcolor{keywordtype}{int} nb\_points = simplex[code\_ascii-\/32][0];}
+\DoxyCodeLine{00592         \textcolor{keywordtype}{int} x\_space = simplex[code\_ascii-\/32][1];}
+\DoxyCodeLine{00593 }
+\DoxyCodeLine{00594         \textcolor{keywordtype}{int} old\_x = start\_x + simplex[code\_ascii-\/32][2] * coeff;}
+\DoxyCodeLine{00595         \textcolor{keywordtype}{int} old\_y = start\_y -\/ simplex[code\_ascii-\/32][3] * coeff;}
+\DoxyCodeLine{00596         \textcolor{keywordtype}{int} new\_x = 0;}
+\DoxyCodeLine{00597         \textcolor{keywordtype}{int} new\_y = 0;}
+\DoxyCodeLine{00598         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 4 ; j <= (2*nb\_points) ; j+=2) \{}
+\DoxyCodeLine{00599             new\_x = simplex[code\_ascii-\/32][j];}
+\DoxyCodeLine{00600             new\_y = simplex[code\_ascii-\/32][j+1];}
+\DoxyCodeLine{00601 }
+\DoxyCodeLine{00602             \textcolor{keywordflow}{if} (new\_x == -\/1 \&\& new\_y == -\/1) \{}
+\DoxyCodeLine{00603                 j += 2;}
+\DoxyCodeLine{00604                 old\_x = start\_x + simplex[code\_ascii-\/32][j] * coeff;}
+\DoxyCodeLine{00605                 old\_y = start\_y -\/ simplex[code\_ascii-\/32][j+1] * coeff;}
+\DoxyCodeLine{00606             \}}
+\DoxyCodeLine{00607             \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{00608                 new\_x = start\_x + new\_x * coeff;}
+\DoxyCodeLine{00609                 new\_y = start\_y -\/ new\_y * coeff;}
+\DoxyCodeLine{00610                 SDL\_RenderDrawLine(renderer, old\_x, old\_y, new\_x, new\_y);}
+\DoxyCodeLine{00611 }
+\DoxyCodeLine{00612                 old\_x = new\_x;}
+\DoxyCodeLine{00613                 old\_y = new\_y;}
+\DoxyCodeLine{00614             \}}
+\DoxyCodeLine{00615         \}}
+\DoxyCodeLine{00616         start\_x += x\_space * coeff;}
+\DoxyCodeLine{00617     \}}
+\DoxyCodeLine{00618 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+menu.\+hpp\item 
+menu.\+cpp\end{DoxyCompactItemize}

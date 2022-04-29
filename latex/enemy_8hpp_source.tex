@@ -1,0 +1,57 @@
+\hypertarget{enemy_8hpp_source}{}\doxysection{enemy.\+hpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef ENEMY\_H}}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define ENEMY\_H}}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <SDL.h>}}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <utility>}}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00008}00008 \textcolor{preprocessor}{\#include "{}tube.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00009}00009 \textcolor{preprocessor}{\#include "{}utils.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00016}\mbox{\hyperlink{class_enemy}{00016}} \textcolor{keyword}{class }\mbox{\hyperlink{class_enemy}{Enemy}}}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00017}00017 \{}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00018}00018 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00019}00019     std::shared\_ptr<Tube>tube;}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00020}00020     std::shared\_ptr<Utils>utils;}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00021}00021     std::shared\_ptr<UtilsEnemy>utils\_enemy;}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00022}00022     std::pair<double, double> position; }
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00023}00023     \textcolor{keywordtype}{float} profondeur;}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00024}00024     \textcolor{keywordtype}{float} z;}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00025}00025     \textcolor{keywordtype}{int} pos\_xinit;}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00026}00026     \textcolor{keywordtype}{int} pos\_yinit;}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00027}00027     \textcolor{keywordtype}{double} ennemies;}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00028}00028     \textcolor{keywordtype}{int} quad;}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00029}00029     \textcolor{keywordtype}{int} quad\_suivant;}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00030}00030     \textcolor{keywordtype}{int} id;}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00031}00031     \textcolor{keywordtype}{int} temp;}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00032}00032     \textcolor{keywordtype}{int} tab\_vivants[4];}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00033}00033     \textcolor{keywordtype}{bool} alive;}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00034}00034     \textcolor{keywordtype}{int} i;}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00036}00036 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00037}00037     \mbox{\hyperlink{class_enemy}{Enemy}}(\textcolor{keywordtype}{int} quad, \textcolor{keywordtype}{int} \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00038}00038     \mbox{\hyperlink{class_enemy}{\string~Enemy}}();}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00039}00039     std::vector<int> get\_tab\_vivants();}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00040}00040     \textcolor{keywordtype}{double} get\_ennemies();}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00041}00041     \textcolor{keywordtype}{float} get\_profondeur();}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00042}00042     \textcolor{keywordtype}{int} get\_quad();}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00043}00043     \textcolor{keywordtype}{int} get\_id();}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00044}00044     \textcolor{keywordtype}{int} get\_temp();}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00045}00045     std::pair<double, double> get\_position();}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00046}00046     \textcolor{keywordtype}{bool} get\_alive();}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00047}00047     \textcolor{keywordtype}{void} set\_tab\_vivants(\textcolor{keywordtype}{int} \textcolor{keywordtype}{id});}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00048}00048     \textcolor{keywordtype}{void} set\_alive(\textcolor{keywordtype}{bool} b);}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00049}00049     \textcolor{keywordtype}{void} set\_quad\_suivant(\textcolor{keywordtype}{int} i);}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00050}00050     \textcolor{keywordtype}{int} get\_i();}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00051}00051     \textcolor{keywordtype}{void} set\_quad(\textcolor{keywordtype}{int} i);}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00052}00052     \textcolor{keywordtype}{void} move\_circle(SDL\_Renderer *renderer, \textcolor{keywordtype}{int} scale, \textcolor{keywordtype}{int} tubeQuads[16][4][2], \textcolor{keywordtype}{float} velocity\_coef);}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00053}00053     \textcolor{keywordtype}{void} draw\_flipper(SDL\_Renderer *renderer);}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00054}00054     \textcolor{keywordtype}{void} move(std::array<std::pair<int,int>,4> tubeQuad, \textcolor{keywordtype}{int} scale, \textcolor{keywordtype}{float} velocity\_coef);}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00055}00055 \};}
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00056}00056 }
+\DoxyCodeLine{\Hypertarget{enemy_8hpp_source_l00057}00057 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,43 @@
+\hypertarget{blaster_8hpp_source}{}\doxysection{blaster.\+hpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef BLASTER}}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define BLASTER}}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <SDL.h>}}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include <cmath>}}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00008}00008 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00011}00011 \textcolor{preprocessor}{\#include "{}utils.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00012}00012 \textcolor{preprocessor}{\#include "{}menu.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00013}00013 \textcolor{preprocessor}{\#include "{}tube.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00014}00014 }
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00015}00015 \textcolor{preprocessor}{\#define NUM\_BLASTER\_POSITIONS 7}}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00016}00016 \textcolor{preprocessor}{\#define MAX\_NUM\_BULLETS 8}}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00025}\mbox{\hyperlink{class_blaster}{00025}} \textcolor{keyword}{class }\mbox{\hyperlink{class_blaster}{Blaster}}}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00026}00026 \{}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00028}00028 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00029}00029   \textcolor{keywordtype}{int} targetPos;}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00030}00030   \textcolor{keywordtype}{int} changingXPos;}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00031}00031   std::shared\_ptr<Utils>utils;}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00033}00033   \mbox{\hyperlink{class_blaster}{Blaster}}();}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00034}00034   \mbox{\hyperlink{class_blaster}{\string~Blaster}}();}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00036}00036   \textcolor{keywordtype}{void} drawTubeQuads(SDL\_Renderer *renderer, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} coef);}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00038}00038   \textcolor{keywordtype}{void} drawblaster(SDL\_Renderer *renderer, std::array<std::pair<int, int>, 4> tubeQuad, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} coef, \textcolor{keywordtype}{int} rect);}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00039}00039   \textcolor{keywordtype}{void} drawblaster\_bleu(SDL\_Renderer *renderer, std::array<std::pair<int, int>, 4> tubeQuad, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} coef, \textcolor{keywordtype}{int} rect);}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00040}00040 }
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00041}00041   \textcolor{keywordtype}{void} move\_r(SDL\_Renderer *renderer, \textcolor{keywordtype}{int} i, std::array<std::array<std::pair<int, int>, 4>, 16> tubeQuads, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} coef, \textcolor{keywordtype}{int} rect);}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00042}00042   \textcolor{keywordtype}{void} move\_l(SDL\_Renderer *renderer, \textcolor{keywordtype}{int} i, std::array<std::array<std::pair<int, int>, 4>, 16> tubeQuads, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y, \textcolor{keywordtype}{int} coef, \textcolor{keywordtype}{int} rect);}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00043}00043 \};}
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{blaster_8hpp_source_l00045}00045 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

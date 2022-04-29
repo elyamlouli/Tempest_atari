@@ -1,0 +1,300 @@
+\hypertarget{class_bullet}{}\doxysection{Bullet Class Reference}
+\label{class_bullet}\index{Bullet@{Bullet}}
+
+
+Classe des missiles envoyés par le blaster pour tuer les ennemies.  
+
+
+
+
+{\ttfamily \#include $<$bullet.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_bullet_aa6a89d910cf975e912b87c1f233c5e00}{Bullet}} (int quad)
+\item 
+void \mbox{\hyperlink{class_bullet_ab46f5188cc3f3f67300d33622746f455}{draw\+\_\+bullet}} (SDL\+\_\+\+Renderer $\ast$renderer, int radius)
+\item 
+void \mbox{\hyperlink{class_bullet_a888b651343768185337806e6a17447db}{move}} (std\+::array$<$ std\+::pair$<$ int, int $>$, 4 $>$ tube\+Quad, int scale, float velocity\+\_\+coef)
+\begin{DoxyCompactList}\small\item\em Déplacer le missiles dans un tube à la vitesse velocity\+\_\+coef. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_bullet_a71804634a643b46a666c09ba436eb6e5}{set\+\_\+bullet}} (bool b)
+\item 
+bool \mbox{\hyperlink{class_bullet_a00aaae46cdee26a8b30101ea8407cb18}{get\+\_\+bullet}} ()
+\item 
+void \mbox{\hyperlink{class_bullet_aca0858683f7d0400f3655b66cfd53da4}{set\+\_\+P}} (std\+::pair$<$ double, double $>$p)
+\item 
+std\+::pair$<$ double, double $>$ \mbox{\hyperlink{class_bullet_aef7899c721d3cfe555649e1d9bebc574}{get\+\_\+P}} ()
+\item 
+float \mbox{\hyperlink{class_bullet_a9881b5cc389a4fb6ca73e8daf7484c0e}{get\+\_\+profondeur}} ()
+\item 
+void \mbox{\hyperlink{class_bullet_af20b38e18d51a74ce5f260438294ff0d}{set\+\_\+profondeur}} (float p)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \mbox{\hyperlink{class_utils}{Utils}} $>$ \mbox{\hyperlink{class_bullet_a783547859be21a6caa8a13bf9bde9223}{utils}}
+\item 
+int \mbox{\hyperlink{class_bullet_ab6d445b426cc3f0d6ea164b7347b982c}{quad}}
+\item 
+float \mbox{\hyperlink{class_bullet_aa626f92ac7743b453ab8ff881cd1955d}{dist}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe des missiles envoyés par le blaster pour tuer les ennemies. 
+
+Definition at line \mbox{\hyperlink{bullet_8hpp_source_l00014}{14}} of file \mbox{\hyperlink{bullet_8hpp_source}{bullet.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_bullet_aa6a89d910cf975e912b87c1f233c5e00}\label{class_bullet_aa6a89d910cf975e912b87c1f233c5e00}} 
+\index{Bullet@{Bullet}!Bullet@{Bullet}}
+\index{Bullet@{Bullet}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{Bullet()}{Bullet()}}
+{\footnotesize\ttfamily Bullet\+::\+Bullet (\begin{DoxyParamCaption}\item[{int}]{quad }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{bullet_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{bullet_8cpp_source}{bullet.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00004 \{}
+\DoxyCodeLine{00005     utils = std::shared\_ptr<Utils>(\textcolor{keyword}{new} \mbox{\hyperlink{class_utils}{Utils}}());}
+\DoxyCodeLine{00006     this-\/>profondeur = 1;}
+\DoxyCodeLine{00007     this-\/>quad = quad;}
+\DoxyCodeLine{00008     this-\/>dist = -\/1;}
+\DoxyCodeLine{00009     vivant\_bullet = \textcolor{keyword}{true};}
+\DoxyCodeLine{00010 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_bullet_aaeb5cb41d7db89f49007b08b41f1bfcf}\label{class_bullet_aaeb5cb41d7db89f49007b08b41f1bfcf}} 
+\index{Bullet@{Bullet}!````~Bullet@{$\sim$Bullet}}
+\index{````~Bullet@{$\sim$Bullet}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{$\sim$Bullet()}{~Bullet()}}
+{\footnotesize\ttfamily Bullet\+::$\sim$\+Bullet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{bullet_8cpp_source_l00011}{11}} of file \mbox{\hyperlink{bullet_8cpp_source}{bullet.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012 \{}
+\DoxyCodeLine{00013 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_bullet_ab46f5188cc3f3f67300d33622746f455}\label{class_bullet_ab46f5188cc3f3f67300d33622746f455}} 
+\index{Bullet@{Bullet}!draw\_bullet@{draw\_bullet}}
+\index{draw\_bullet@{draw\_bullet}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{draw\_bullet()}{draw\_bullet()}}
+{\footnotesize\ttfamily void Bullet\+::draw\+\_\+bullet (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{radius }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{bullet_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{bullet_8cpp_source}{bullet.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00024 \{}
+\DoxyCodeLine{00025 }
+\DoxyCodeLine{00026     SDL\_SetRenderDrawColor(renderer, 255, 250, 42, 0);}
+\DoxyCodeLine{00027     \textcolor{keywordtype}{float} x = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(radius);}
+\DoxyCodeLine{00028     \textcolor{keywordtype}{float} y = 0;}
+\DoxyCodeLine{00029     \textcolor{keywordtype}{float} radiusError = 1 -\/ x;}
+\DoxyCodeLine{00030     \textcolor{keywordflow}{while} (x >= y)}
+\DoxyCodeLine{00031     \{}
+\DoxyCodeLine{00032         SDL\_RenderDrawLine(renderer, (x + this-\/>P.first), (y + this-\/>P.second), (-\/x + this-\/>P.first), (y + this-\/>P.second));}
+\DoxyCodeLine{00033         SDL\_RenderDrawLine(renderer, (y + this-\/>P.first), (x + this-\/>P.second), (-\/y + this-\/>P.first), (x + this-\/>P.second));}
+\DoxyCodeLine{00034         SDL\_RenderDrawLine(renderer, (-\/x + this-\/>P.first), (-\/y + this-\/>P.second), (x + this-\/>P.first), (-\/y + this-\/>P.second));}
+\DoxyCodeLine{00035         SDL\_RenderDrawLine(renderer, (-\/y + this-\/>P.first), (-\/x + this-\/>P.second), (y + this-\/>P.first), (-\/x + this-\/>P.second));}
+\DoxyCodeLine{00036         y++;}
+\DoxyCodeLine{00037         \textcolor{keywordflow}{if} (radiusError < 0)}
+\DoxyCodeLine{00038             radiusError += 2 * y + 1;}
+\DoxyCodeLine{00039         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00040         \{}
+\DoxyCodeLine{00041             x-\/-\/;}
+\DoxyCodeLine{00042             radiusError += 2 * (y -\/ x + 1);}
+\DoxyCodeLine{00043         \}}
+\DoxyCodeLine{00044     \}}
+\DoxyCodeLine{00045 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_bullet_a00aaae46cdee26a8b30101ea8407cb18}\label{class_bullet_a00aaae46cdee26a8b30101ea8407cb18}} 
+\index{Bullet@{Bullet}!get\_bullet@{get\_bullet}}
+\index{get\_bullet@{get\_bullet}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{get\_bullet()}{get\_bullet()}}
+{\footnotesize\ttfamily bool Bullet\+::get\+\_\+bullet (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{bullet_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{bullet_8cpp_source}{bullet.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019 \{}
+\DoxyCodeLine{00020     \textcolor{keywordflow}{return} this-\/>vivant\_bullet;}
+\DoxyCodeLine{00021 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_bullet_aef7899c721d3cfe555649e1d9bebc574}\label{class_bullet_aef7899c721d3cfe555649e1d9bebc574}} 
+\index{Bullet@{Bullet}!get\_P@{get\_P}}
+\index{get\_P@{get\_P}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{get\_P()}{get\_P()}}
+{\footnotesize\ttfamily std\+::pair$<$ double, double $>$ Bullet\+::get\+\_\+P (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{bullet_8cpp_source_l00058}{58}} of file \mbox{\hyperlink{bullet_8cpp_source}{bullet.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00059 \{}
+\DoxyCodeLine{00060     \textcolor{keywordflow}{return} this-\/>P;}
+\DoxyCodeLine{00061 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_bullet_a9881b5cc389a4fb6ca73e8daf7484c0e}\label{class_bullet_a9881b5cc389a4fb6ca73e8daf7484c0e}} 
+\index{Bullet@{Bullet}!get\_profondeur@{get\_profondeur}}
+\index{get\_profondeur@{get\_profondeur}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{get\_profondeur()}{get\_profondeur()}}
+{\footnotesize\ttfamily float Bullet\+::get\+\_\+profondeur (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{bullet_8cpp_source_l00063}{63}} of file \mbox{\hyperlink{bullet_8cpp_source}{bullet.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00064 \{}
+\DoxyCodeLine{00065     \textcolor{keywordflow}{return} this-\/>profondeur;}
+\DoxyCodeLine{00066 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_bullet_a888b651343768185337806e6a17447db}\label{class_bullet_a888b651343768185337806e6a17447db}} 
+\index{Bullet@{Bullet}!move@{move}}
+\index{move@{move}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{move()}{move()}}
+{\footnotesize\ttfamily void Bullet\+::move (\begin{DoxyParamCaption}\item[{std\+::array$<$ std\+::pair$<$ int, int $>$, 4 $>$}]{tube\+Quad,  }\item[{int}]{scale,  }\item[{float}]{velocity\+\_\+coef }\end{DoxyParamCaption})}
+
+
+
+Déplacer le missiles dans un tube à la vitesse velocity\+\_\+coef. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tube\+Quad} & \\
+\hline
+{\em scale} & \\
+\hline
+{\em velocity\+\_\+coef} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{bullet_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{bullet_8cpp_source}{bullet.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00047 \{}
+\DoxyCodeLine{00048     this-\/>P = this-\/>utils-\/>find\_position(tubeQuad, 0, 0, scale, this-\/>profondeur);}
+\DoxyCodeLine{00049 }
+\DoxyCodeLine{00050     profondeur -\/= velocity\_coef;}
+\DoxyCodeLine{00051 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_bullet_a71804634a643b46a666c09ba436eb6e5}\label{class_bullet_a71804634a643b46a666c09ba436eb6e5}} 
+\index{Bullet@{Bullet}!set\_bullet@{set\_bullet}}
+\index{set\_bullet@{set\_bullet}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{set\_bullet()}{set\_bullet()}}
+{\footnotesize\ttfamily void Bullet\+::set\+\_\+bullet (\begin{DoxyParamCaption}\item[{bool}]{b }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{bullet_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{bullet_8cpp_source}{bullet.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015 \{}
+\DoxyCodeLine{00016     this-\/>vivant\_bullet = b;}
+\DoxyCodeLine{00017 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_bullet_aca0858683f7d0400f3655b66cfd53da4}\label{class_bullet_aca0858683f7d0400f3655b66cfd53da4}} 
+\index{Bullet@{Bullet}!set\_P@{set\_P}}
+\index{set\_P@{set\_P}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{set\_P()}{set\_P()}}
+{\footnotesize\ttfamily void Bullet\+::set\+\_\+P (\begin{DoxyParamCaption}\item[{std\+::pair$<$ double, double $>$}]{p }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{bullet_8cpp_source_l00053}{53}} of file \mbox{\hyperlink{bullet_8cpp_source}{bullet.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00054 \{}
+\DoxyCodeLine{00055     this-\/>P = p;}
+\DoxyCodeLine{00056 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_bullet_af20b38e18d51a74ce5f260438294ff0d}\label{class_bullet_af20b38e18d51a74ce5f260438294ff0d}} 
+\index{Bullet@{Bullet}!set\_profondeur@{set\_profondeur}}
+\index{set\_profondeur@{set\_profondeur}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{set\_profondeur()}{set\_profondeur()}}
+{\footnotesize\ttfamily void Bullet\+::set\+\_\+profondeur (\begin{DoxyParamCaption}\item[{float}]{p }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{bullet_8cpp_source_l00068}{68}} of file \mbox{\hyperlink{bullet_8cpp_source}{bullet.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00069 \{}
+\DoxyCodeLine{00070     this-\/>profondeur = p;}
+\DoxyCodeLine{00071 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_bullet_aa626f92ac7743b453ab8ff881cd1955d}\label{class_bullet_aa626f92ac7743b453ab8ff881cd1955d}} 
+\index{Bullet@{Bullet}!dist@{dist}}
+\index{dist@{dist}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{dist}{dist}}
+{\footnotesize\ttfamily float Bullet\+::dist}
+
+
+
+Definition at line \mbox{\hyperlink{bullet_8hpp_source_l00024}{24}} of file \mbox{\hyperlink{bullet_8hpp_source}{bullet.\+hpp}}.
+
+\mbox{\Hypertarget{class_bullet_ab6d445b426cc3f0d6ea164b7347b982c}\label{class_bullet_ab6d445b426cc3f0d6ea164b7347b982c}} 
+\index{Bullet@{Bullet}!quad@{quad}}
+\index{quad@{quad}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{quad}{quad}}
+{\footnotesize\ttfamily int Bullet\+::quad}
+
+
+
+Definition at line \mbox{\hyperlink{bullet_8hpp_source_l00023}{23}} of file \mbox{\hyperlink{bullet_8hpp_source}{bullet.\+hpp}}.
+
+\mbox{\Hypertarget{class_bullet_a783547859be21a6caa8a13bf9bde9223}\label{class_bullet_a783547859be21a6caa8a13bf9bde9223}} 
+\index{Bullet@{Bullet}!utils@{utils}}
+\index{utils@{utils}!Bullet@{Bullet}}
+\doxysubsubsection{\texorpdfstring{utils}{utils}}
+{\footnotesize\ttfamily std\+::shared\+\_\+ptr$<$\mbox{\hyperlink{class_utils}{Utils}}$>$ Bullet\+::utils}
+
+
+
+Definition at line \mbox{\hyperlink{bullet_8hpp_source_l00022}{22}} of file \mbox{\hyperlink{bullet_8hpp_source}{bullet.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+bullet.\+hpp\item 
+bullet.\+cpp\end{DoxyCompactItemize}

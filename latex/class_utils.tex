@@ -1,0 +1,307 @@
+\hypertarget{class_utils}{}\doxysection{Utils Class Reference}
+\label{class_utils}\index{Utils@{Utils}}
+
+
+Classe contenant toute les fonctions qui vont être utiles par la suite.  
+
+
+
+
+{\ttfamily \#include $<$utils.\+hpp$>$}
+
+Inheritance diagram for Utils\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_utils}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+float \mbox{\hyperlink{class_utils_a69114624bcd1c9e0b48f7b7265c9c9b0}{distance}} (int vec1\mbox{[}2\mbox{]}, int vec2\mbox{[}2\mbox{]})
+\begin{DoxyCompactList}\small\item\em Fonction permettant de calculer la distance entre deux vecteurs ou deux points. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_utils_a7b40a3f4908a10155e25aee66fc12f35}{distance}} (int x1, int y1, int x2, int y2)
+\item 
+std\+::vector$<$ float $>$ \mbox{\hyperlink{class_utils_ae57b0fbe75aa24f12e52857400dfe12d}{mid\+\_\+two\+\_\+points}} (int x1, int y1, int x2, int y2)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de calculer le centre du vecteur reliant entre le point (x1, y1) et le point (x2, y2) \end{DoxyCompactList}\item 
+std\+::pair$<$ double, double $>$ \mbox{\hyperlink{class_utils_ab1ba3766731f627f32bbf1e64c162945}{find\+\_\+position}} (std\+::array$<$ std\+::pair$<$ int, int $>$, 4 $>$ tube\+Quad, int ax, int ay, int scale, float profondeur)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de chercher la nouvelle position en utilisant la matrice de rotation et l\textquotesingle{}homothétie comme expliqué dans l\textquotesingle{}énoncé \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_utils_af564d9901c1536b980beb22bbf83f2f9}{hershey}} (SDL\+\_\+\+Renderer $\ast$renderer, std\+::string str, int start\+\_\+x, int start\+\_\+y, int coeff)
+\begin{DoxyCompactList}\small\item\em Fonction permettant d\textquotesingle{}ecrire la chaîne de caractère STR en utilisant les fentes de hersheys. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{class_utils_ac429d05a63897d9531df36accd6bde5f}{get\+\_\+time}} ()
+\item 
+void \mbox{\hyperlink{class_utils_ae31a9debc51d7a8bd71cce54d016fb13}{set\+\_\+time}} (int t)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe contenant toute les fonctions qui vont être utiles par la suite. 
+
+Definition at line \mbox{\hyperlink{utils_8hpp_source_l00014}{14}} of file \mbox{\hyperlink{utils_8hpp_source}{utils.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_utils_a452e78692c87ed5c7c993b6c6ac4981a}\label{class_utils_a452e78692c87ed5c7c993b6c6ac4981a}} 
+\index{Utils@{Utils}!Utils@{Utils}}
+\index{Utils@{Utils}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{Utils()}{Utils()}}
+{\footnotesize\ttfamily Utils\+::\+Utils (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00004 \{}
+\DoxyCodeLine{00005     this-\/>time = 0;}
+\DoxyCodeLine{00006 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_utils_afa5e70facffc286607498e7edb639b8a}\label{class_utils_afa5e70facffc286607498e7edb639b8a}} 
+\index{Utils@{Utils}!````~Utils@{$\sim$Utils}}
+\index{````~Utils@{$\sim$Utils}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{$\sim$Utils()}{~Utils()}}
+{\footnotesize\ttfamily Utils\+::$\sim$\+Utils (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00008 \{}
+\DoxyCodeLine{00009 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_utils_a69114624bcd1c9e0b48f7b7265c9c9b0}\label{class_utils_a69114624bcd1c9e0b48f7b7265c9c9b0}} 
+\index{Utils@{Utils}!distance@{distance}}
+\index{distance@{distance}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{distance()}{distance()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily float Utils\+::distance (\begin{DoxyParamCaption}\item[{int}]{vec1\mbox{[}2\mbox{]},  }\item[{int}]{vec2\mbox{[}2\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de calculer la distance entre deux vecteurs ou deux points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec1} & \\
+\hline
+{\em vec2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+float 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00020 \{}
+\DoxyCodeLine{00021     \textcolor{keyword}{const} \textcolor{keywordtype}{int} x1 = vec1[0];}
+\DoxyCodeLine{00022     \textcolor{keyword}{const} \textcolor{keywordtype}{int} y1 = vec1[1];}
+\DoxyCodeLine{00023     \textcolor{keyword}{const} \textcolor{keywordtype}{int} x2 = vec2[0];}
+\DoxyCodeLine{00024     \textcolor{keyword}{const} \textcolor{keywordtype}{int} y2 = vec2[1];}
+\DoxyCodeLine{00025     \textcolor{keywordflow}{return} sqrt(((y2 -\/ y1) * (y2 -\/ y1)) + ((x2 -\/ x1) * (x2 -\/ x1)));}
+\DoxyCodeLine{00026 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_utils_a7b40a3f4908a10155e25aee66fc12f35}\label{class_utils_a7b40a3f4908a10155e25aee66fc12f35}} 
+\index{Utils@{Utils}!distance@{distance}}
+\index{distance@{distance}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{distance()}{distance()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily float Utils\+::distance (\begin{DoxyParamCaption}\item[{int}]{x1,  }\item[{int}]{y1,  }\item[{int}]{x2,  }\item[{int}]{y2 }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00028 \{}
+\DoxyCodeLine{00029     \textcolor{keywordflow}{return} sqrt(((y2 -\/ y1) * (y2 -\/ y1)) + ((x2 -\/ x1) * (x2 -\/ x1)));}
+\DoxyCodeLine{00030 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_utils_ab1ba3766731f627f32bbf1e64c162945}\label{class_utils_ab1ba3766731f627f32bbf1e64c162945}} 
+\index{Utils@{Utils}!find\_position@{find\_position}}
+\index{find\_position@{find\_position}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{find\_position()}{find\_position()}}
+{\footnotesize\ttfamily std\+::pair$<$ double, double $>$ Utils\+::find\+\_\+position (\begin{DoxyParamCaption}\item[{std\+::array$<$ std\+::pair$<$ int, int $>$, 4 $>$}]{tube\+Quad,  }\item[{int}]{ax,  }\item[{int}]{ay,  }\item[{int}]{scale,  }\item[{float}]{profondeur }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de chercher la nouvelle position en utilisant la matrice de rotation et l\textquotesingle{}homothétie comme expliqué dans l\textquotesingle{}énoncé 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tube\+Quad} & \\
+\hline
+{\em ax} & \\
+\hline
+{\em ay} & \\
+\hline
+{\em scale} & \\
+\hline
+{\em profondeur} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::pair$<$double, double$>$ 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00042}{42}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00043 \{}
+\DoxyCodeLine{00044     std::pair<double, double> D;}
+\DoxyCodeLine{00045     \textcolor{keywordtype}{double} new\_ax, new\_ay;}
+\DoxyCodeLine{00046     \textcolor{keywordtype}{int} window\_x;}
+\DoxyCodeLine{00047     \textcolor{keywordtype}{int} window\_y;}
+\DoxyCodeLine{00048     \textcolor{keywordflow}{if} (tubeQuad[0].first < tubeQuad[1].first \&\& tubeQuad[0].second < tubeQuad[1].second)}
+\DoxyCodeLine{00049     \{}
+\DoxyCodeLine{00050         window\_x = 523;}
+\DoxyCodeLine{00051         window\_y = 563;}
+\DoxyCodeLine{00052     \}}
+\DoxyCodeLine{00053     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (tubeQuad[0].first > tubeQuad[1].first \&\& tubeQuad[0].second < tubeQuad[1].second)}
+\DoxyCodeLine{00054     \{}
+\DoxyCodeLine{00055         window\_x = 517;}
+\DoxyCodeLine{00056         window\_y = 570;}
+\DoxyCodeLine{00057     \}}
+\DoxyCodeLine{00058     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (tubeQuad[0].first < tubeQuad[1].first \&\& tubeQuad[0].second > tubeQuad[1].second)}
+\DoxyCodeLine{00059     \{}
+\DoxyCodeLine{00060         window\_x = 512;}
+\DoxyCodeLine{00061         window\_y = 558;}
+\DoxyCodeLine{00062     \}}
+\DoxyCodeLine{00063     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00064     \{}
+\DoxyCodeLine{00065         window\_x = 520;}
+\DoxyCodeLine{00066         window\_y = 570;}
+\DoxyCodeLine{00067     \}}
+\DoxyCodeLine{00068 }
+\DoxyCodeLine{00069     \textcolor{keywordtype}{int} ABx = tubeQuad[1].first * scale -\/ tubeQuad[0].first * scale;}
+\DoxyCodeLine{00070     \textcolor{keywordtype}{int} ABy = tubeQuad[1].second * scale -\/ tubeQuad[0].second * scale;}
+\DoxyCodeLine{00071     \textcolor{keywordtype}{double} normAB = sqrt(ABx * ABx + ABy * ABy);}
+\DoxyCodeLine{00072     \textcolor{keywordtype}{double} ux = ABx / normAB;}
+\DoxyCodeLine{00073     \textcolor{keywordtype}{double} uy = ABy / normAB;}
+\DoxyCodeLine{00074 }
+\DoxyCodeLine{00075     new\_ax = (ux * ax -\/ uy * ay + (tubeQuad[0].first + tubeQuad[1].first) * scale / 2 -\/ window\_x) * profondeur + window\_x;}
+\DoxyCodeLine{00076     new\_ay = (uy * ax + ux * ay + (tubeQuad[0].second + tubeQuad[1].second) * scale / 2 -\/ window\_y) * profondeur + window\_y;}
+\DoxyCodeLine{00077     D.first = new\_ax;}
+\DoxyCodeLine{00078     D.second = new\_ay;}
+\DoxyCodeLine{00079     \textcolor{keywordflow}{return} D;}
+\DoxyCodeLine{00080 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_utils_ac429d05a63897d9531df36accd6bde5f}\label{class_utils_ac429d05a63897d9531df36accd6bde5f}} 
+\index{Utils@{Utils}!get\_time@{get\_time}}
+\index{get\_time@{get\_time}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{get\_time()}{get\_time()}}
+{\footnotesize\ttfamily double Utils\+::get\+\_\+time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00011 \{}
+\DoxyCodeLine{00012     \textcolor{keywordflow}{return} time;}
+\DoxyCodeLine{00013 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_utils_af564d9901c1536b980beb22bbf83f2f9}\label{class_utils_af564d9901c1536b980beb22bbf83f2f9}} 
+\index{Utils@{Utils}!hershey@{hershey}}
+\index{hershey@{hershey}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{hershey()}{hershey()}}
+{\footnotesize\ttfamily void Utils\+::hershey (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{std\+::string}]{str,  }\item[{int}]{start\+\_\+x,  }\item[{int}]{start\+\_\+y,  }\item[{int}]{coeff }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant d\textquotesingle{}ecrire la chaîne de caractère STR en utilisant les fentes de hersheys. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em renderer} & \\
+\hline
+{\em str} & \\
+\hline
+{\em start\+\_\+x} & \\
+\hline
+{\em start\+\_\+y} & \\
+\hline
+{\em coeff} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_utils_ae57b0fbe75aa24f12e52857400dfe12d}\label{class_utils_ae57b0fbe75aa24f12e52857400dfe12d}} 
+\index{Utils@{Utils}!mid\_two\_points@{mid\_two\_points}}
+\index{mid\_two\_points@{mid\_two\_points}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{mid\_two\_points()}{mid\_two\_points()}}
+{\footnotesize\ttfamily std\+::vector$<$ float $>$ Utils\+::mid\+\_\+two\+\_\+points (\begin{DoxyParamCaption}\item[{int}]{x1,  }\item[{int}]{y1,  }\item[{int}]{x2,  }\item[{int}]{y2 }\end{DoxyParamCaption})}
+
+
+
+Fonction permettant de calculer le centre du vecteur reliant entre le point (x1, y1) et le point (x2, y2) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x1} & \\
+\hline
+{\em y1} & \\
+\hline
+{\em x2} & \\
+\hline
+{\em y2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$float$>$ 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00033 \{}
+\DoxyCodeLine{00034     \textcolor{keywordtype}{float} x = (\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(x1) + \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(x2)) / 2;}
+\DoxyCodeLine{00035     \textcolor{keywordtype}{float} y = (\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(y1) + \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{float}\textcolor{keyword}{>}(y2)) / 2;}
+\DoxyCodeLine{00036     std::vector<float> vec = \{\};}
+\DoxyCodeLine{00037     vec.push\_back(x);}
+\DoxyCodeLine{00038     vec.push\_back(y);}
+\DoxyCodeLine{00039     \textcolor{keywordflow}{return} vec;}
+\DoxyCodeLine{00040 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_utils_ae31a9debc51d7a8bd71cce54d016fb13}\label{class_utils_ae31a9debc51d7a8bd71cce54d016fb13}} 
+\index{Utils@{Utils}!set\_time@{set\_time}}
+\index{set\_time@{set\_time}!Utils@{Utils}}
+\doxysubsubsection{\texorpdfstring{set\_time()}{set\_time()}}
+{\footnotesize\ttfamily void Utils\+::set\+\_\+time (\begin{DoxyParamCaption}\item[{int}]{t }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00016 \{}
+\DoxyCodeLine{00017     time = t;}
+\DoxyCodeLine{00018 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+utils.\+hpp\item 
+utils.\+cpp\end{DoxyCompactItemize}

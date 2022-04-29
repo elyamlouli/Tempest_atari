@@ -1,0 +1,389 @@
+\hypertarget{game_8cpp_source}{}\doxysection{game.\+cpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}game.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00003}00003 \textcolor{keyword}{static} \textcolor{keywordtype}{int} quad = 0;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00004}00004 \textcolor{keyword}{static} \textcolor{keywordtype}{int} start = 0;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00006}00006 \textcolor{comment}{//SDLApp *app;}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00007}00007 \textcolor{keyword}{static} \textcolor{keywordtype}{void} SDL\_DelRes(SDL\_Window   *r) \{ SDL\_DestroyWindow(r);   \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00008}00008 \textcolor{keyword}{static} \textcolor{keywordtype}{void} SDL\_DelRes(SDL\_Renderer *r) \{ SDL\_DestroyRenderer(r); \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00009}00009 \textcolor{keyword}{static} \textcolor{keywordtype}{void} SDL\_DelRes(SDL\_Texture  *r) \{ SDL\_DestroyTexture(r);  \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00010}00010 \textcolor{keyword}{static} \textcolor{keywordtype}{void} SDL\_DelRes(SDL\_Surface  *r) \{ SDL\_FreeSurface(r);     \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00011}00011 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00012}00012 std::shared\_ptr<T> sdl\_shared(T *t) \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00013}00013     \textcolor{keywordflow}{return} std::shared\_ptr<T>(t, [](T *t) \{ SDL\_DelRes(t); \});}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00014}00014 \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00016}00016 Games::Games()}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00017}00017 \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00018}00018     score = std::shared\_ptr<Score>(\textcolor{keyword}{new} \mbox{\hyperlink{class_score}{Score}}());}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00019}00019     menu = std::shared\_ptr<Menu>(\textcolor{keyword}{new} \mbox{\hyperlink{class_menu}{Menu}}());}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00020}00020     Forme f = Tube\_Circle;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00021}00021     blaster = std::shared\_ptr<Blaster>(\textcolor{keyword}{new} \mbox{\hyperlink{class_blaster}{Blaster}}());}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00022}00022     tube = std::shared\_ptr<Tube>(\textcolor{keyword}{new} \mbox{\hyperlink{class_tube}{Tube}}(f));}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00023}00023     utils = std::shared\_ptr<Utils>(\textcolor{keyword}{new} \mbox{\hyperlink{class_utils}{Utils}}());}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00024}00024     \textcolor{comment}{//CollisionSound= new Sound("{}/home/oumayma/Documents/mp3/shoot.mp3"{});}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00025}00025 \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00026}00026 Games::\string~Games()}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00027}00027 \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00028}00028     this-\/>lives.erase(std::remove(this-\/>lives.begin(), this-\/>lives.end(), \textcolor{keyword}{nullptr}), this-\/>lives.end());}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00029}00029 \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00030}\mbox{\hyperlink{class_games_a9f7ad1d29a813f80d5752ac23a50520e}{00030}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_games_a9f7ad1d29a813f80d5752ac23a50520e}{Games::menu\_jeu}}(SDL\_Renderer *renderer, \textcolor{keywordtype}{int} quad)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00031}00031 \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00032}00032     SDL\_SetRenderDrawColor(renderer, 0, 0, 0, 255);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00033}00033     SDL\_RenderClear(renderer);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00034}00034     SDL\_SetRenderDrawColor(renderer, 0, 0, 255, 0);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00035}00035     this-\/>menu-\/>hershey(renderer, \textcolor{stringliteral}{"{}Level 1"{}}, 300, 30, 1);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00036}00036     this-\/>blaster-\/>drawTubeQuads(renderer, 2, -\/5, 2);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00037}00037     this-\/>blaster-\/>drawblaster(renderer, this-\/>tube-\/>tube\_quads[quad], 2, -\/5, 2, 10);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00038}00038     SDL\_SetRenderDrawColor(renderer, 54, 244, 11, 0);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00039}00039     this-\/>menu-\/>hershey(renderer, std::to\_string(this-\/>score-\/>get\_score()), 100, 30, 1);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00040}00040 \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00041}\mbox{\hyperlink{class_games_ab095bd05a89b901deab3430320234f89}{00041}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_games_ab095bd05a89b901deab3430320234f89}{Games::draw\_lives}}(SDL\_Renderer *renderer)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00042}00042 \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00043}00043     \textcolor{keywordtype}{int} i = 10;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00045}00045     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&live : this-\/>lives)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00046}00046     \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00047}00047         live-\/>draw\_live(renderer, 2, 10 + i, 50);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00048}00048         i = i + 50;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00049}00049     \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00050}00050 \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00051}\mbox{\hyperlink{class_games_a09d3af8ca3a295d112fdd4c47dd46f67}{00051}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_games_a09d3af8ca3a295d112fdd4c47dd46f67}{Games::generate\_enemies}}(SDL\_Renderer *renderer, \textcolor{keywordtype}{float} velocity\_coef)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00052}00052 \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00053}00053     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&enemy : this-\/>enemies)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00054}00054     \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00056}00056         \textcolor{keywordflow}{if} (enemy-\/>get\_id() < 2)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00057}00057         \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00058}00058 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00059}00059             enemy-\/>move(this-\/>tube-\/>tube\_quads[enemy-\/>get\_quad()], 2, velocity\_coef);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00061}00061             printf(\textcolor{stringliteral}{"{}ennemy : \%i\(\backslash\)n"{}}, enemy-\/>get\_quad());}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00062}00062             printf(\textcolor{stringliteral}{"{}quad : \%i\(\backslash\)n"{}}, quad);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00063}00063             \textcolor{keywordflow}{if} (enemy-\/>get\_profondeur() == 0)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00064}00064             \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00065}00065                 \textcolor{keywordflow}{if} (enemy-\/>get\_quad() == quad)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00066}00066                 \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00067}00067                     this-\/>score-\/>set\_score(this-\/>score-\/>get\_score() -\/ 150);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00068}00068                     \textcolor{keyword}{delete} lives[lives.size() -\/ 1];}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00069}00069                     lives.erase(lives.begin() + (lives.size() -\/ 1));}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00070}00070                 \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00071}00071                 enemy = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00072}00072                 \textcolor{keyword}{delete} enemy;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00073}00073                 this-\/>utils-\/>set\_time(this-\/>utils-\/>get\_time() + 1);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00074}00074                 score-\/>set\_nbLives(score-\/>get\_nbLives() -\/ 1);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00075}00075             \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00076}00076             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00077}00077             \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00078}00078                 enemy-\/>draw\_flipper(renderer);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00079}00079             \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00080}00080         \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00082}00082         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00083}00083         \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00084}00084             \textcolor{keywordflow}{if} (this-\/>utils-\/>get\_time() == 2)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00085}00085             \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00086}00086                 enemy-\/>move(this-\/>tube-\/>tube\_quads[enemy-\/>get\_quad()], 2, velocity\_coef);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00087}00087                 \textcolor{keywordflow}{if} (enemy-\/>get\_profondeur() == 0)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00088}00088                 \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00089}00089                     \textcolor{keywordflow}{if} (enemy-\/>get\_quad() == quad)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00090}00090                     \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00091}00091                         this-\/>score-\/>set\_score(this-\/>score-\/>get\_score() -\/ 150);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00092}00092                         \textcolor{keyword}{delete} lives[lives.size() -\/ 1];}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00093}00093                         lives.erase(lives.begin() + (lives.size() -\/ 1));}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00094}00094                     \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00095}00095                     printf(\textcolor{stringliteral}{"{}\%i\(\backslash\)n"{}}, score-\/>get\_nbLives());}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00096}00096                     enemy = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00097}00097                     \textcolor{keyword}{delete} enemy;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00098}00098                     this-\/>utils-\/>set\_time(this-\/>utils-\/>get\_time() + 1);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00099}00099                     score-\/>set\_nbLives(score-\/>get\_nbLives() -\/ 1);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00100}00100                 \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00101}00101                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00102}00102                 \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00103}00103                     enemy-\/>draw\_flipper(renderer);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00104}00104                 \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00105}00105             \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00106}00106         \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00107}00107     \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00109}00109     this-\/>enemies.erase(std::remove(this-\/>enemies.begin(), this-\/>enemies.end(), \textcolor{keyword}{nullptr}), this-\/>enemies.end());}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00110}00110 \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00111}00111 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00112}\mbox{\hyperlink{class_games_ace76accd4c15bfc083b4e4c3f9b9b203}{00112}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_games_ace76accd4c15bfc083b4e4c3f9b9b203}{Games::generate\_bullets}}(SDL\_Renderer *renderer, \textcolor{keywordtype}{float} velocity\_coef)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00113}00113 \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00114}00114     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&bullet : this-\/>bullets)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00115}00115     \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00116}00116         std::vector<float> middle = this-\/>utils-\/>mid\_two\_points(this-\/>tube-\/>tube\_quads[bullet-\/>quad][2].first * 2, this-\/>tube-\/>tube\_quads[bullet-\/>quad][2].second * 2, this-\/>tube-\/>tube\_quads[bullet-\/>quad][3].first * 2, this-\/>tube-\/>tube\_quads[bullet-\/>quad][3].second * 2);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00117}00117         \textcolor{keywordtype}{float} prev\_dist = bullet-\/>dist;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00118}00118         \textcolor{keywordtype}{float} dist = this-\/>utils-\/>distance(bullet-\/>get\_P().first, bullet-\/>get\_P().second, middle[0], middle[1]);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00119}00119         bullet-\/>dist = dist;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00120}00120         bullet-\/>move(this-\/>tube-\/>tube\_quads[bullet-\/>quad], 2, velocity\_coef);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00121}00121         \textcolor{keywordflow}{if} (prev\_dist -\/ dist < 0 \&\& prev\_dist != -\/1)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00122}00122         \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00123}00123             \textcolor{keywordflow}{if} (bullet-\/>get\_bullet() == \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00124}00124             \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00126}00126                 bullet-\/>set\_bullet(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00127}00127                 \textcolor{keyword}{delete} bullet;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00128}00128                 bullet = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00129}00129             \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00130}00130         \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00131}00131         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00132}00132         \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00133}00133             \textcolor{keywordflow}{if} (bullet-\/>get\_bullet() == \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00134}00134                 bullet-\/>draw\_bullet(renderer, 5);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00135}00135         \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00136}00136     \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00137}00137     this-\/>bullets.erase(std::remove(this-\/>bullets.begin(), this-\/>bullets.end(), \textcolor{keyword}{nullptr}), this-\/>bullets.end());}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00138}00138 \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00139}\mbox{\hyperlink{class_games_a1dbdb4846936b7c15257037dbe7295ef}{00139}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_games_a1dbdb4846936b7c15257037dbe7295ef}{Games::menu\_principal}}(SDL\_Renderer *renderer)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00140}00140 \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00141}00141     SDL\_SetRenderDrawColor(renderer, 0, 0, 0, 255);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00142}00142     SDL\_RenderClear(renderer);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00143}00143     SDL\_SetRenderDrawColor(renderer, 0, 0, 255, 0);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00144}00144     this-\/>menu-\/>hershey(renderer, \textcolor{stringliteral}{"{}Level 1"{}}, 350, 70, 1);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00145}00145     SDL\_SetRenderDrawColor(renderer, 255, 0, 0, 0);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00146}00146     this-\/>menu-\/>hershey(renderer, \textcolor{stringliteral}{"{}Type s to START"{}}, 270, 250, 1);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00147}00147     SDL\_SetRenderDrawColor(renderer, 255, 250, 42, 0);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00148}00148     this-\/>menu-\/>hershey(renderer, \textcolor{stringliteral}{"{}<-\/ -\/> To move"{}}, 265, 300, 1);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00149}00149     this-\/>menu-\/>hershey(renderer, \textcolor{stringliteral}{"{}Space To shoot"{}}, 273, 350, 1);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00150}00150     SDL\_SetRenderDrawColor(renderer, 255, 0, 0, 0);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00151}00151     this-\/>menu-\/>hershey(renderer, \textcolor{stringliteral}{"{}FLIPPERS AREHARMLESS MID-\/FLIP"{}}, 150, 400, 1);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00152}00152     this-\/>menu-\/>hershey(renderer, \textcolor{stringliteral}{"{}ENEMY BULLETS ARE DESTRUCTIBLE"{}}, 150, 450, 1);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00153}00153     SDL\_RenderPresent(renderer);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00154}00154 \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00155}\mbox{\hyperlink{class_games_acedb796872866926bd6338d599eaefd1}{00155}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_games_acedb796872866926bd6338d599eaefd1}{Games::explode}}(std::shared\_ptr<Utils> utils)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00156}00156 \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00157}00157 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00158}00158     \textcolor{keywordtype}{int} enemy\_viants\_id[15];}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00159}00159     \textcolor{keywordtype}{double} enemies\_profondeur[15];}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00160}00160     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 15; i++)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00161}00161     \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00162}00162         enemy\_viants\_id[i] = -\/1;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00163}00163         enemies\_profondeur[i] = -\/1;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00164}00164     \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00165}00165     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < enemies.size(); i++)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00166}00166     \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00167}00167         \textcolor{keywordtype}{int} \textcolor{keywordtype}{id} = enemies[i]-\/>get\_quad();}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00168}00168         \textcolor{keywordflow}{if} (enemy\_viants\_id[\textcolor{keywordtype}{id}] == -\/1)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00169}00169         \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00170}00170             enemy\_viants\_id[id] = i;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00171}00171             enemies\_profondeur[id] = enemies[i]-\/>get\_profondeur();}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00172}00172         \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00173}00173         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00174}00174         \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00175}00175             \textcolor{keywordflow}{if} (enemies\_profondeur[\textcolor{keywordtype}{id}] <= enemies[i]-\/>get\_profondeur())}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00176}00176             \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00177}00177                 enemy\_viants\_id[id] = i;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00178}00178                 enemy\_viants\_id[id] = enemies[i]-\/>get\_profondeur();}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00179}00179             \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00180}00180         \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00181}00181     \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00182}00182     \textcolor{keywordtype}{bool} bullet\_id[15];}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00183}00183     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 15; i++)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00184}00184     \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00185}00185         bullet\_id[i] = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00186}00186     \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00187}00187     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&bullet : bullets)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00188}00188     \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00189}00189         \textcolor{keywordflow}{if} (bullet-\/>get\_bullet() == \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00190}00190         \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00191}00191             \textcolor{keywordtype}{int} \textcolor{keywordtype}{id} = bullet-\/>quad;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00192}00192 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00193}00193             \textcolor{comment}{// s'ils se trouvent sur le meme quad}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00194}00194             \textcolor{keywordflow}{if} ((enemy\_viants\_id[\textcolor{keywordtype}{id}] != -\/1) \&\& bullet\_id[\textcolor{keywordtype}{id}] \&\& (bullet-\/>get\_profondeur() + enemies\_profondeur[\textcolor{keywordtype}{id}]) >= 0.85 \&\& (bullet-\/>get\_profondeur() + enemies\_profondeur[\textcolor{keywordtype}{id}]) < 1)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00195}00195             \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00196}00196                 bullet\_id[id] = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00197}00197                 \textcolor{keywordflow}{if} (enemies[enemy\_viants\_id[\textcolor{keywordtype}{id}]]-\/>get\_alive() == \textcolor{keyword}{true})}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00198}00198                 \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00199}00199                     enemies[enemy\_viants\_id[id]]-\/>set\_alive(\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00200}00200                     enemies[enemy\_viants\_id[id]] = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00201}00201                     \textcolor{keyword}{delete} enemies[enemy\_viants\_id[id]];}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00202}00202                     this-\/>utils-\/>set\_time(this-\/>utils-\/>get\_time() + 1);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00203}00203                     \textcolor{keyword}{delete} bullet;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00204}00204                     bullet = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00205}00205                 \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00206}00206                 score-\/>set\_score(score-\/>get\_score() + 150);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00207}00207             \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00208}00208         \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00209}00209     \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00210}00210 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00211}00211     bullets.erase(std::remove(bullets.begin(), bullets.end(), \textcolor{keyword}{nullptr}), bullets.end());}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00212}00212     enemies.erase(std::remove(enemies.begin(), enemies.end(), \textcolor{keyword}{nullptr}), enemies.end());}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00213}00213 \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00214}00214 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00215}\mbox{\hyperlink{class_games_a5d6564cab9fd75393729375e75f81b35}{00215}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_games_a5d6564cab9fd75393729375e75f81b35}{Games::jouer}}(\textcolor{keywordtype}{float} velocity\_coef)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00216}00216 \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00217}00217     \textcolor{keywordtype}{bool} quit\_game = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00218}00218     \textcolor{keyword}{auto} window\_game(sdl\_shared(SDL\_CreateWindow(\textcolor{stringliteral}{"{}Test\_SDL\_GAME"{}}, SDL\_WINDOWPOS\_UNDEFINED, SDL\_WINDOWPOS\_UNDEFINED, 1000, 800,}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00219}00219                                                                     SDL\_WINDOW\_SHOWN | SDL\_WINDOW\_ALLOW\_HIGHDPI)));}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00220}00220     \textcolor{keyword}{auto} renderer\_game(sdl\_shared( SDL\_CreateRenderer(window\_game.get(), -\/1, SDL\_RENDERER\_ACCELERATED | SDL\_RENDERER\_PRESENTVSYNC)));}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00221}00221     this-\/>tube-\/>affect\_quads(Tube\_Circle);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00222}00222     std::random\_device rd;  \textcolor{comment}{// Will be used to obtain a seed for the random number engine}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00223}00223     std::mt19937 gen(rd()); \textcolor{comment}{// Standard mersenne\_twister\_engine seeded with rd()}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00224}00224     std::uniform\_int\_distribution<> distrib(1, 15);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00225}00225     this-\/>enemies.push\_back(\textcolor{keyword}{new} \mbox{\hyperlink{class_enemy}{Enemy}}(distrib(gen), 0));}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00226}00226     this-\/>enemies.push\_back(\textcolor{keyword}{new} \mbox{\hyperlink{class_enemy}{Enemy}}(distrib(gen), 1));}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00227}00227     this-\/>enemies.push\_back(\textcolor{keyword}{new} \mbox{\hyperlink{class_enemy}{Enemy}}(distrib(gen), 2));}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00228}00228     this-\/>enemies.push\_back(\textcolor{keyword}{new} \mbox{\hyperlink{class_enemy}{Enemy}}(distrib(gen), 3));}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00229}00229     \textcolor{keywordflow}{while} (!quit\_game)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00230}00230     \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00231}00231         SDL\_Event event\_g;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00232}00232         \textcolor{keywordflow}{while} (!quit\_game \&\& SDL\_PollEvent(\&event\_g))}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00233}00233         \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00234}00234             \textcolor{keywordflow}{switch} (event\_g.type)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00235}00235             \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00236}00236             \textcolor{keywordflow}{case} SDL\_QUIT:}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00237}00237                 quit\_game = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00238}00238                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00239}00239             \textcolor{keywordflow}{case} SDL\_KEYDOWN:}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00240}00240                 \textcolor{keywordflow}{switch} (event\_g.key.keysym.sym)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00241}00241                 \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00242}00242                 \textcolor{keywordflow}{case} SDLK\_RIGHT:}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00243}00243                     }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00244}00244                     \textcolor{comment}{//CollisionSound-\/>PlaySound();}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00245}00245                     \textcolor{comment}{//CollisionSound-\/>SetupDevice();}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00246}00246                     }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00247}00247                     std::cout << \textcolor{stringliteral}{"{}right"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00248}00248                     \textcolor{keywordflow}{if} (quad <= 15)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00249}00249                     \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00250}00250                         \textcolor{keywordflow}{if} (quad == 15)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00251}00251                         \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00252}00252                             quad = 0;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00253}00253                             this-\/>blaster-\/>move\_r(renderer\_game.get(), quad, this-\/>tube-\/>tube\_quads, 2, -\/5, 2, 10);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00254}00254                         \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00255}00255                         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00256}00256                         \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00257}00257                             quad++;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00258}00258 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00259}00259                             this-\/>blaster-\/>move\_r(renderer\_game.get(), quad, this-\/>tube-\/>tube\_quads, 2, -\/5, 2, 10);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00260}00260                         \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00261}00261                     \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00262}00262                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00263}00263                 \textcolor{keywordflow}{case} SDLK\_LEFT:}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00264}00264                     \textcolor{keywordflow}{if} (quad <= 15)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00265}00265                     \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00266}00266                         \textcolor{keywordflow}{if} (quad == 0)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00267}00267                         \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00268}00268                             quad = 15;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00269}00269                             this-\/>blaster-\/>move\_l(renderer\_game.get(), quad, this-\/>tube-\/>tube\_quads, 2, -\/5, 2, 10);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00270}00270                         \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00271}00271                         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00272}00272                         \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00273}00273                             quad-\/-\/;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00274}00274                             this-\/>blaster-\/>move\_l(renderer\_game.get(), quad, this-\/>tube-\/>tube\_quads, 2, -\/5, 2, 10);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00275}00275                         \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00276}00276                     \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00277}00277                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00278}00278                 \textcolor{keywordflow}{case} SDLK\_SPACE:}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00279}00279                     this-\/>bullets.push\_back(\textcolor{keyword}{new} \mbox{\hyperlink{class_bullet}{Bullet}}(quad));}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00280}00280                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00281}00281                 \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00282}00282             \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00283}00283         \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00284}00284         this-\/>\mbox{\hyperlink{class_games_a9f7ad1d29a813f80d5752ac23a50520e}{menu\_jeu}}(renderer\_game.get(), quad);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00285}00285         this-\/>\mbox{\hyperlink{class_games_a09d3af8ca3a295d112fdd4c47dd46f67}{generate\_enemies}}(renderer\_game.get(), velocity\_coef);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00286}00286         this-\/>\mbox{\hyperlink{class_games_ab095bd05a89b901deab3430320234f89}{draw\_lives}}(renderer\_game.get());}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00287}00287         this-\/>\mbox{\hyperlink{class_games_ace76accd4c15bfc083b4e4c3f9b9b203}{generate\_bullets}}(renderer\_game.get(), velocity\_coef);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00288}00288         this-\/>\mbox{\hyperlink{class_games_acedb796872866926bd6338d599eaefd1}{explode}}(this-\/>utils);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00289}00289         SDL\_RenderPresent(renderer\_game.get());}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00290}00290         \textcolor{keywordflow}{if}(this-\/>score-\/>get\_score()<0)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00291}00291         \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00292}00292             quit\_game=\textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00293}00293         \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00294}00294     \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00295}00295     SDL\_Quit();}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00296}00296 \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00297}00297 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00298}\mbox{\hyperlink{class_games_a811946e9259fe304d0f8f41a0d1d69d4}{00298}} \textcolor{keywordtype}{int} \mbox{\hyperlink{class_games_a811946e9259fe304d0f8f41a0d1d69d4}{Games::genere\_menu}}()}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00299}00299 \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00300}00300     \textcolor{keywordflow}{if} (SDL\_Init(SDL\_INIT\_VIDEO | SDL\_INIT\_AUDIO) != 0)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00301}00301     \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00302}00302         std::cerr << \textcolor{stringliteral}{"{}Pb init SDL"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00303}00303         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00304}00304     \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00305}00305 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00306}00306     \textcolor{keyword}{auto} window(sdl\_shared(SDL\_CreateWindow(\textcolor{stringliteral}{"{}Test\_SDL"{}}, SDL\_WINDOWPOS\_UNDEFINED, SDL\_WINDOWPOS\_UNDEFINED, 800, 600,}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00307}00307                                           SDL\_WINDOW\_SHOWN | SDL\_WINDOW\_ALLOW\_HIGHDPI)));}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00308}00308 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00309}00309     \textcolor{keyword}{auto} renderer(sdl\_shared(SDL\_CreateRenderer(window.get(), -\/1, SDL\_RENDERER\_ACCELERATED | SDL\_RENDERER\_PRESENTVSYNC)));}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00310}00310 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00311}00311     this-\/>lives.push\_back(\textcolor{keyword}{new} \mbox{\hyperlink{class_score}{Score}}(1));}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00312}00312     this-\/>lives.push\_back(\textcolor{keyword}{new} \mbox{\hyperlink{class_score}{Score}}(2));}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00313}00313     this-\/>lives.push\_back(\textcolor{keyword}{new} \mbox{\hyperlink{class_score}{Score}}(3));}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00314}00314     this-\/>lives.push\_back(\textcolor{keyword}{new} \mbox{\hyperlink{class_score}{Score}}(4));}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00315}00315     \textcolor{comment}{// Sound* CollisionSound= new Sound("{}/home/oumayma/Documents/mp3/shoot.mp3"{});}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00316}00316     assert(renderer.get() != NULL);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00317}00317 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00318}00318     \textcolor{keywordtype}{bool} quit = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00319}00319     \textcolor{keywordflow}{while} (!quit)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00320}00320     \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00321}00321         SDL\_Event event;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00322}00322         \textcolor{keywordflow}{while} (!quit \&\& SDL\_PollEvent(\&event))}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00323}00323         \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00324}00324             \textcolor{keywordflow}{switch} (event.type)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00325}00325             \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00326}00326             \textcolor{keywordflow}{case} SDL\_QUIT:}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00327}00327                 quit = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00328}00328                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00329}00329             \textcolor{keywordflow}{case} SDL\_KEYDOWN:}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00330}00330                 \textcolor{keywordflow}{switch} (event.key.keysym.sym)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00331}00331                 \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00332}00332                 \textcolor{keywordflow}{case} SDLK\_s:}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00333}00333                     std::cout << \textcolor{stringliteral}{"{}you clicked s"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00334}00334 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00335}00335                     start = 1;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00336}00336 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00337}00337                     quit = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00338}00338                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00339}00339                 \textcolor{keywordflow}{case} SDLK\_q:}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00340}00340                     std::cout << \textcolor{stringliteral}{"{}you clicked q"{}} << std::endl;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00341}00341                     quit = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00342}00342                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00343}00343                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00344}00344                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00345}00345                 \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00346}00346             \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00347}00347         \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00348}00348         this-\/>\mbox{\hyperlink{class_games_a1dbdb4846936b7c15257037dbe7295ef}{menu\_principal}}(renderer.get()); \textcolor{comment}{// affiche la page principal}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00349}00349         }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00350}00350     \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00351}00351        }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00352}00352     }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00353}00353     SDL\_Quit();    }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00354}00354     \textcolor{keywordflow}{return} start;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00355}00355 \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00356}00356 \textcolor{keywordtype}{void} Games::game\_over()}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00357}00357 \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00358}00358     \textcolor{keyword}{auto} window\_game(sdl\_shared(SDL\_CreateWindow(\textcolor{stringliteral}{"{}Test\_SDL\_GAME"{}}, SDL\_WINDOWPOS\_UNDEFINED, SDL\_WINDOWPOS\_UNDEFINED, 1000, 800,}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00359}00359                                                                     SDL\_WINDOW\_SHOWN | SDL\_WINDOW\_ALLOW\_HIGHDPI)));}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00360}00360     \textcolor{keyword}{auto} renderer\_game(sdl\_shared( SDL\_CreateRenderer(window\_game.get(), -\/1, SDL\_RENDERER\_ACCELERATED | SDL\_RENDERER\_PRESENTVSYNC)));}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00361}00361     \textcolor{keywordtype}{bool} quit\_game=\textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00362}00362     }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00363}00363     \textcolor{keywordflow}{while} (!quit\_game)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00364}00364     \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00365}00365         SDL\_Event event;}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00366}00366         \textcolor{keywordflow}{while} (!quit\_game \&\& SDL\_PollEvent(\&event))}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00367}00367         \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00368}00368             \textcolor{keywordflow}{switch} (event.type)}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00369}00369             \{}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00370}00370             \textcolor{keywordflow}{case} SDL\_QUIT:}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00371}00371                 quit\_game = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00372}00372                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00373}00373             \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00374}00374         \}}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00375}00375     }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00376}00376         SDL\_SetRenderDrawColor(renderer\_game.get(), 255, 0, 0, 0);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00377}00377         this-\/>menu-\/>hershey(renderer\_game.get(), \textcolor{stringliteral}{"{}GAME OVER"{}}, 310, 480, 2);}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00378}00378         SDL\_RenderPresent(renderer\_game.get());}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00379}00379     \}    }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00380}00380     SDL\_Quit();}
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00381}00381 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00382}00382     }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00383}00383 }
+\DoxyCodeLine{\Hypertarget{game_8cpp_source_l00384}00384 \}}
+
+\end{DoxyCode}

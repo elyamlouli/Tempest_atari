@@ -1,0 +1,42 @@
+\hypertarget{audio_8cpp_source}{}\doxysection{audio.\+cpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}audio.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00003}00003 \textcolor{comment}{// For error output}}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00006}00006 Sound::Sound(std::string filepath)\{}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00007}00007     \textcolor{keywordflow}{if}(SDL\_LoadWAV(filepath.c\_str(), \&m\_audioSpec, \&m\_waveStart, \&m\_waveLength) == \textcolor{keyword}{nullptr})\{}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00008}00008         std::cerr << \textcolor{stringliteral}{"{}sound loading error: "{}} << SDL\_GetError() << std::endl;}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00009}00009     \}}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00010}00010 \}}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00012}00012 Sound::\string~Sound()\{}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00013}00013     SDL\_FreeWAV(m\_waveStart);}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00014}00014     SDL\_CloseAudioDevice(m\_device);}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00015}00015 \}}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00017}00017 \textcolor{keywordtype}{void} Sound::PlaySound()\{}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00018}00018     \textcolor{comment}{// Queue the audio (so we play when available,}}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00019}00019     \textcolor{comment}{//                  as oppososed to a callback function)}}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00020}00020     \textcolor{keywordtype}{int} status = SDL\_QueueAudio(m\_device, m\_waveStart, m\_waveLength);}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00021}00021     SDL\_PauseAudioDevice(m\_device,0);}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00022}00022 \}}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00024}00024 \textcolor{keywordtype}{void} Sound::StopSound()\{}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00025}00025     SDL\_PauseAudioDevice(m\_device,1);}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00026}00026 \}}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00027}00027 }
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00028}00028 \textcolor{keywordtype}{void} Sound::SetupDevice()\{}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00029}00029     \textcolor{comment}{// Request the most reasonable default device}}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00030}00030     \textcolor{comment}{// Set the device for playback for 0, or '1' for recording.}}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00031}00031     m\_device = SDL\_OpenAudioDevice(\textcolor{keyword}{nullptr}, 0, \&m\_audioSpec, \textcolor{keyword}{nullptr}, SDL\_AUDIO\_ALLOW\_ANY\_CHANGE);}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00032}00032     \textcolor{comment}{// Error message if no suitable device is found to play}}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00033}00033     \textcolor{comment}{// audio on.}}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00034}00034     \textcolor{keywordflow}{if}(0 == m\_device)\{}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00035}00035         std::cerr << \textcolor{stringliteral}{"{}sound device error: "{}} << SDL\_GetError() << std::endl; }
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00036}00036     \}}
+\DoxyCodeLine{\Hypertarget{audio_8cpp_source_l00037}00037 \}}
+
+\end{DoxyCode}

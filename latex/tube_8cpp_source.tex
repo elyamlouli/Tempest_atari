@@ -1,0 +1,29 @@
+\hypertarget{tube_8cpp_source}{}\doxysection{tube.\+cpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}tube.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00003}00003 Tube::Tube(Forme f) : forme(f)}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00004}00004 \{}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00005}00005 \}}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00006}00006 }
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00007}00007 Tube::\string~Tube()}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00008}00008 \{}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00009}00009 \}}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00011}\mbox{\hyperlink{class_tube_a9979fa8d29c988d264e36c9cba2fd82e}{00011}} \textcolor{keywordtype}{void} \mbox{\hyperlink{class_tube_a9979fa8d29c988d264e36c9cba2fd82e}{Tube::affect\_quads}}(Forme f)}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00012}00012 \{}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00013}00013     \textcolor{keywordflow}{if} (f == 0)}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00014}00014     \{}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00015}00015         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < 16; i++)}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00016}00016         \{}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00017}00017             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < 4; j++)}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00018}00018             \{}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00019}00019                 this-\/>\mbox{\hyperlink{class_tube_a875d3ed860f138d0e169b202b5f0d6ea}{tube\_quads}}[i][j].first = tubeQuads[i][j].first;}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00020}00020                 this-\/>\mbox{\hyperlink{class_tube_a875d3ed860f138d0e169b202b5f0d6ea}{tube\_quads}}[i][j].second = tubeQuads[i][j].second;}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00021}00021             \}}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00022}00022         \}}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00023}00023     \}}
+\DoxyCodeLine{\Hypertarget{tube_8cpp_source_l00024}00024 \}}
+
+\end{DoxyCode}

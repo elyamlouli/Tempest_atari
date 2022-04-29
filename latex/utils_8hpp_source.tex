@@ -1,0 +1,43 @@
+\hypertarget{utils_8hpp_source}{}\doxysection{utils.\+hpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef UTILS}}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define UTILS}}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <math.h>}}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include <SDL.h>}}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00008}00008 \textcolor{preprocessor}{\#include <array>}}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00014}\mbox{\hyperlink{class_utils}{00014}} \textcolor{keyword}{class }\mbox{\hyperlink{class_utils}{Utils}}}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00015}00015 \{}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00016}00016 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00017}00017     \textcolor{keywordtype}{double} time;}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00019}00019 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00020}00020     \mbox{\hyperlink{class_utils}{Utils}}();}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00021}00021     \mbox{\hyperlink{class_utils}{\string~Utils}}();}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00022}00022     \textcolor{comment}{// Possible d'intégrer template}}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00031}00031     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_utils_a69114624bcd1c9e0b48f7b7265c9c9b0}{distance}}(\textcolor{keywordtype}{int} vec1[2], \textcolor{keywordtype}{int} vec2[2]);}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00032}00032     \textcolor{keywordtype}{float} \mbox{\hyperlink{class_utils_a69114624bcd1c9e0b48f7b7265c9c9b0}{distance}}(\textcolor{keywordtype}{int} x1, \textcolor{keywordtype}{int} y1, \textcolor{keywordtype}{int} x2, \textcolor{keywordtype}{int} y2);}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00033}00033 }
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00044}00044     std::vector<float> \mbox{\hyperlink{class_utils_ae57b0fbe75aa24f12e52857400dfe12d}{mid\_two\_points}}(\textcolor{keywordtype}{int} x1, \textcolor{keywordtype}{int} y1, \textcolor{keywordtype}{int} x2, \textcolor{keywordtype}{int} y2);}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00056}00056     std::pair<double, double> \mbox{\hyperlink{class_utils_ab1ba3766731f627f32bbf1e64c162945}{find\_position}}(std::array<std::pair<int, int>, 4> tubeQuad, \textcolor{keywordtype}{int} ax, \textcolor{keywordtype}{int} ay, \textcolor{keywordtype}{int} scale, \textcolor{keywordtype}{float} profondeur);}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00066}\mbox{\hyperlink{class_utils_af564d9901c1536b980beb22bbf83f2f9}{00066}}     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_utils_af564d9901c1536b980beb22bbf83f2f9}{hershey}}(SDL\_Renderer *renderer, std::string str, \textcolor{keywordtype}{int} start\_x, \textcolor{keywordtype}{int} start\_y, \textcolor{keywordtype}{int} coeff);}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00067}00067     \textcolor{keywordtype}{double} get\_time();}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00068}00068     \textcolor{keywordtype}{void} set\_time(\textcolor{keywordtype}{int} t);}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00069}00069 \};}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00070}00070 }
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00075}\mbox{\hyperlink{class_utils_enemy}{00075}} \textcolor{keyword}{class }\mbox{\hyperlink{class_utils_enemy}{UtilsEnemy}} : \textcolor{keyword}{public} \mbox{\hyperlink{class_utils}{Utils}}}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00076}00076 \{}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00077}00077 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00078}00078     \mbox{\hyperlink{class_utils_enemy}{UtilsEnemy}}();}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00079}00079     \mbox{\hyperlink{class_utils_enemy}{\string~UtilsEnemy}}();}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00080}00080     std::pair<double, double> find\_position(std::array<std::pair<int, int>, 4> tubeQuad, \textcolor{keywordtype}{int} ax, \textcolor{keywordtype}{int} ay, \textcolor{keywordtype}{int} scale, \textcolor{keywordtype}{float} profondeur);}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00081}00081 \};}
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00082}00082 }
+\DoxyCodeLine{\Hypertarget{utils_8hpp_source_l00083}00083 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,38 @@
+\hypertarget{bullet_8hpp_source}{}\doxysection{bullet.\+hpp}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#ifndef BULLET}}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#define BULLET}}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include <SDL.h>}}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00005}00005 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00006}00006 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00007}00007 \textcolor{preprocessor}{\#include <memory>}}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00008}00008 \textcolor{preprocessor}{\#include "{}utils.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00014}\mbox{\hyperlink{class_bullet}{00014}} \textcolor{keyword}{class }\mbox{\hyperlink{class_bullet}{Bullet}}}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00015}00015 \{}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00016}00016 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00017}00017     \textcolor{keywordtype}{bool} vivant\_bullet;}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00018}00018     std::pair<double, double> P;}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00019}00019     \textcolor{keywordtype}{float} profondeur;}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00021}00021 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00022}00022     std::shared\_ptr<Utils>utils;}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00023}00023     \textcolor{keywordtype}{int} quad;}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00024}00024     \textcolor{keywordtype}{float} dist;}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00025}00025     \mbox{\hyperlink{class_bullet}{Bullet}}(\textcolor{keywordtype}{int} quad);}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00026}00026     \mbox{\hyperlink{class_bullet}{\string~Bullet}}();}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00027}00027     \textcolor{keywordtype}{void} draw\_bullet(SDL\_Renderer *renderer, \textcolor{keywordtype}{int} radius);}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00035}00035     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_bullet_a888b651343768185337806e6a17447db}{move}}(std::array<std::pair<int,int>,4> tubeQuad, \textcolor{keywordtype}{int} scale, \textcolor{keywordtype}{float} velocity\_coef);}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00037}00037     \textcolor{keywordtype}{void} set\_bullet(\textcolor{keywordtype}{bool} b);}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00038}00038     \textcolor{keywordtype}{bool} get\_bullet();}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00039}00039     \textcolor{keywordtype}{void} set\_P(std::pair<double, double>p);}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00040}00040     std::pair<double, double> get\_P();}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00041}00041     \textcolor{keywordtype}{float} get\_profondeur();}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00042}00042     \textcolor{keywordtype}{void} set\_profondeur(\textcolor{keywordtype}{float} p);}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00043}00043 \};}
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{bullet_8hpp_source_l00045}00045 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

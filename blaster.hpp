@@ -1,47 +1,45 @@
 #ifndef BLASTER
 #define BLASTER
-#include "utils.hpp"
-#include "menu.hpp"
 
 #include <SDL.h>
-#include <assert.h>
-
+#include <cassert>
 #include <iostream>
 #include <cmath>
+#include <memory>
+
+
+#include "utils.hpp"
+#include "menu.hpp"
 #include "tube.hpp"
-//static const double pi = std::acos(-1);
+
 #define NUM_BLASTER_POSITIONS 7
 #define MAX_NUM_BULLETS 8
 
+/**
+ * @brief
+ * Classe du vaisseau
+ * Il est déplaçable en utilisant les touches du pavés numérique
+ * Quand il est immobile, le vaisseau se trouve toujours lié à un couloir (tube)
+ */
 
-
-
-struct Blaster
+class Blaster
 {
-  
-  //static float xPos;
-  //static float yPos ;
-  
-   
-    SDL_Renderer * renderer;
-    
-    
-    int targetPos;
-    int changingXPos;
-    Utils *utils;
 
-    
-    Blaster();
-    ~Blaster();
+public:
+  int targetPos;
+  int changingXPos;
+  std::shared_ptr<Utils>utils;
 
-    //void defineTubeQuads();
-    void drawTubeQuads(SDL_Renderer * renderer,int x,int y, int coef );
-    void drawblaster(SDL_Renderer * renderer,int tubeQuad[4][2],int x,int y,int coef,int rect);
-    void drawblaster_bleu(SDL_Renderer * renderer,int tubeQuad[4][2],int x,int y,int coef,int rect);
+  Blaster();
+  ~Blaster();
 
-    //void drawblaster(SDL_Renderer * renderer,int tubeQuad[4][2],int h,int x,int y,int coef);
-    void move_r(SDL_Renderer * renderer,int i,int tubeQuads[16][4][2],int x,int y,int coef,int rect);
-    void move_l(SDL_Renderer * renderer,int i,int tubeQuads[16][4][2],int x,int y,int coef,int rect);
+  void drawTubeQuads(SDL_Renderer *renderer, int x, int y, int coef);
+
+  void drawblaster(SDL_Renderer *renderer, std::array<std::pair<int, int>, 4> tubeQuad, int x, int y, int coef, int rect);
+  void drawblaster_bleu(SDL_Renderer *renderer, std::array<std::pair<int, int>, 4> tubeQuad, int x, int y, int coef, int rect);
+
+  void move_r(SDL_Renderer *renderer, int i, std::array<std::array<std::pair<int, int>, 4>, 16> tubeQuads, int x, int y, int coef, int rect);
+  void move_l(SDL_Renderer *renderer, int i, std::array<std::array<std::pair<int, int>, 4>, 16> tubeQuads, int x, int y, int coef, int rect);
 };
 
 #endif

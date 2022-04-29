@@ -1,0 +1,373 @@
+\hypertarget{struct_blaster}{}\doxysection{Blaster Struct Reference}
+\label{struct_blaster}\index{Blaster@{Blaster}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{struct_blaster_af7c0abc6375c5c7faf2c41535d6f5a5c}{draw\+Tube\+Quads}} (SDL\+\_\+\+Renderer $\ast$renderer, int x, int y, int coef)
+\item 
+void \mbox{\hyperlink{struct_blaster_a3556ee4fd987bb58eb563bcb64ee6e73}{drawblaster}} (SDL\+\_\+\+Renderer $\ast$renderer, int tube\+Quad\mbox{[}4\mbox{]}\mbox{[}2\mbox{]}, int x, int y, int coef, int rect)
+\item 
+void \mbox{\hyperlink{struct_blaster_a9c82fc21ba20ddfd51a44bf37ec8efaa}{drawblaster\+\_\+bleu}} (SDL\+\_\+\+Renderer $\ast$renderer, int tube\+Quad\mbox{[}4\mbox{]}\mbox{[}2\mbox{]}, int x, int y, int coef, int rect)
+\item 
+void \mbox{\hyperlink{struct_blaster_ae4657f8b6d324c90a77eae01b4e94a30}{move\+\_\+r}} (SDL\+\_\+\+Renderer $\ast$renderer, int i, int tube\+Quads\mbox{[}16\mbox{]}\mbox{[}4\mbox{]}\mbox{[}2\mbox{]}, int x, int y, int coef, int rect)
+\item 
+void \mbox{\hyperlink{struct_blaster_a178dfbb8a22be5f8e60e943ff5e53011}{move\+\_\+l}} (SDL\+\_\+\+Renderer $\ast$renderer, int i, int tube\+Quads\mbox{[}16\mbox{]}\mbox{[}4\mbox{]}\mbox{[}2\mbox{]}, int x, int y, int coef, int rect)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+SDL\+\_\+\+Renderer $\ast$ \mbox{\hyperlink{struct_blaster_a1ed61e52f6d1f667d5428a1517dbcc4b}{renderer}}
+\item 
+int \mbox{\hyperlink{struct_blaster_ac729c5c48438a2022f57291f0d1f7fb0}{target\+Pos}}
+\item 
+int \mbox{\hyperlink{struct_blaster_a94fe397709140ee670dc5290e7939365}{changing\+XPos}}
+\item 
+\mbox{\hyperlink{class_utils}{Utils}} $\ast$ \mbox{\hyperlink{struct_blaster_aae1192f99c3d68e7690e2b825e77030b}{utils}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{blaster_8hpp_source_l00019}{19}} of file \mbox{\hyperlink{blaster_8hpp_source}{blaster.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{struct_blaster_a1c033db96880d5aeed45986ab5dfcbbc}\label{struct_blaster_a1c033db96880d5aeed45986ab5dfcbbc}} 
+\index{Blaster@{Blaster}!Blaster@{Blaster}}
+\index{Blaster@{Blaster}!Blaster@{Blaster}}
+\doxysubsubsection{\texorpdfstring{Blaster()}{Blaster()}}
+{\footnotesize\ttfamily Blaster\+::\+Blaster (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{blaster_8cpp_source_l00004}{4}} of file \mbox{\hyperlink{blaster_8cpp_source}{blaster.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00005 \{}
+\DoxyCodeLine{00006     utils=\textcolor{keyword}{new} \mbox{\hyperlink{class_utils}{Utils}}();}
+\DoxyCodeLine{00007 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_blaster_ad3f2b157f525b92c6ac18f3e0d2d4a4d}\label{struct_blaster_ad3f2b157f525b92c6ac18f3e0d2d4a4d}} 
+\index{Blaster@{Blaster}!````~Blaster@{$\sim$Blaster}}
+\index{````~Blaster@{$\sim$Blaster}!Blaster@{Blaster}}
+\doxysubsubsection{\texorpdfstring{$\sim$Blaster()}{~Blaster()}}
+{\footnotesize\ttfamily Blaster\+::$\sim$\+Blaster (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{blaster_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{blaster_8cpp_source}{blaster.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00010 \{}
+\DoxyCodeLine{00011 }
+\DoxyCodeLine{00012 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{struct_blaster_a3556ee4fd987bb58eb563bcb64ee6e73}\label{struct_blaster_a3556ee4fd987bb58eb563bcb64ee6e73}} 
+\index{Blaster@{Blaster}!drawblaster@{drawblaster}}
+\index{drawblaster@{drawblaster}!Blaster@{Blaster}}
+\doxysubsubsection{\texorpdfstring{drawblaster()}{drawblaster()}}
+{\footnotesize\ttfamily void Blaster\+::drawblaster (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{tube\+Quad\mbox{[}4\mbox{]}\mbox{[}2\mbox{]},  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{coef,  }\item[{int}]{rect }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{blaster_8cpp_source_l00060}{60}} of file \mbox{\hyperlink{blaster_8cpp_source}{blaster.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00061 \{}
+\DoxyCodeLine{00062     \textcolor{keywordflow}{if}(tubeQuad[0][1] < tubeQuad[1][1] \&\& tubeQuad[0][0] < tubeQuad[1][0])}
+\DoxyCodeLine{00063     \{}
+\DoxyCodeLine{00064         \textcolor{keywordtype}{int} x1 = tubeQuad[0][0]+rect;}
+\DoxyCodeLine{00065         \textcolor{keywordtype}{int} y1=tubeQuad[0][1]-\/rect;}
+\DoxyCodeLine{00066         \textcolor{keywordtype}{int} x2= tubeQuad[1][0]+rect;}
+\DoxyCodeLine{00067         \textcolor{keywordtype}{int} y2= tubeQuad[1][1]-\/rect;}
+\DoxyCodeLine{00068         SDL\_SetRenderDrawColor(renderer, 255,250,42,0);}
+\DoxyCodeLine{00069         SDL\_RenderDrawLine(renderer,(x+tubeQuad[0][0])*coef,(y+tubeQuad[0][1])*coef,(x+x1)*coef,(y+y1)*coef);}
+\DoxyCodeLine{00070         SDL\_RenderDrawLine(renderer,(x+x1)*coef,(y+y1)*coef,(x+x2)*coef,(y+y2)*coef);}
+\DoxyCodeLine{00071         SDL\_RenderDrawLine(renderer,(x+x2)*coef,(y+y2)*coef,(x+tubeQuad[1][0])*coef,(y+tubeQuad[1][1])*coef);}
+\DoxyCodeLine{00072 }
+\DoxyCodeLine{00073 }
+\DoxyCodeLine{00074     \}}
+\DoxyCodeLine{00075     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(tubeQuad[0][0] > tubeQuad[1][0] \&\& tubeQuad[0][1] > tubeQuad[1][1])}
+\DoxyCodeLine{00076     \{}
+\DoxyCodeLine{00077        }
+\DoxyCodeLine{00078         \textcolor{keywordtype}{int} x1 = tubeQuad[0][0]-\/rect;}
+\DoxyCodeLine{00079         \textcolor{keywordtype}{int} y1=tubeQuad[0][1]+rect;}
+\DoxyCodeLine{00080         \textcolor{keywordtype}{int} x2= tubeQuad[1][0]-\/rect;}
+\DoxyCodeLine{00081         \textcolor{keywordtype}{int} y2= tubeQuad[1][1]+rect;}
+\DoxyCodeLine{00082         SDL\_SetRenderDrawColor(renderer, 255,250,42,0);}
+\DoxyCodeLine{00083         SDL\_RenderDrawLine(renderer,(x+tubeQuad[0][0])*coef,(y+tubeQuad[0][1])*coef,(x+x1)*coef,(y+y1)*coef);}
+\DoxyCodeLine{00084         SDL\_RenderDrawLine(renderer,(x+x1)*coef,(y+y1)*coef,(x+x2)*coef,(y+y2)*coef);}
+\DoxyCodeLine{00085         SDL\_RenderDrawLine(renderer,(x+x2)*coef,(y+y2)*coef,(x+tubeQuad[1][0])*coef,(y+tubeQuad[1][1])*coef);}
+\DoxyCodeLine{00086 }
+\DoxyCodeLine{00087     \}}
+\DoxyCodeLine{00088     }
+\DoxyCodeLine{00089 }
+\DoxyCodeLine{00090 }
+\DoxyCodeLine{00091     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(tubeQuad[0][0] > tubeQuad[1][0])}
+\DoxyCodeLine{00092     \{}
+\DoxyCodeLine{00093         }
+\DoxyCodeLine{00094         \textcolor{keywordtype}{int} x1 = tubeQuad[0][0]+rect;}
+\DoxyCodeLine{00095         \textcolor{keywordtype}{int} y1=tubeQuad[0][1]+rect;}
+\DoxyCodeLine{00096         \textcolor{keywordtype}{int} x2= tubeQuad[1][0]+rect;}
+\DoxyCodeLine{00097         \textcolor{keywordtype}{int} y2= tubeQuad[1][1]+rect;}
+\DoxyCodeLine{00098         SDL\_SetRenderDrawColor(renderer, 255,250,42,0);}
+\DoxyCodeLine{00099         SDL\_RenderDrawLine(renderer,(x+tubeQuad[0][0])*coef,(y+tubeQuad[0][1])*coef,(x+x1)*coef,(y+y1)*coef);}
+\DoxyCodeLine{00100         SDL\_RenderDrawLine(renderer,(x+x1)*coef,(y+y1)*coef,(x+x2)*coef,(y+y2)*coef);}
+\DoxyCodeLine{00101         SDL\_RenderDrawLine(renderer,(x+x2)*coef,(y+y2)*coef,(x+tubeQuad[1][0])*coef,(y+tubeQuad[1][1])*coef);}
+\DoxyCodeLine{00102         }
+\DoxyCodeLine{00103 }
+\DoxyCodeLine{00104 }
+\DoxyCodeLine{00105     \}}
+\DoxyCodeLine{00106     \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00107         }
+\DoxyCodeLine{00108 }
+\DoxyCodeLine{00109         \textcolor{keywordtype}{int} x1 = tubeQuad[0][0]-\/rect;}
+\DoxyCodeLine{00110         \textcolor{keywordtype}{int} y1=tubeQuad[0][1]-\/rect;}
+\DoxyCodeLine{00111         \textcolor{keywordtype}{int} x2= tubeQuad[1][0]-\/rect;}
+\DoxyCodeLine{00112         \textcolor{keywordtype}{int} y2= tubeQuad[1][1]-\/rect;}
+\DoxyCodeLine{00113         SDL\_SetRenderDrawColor(renderer, 255,250,42,0);}
+\DoxyCodeLine{00114         SDL\_RenderDrawLine(renderer,(x+tubeQuad[0][0])*coef,(y+tubeQuad[0][1])*coef,(x+x1)*coef,(y+y1)*coef);}
+\DoxyCodeLine{00115         SDL\_RenderDrawLine(renderer,(x+x1)*coef,(y+y1)*coef,(x+x2)*coef,(y+y2)*coef);}
+\DoxyCodeLine{00116         SDL\_RenderDrawLine(renderer,(x+x2)*coef,(y+y2)*coef,(x+tubeQuad[1][0])*coef,(y+tubeQuad[1][1])*coef);}
+\DoxyCodeLine{00117 }
+\DoxyCodeLine{00118     \}}
+\DoxyCodeLine{00119     SDL\_RenderDrawLine(renderer,(x+tubeQuad[0][0])*coef,(y+tubeQuad[0][1])*coef,(x+tubeQuad[3][0])*coef,(y+tubeQuad[3][1])*coef);}
+\DoxyCodeLine{00120     SDL\_RenderDrawLine(renderer,(x+tubeQuad[3][0])*coef,(y+tubeQuad[3][1])*coef,(x+tubeQuad[2][0])*coef,(y+tubeQuad[2][1])*coef);}
+\DoxyCodeLine{00121     SDL\_RenderDrawLine(renderer,(x+tubeQuad[2][0])*coef,(y+tubeQuad[2][1])*coef,(x+tubeQuad[1][0])*coef,(y+tubeQuad[1][1])*coef);}
+\DoxyCodeLine{00122     SDL\_SetRenderDrawColor(renderer, 0,0,0,255);}
+\DoxyCodeLine{00123     SDL\_RenderDrawLine(renderer,(x+tubeQuad[0][0])*coef,(y+tubeQuad[0][1])*coef,(x+tubeQuad[1][0])*coef,(y+tubeQuad[1][1])*coef);}
+\DoxyCodeLine{00124 }
+\DoxyCodeLine{00125 }
+\DoxyCodeLine{00126 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_blaster_a9c82fc21ba20ddfd51a44bf37ec8efaa}\label{struct_blaster_a9c82fc21ba20ddfd51a44bf37ec8efaa}} 
+\index{Blaster@{Blaster}!drawblaster\_bleu@{drawblaster\_bleu}}
+\index{drawblaster\_bleu@{drawblaster\_bleu}!Blaster@{Blaster}}
+\doxysubsubsection{\texorpdfstring{drawblaster\_bleu()}{drawblaster\_bleu()}}
+{\footnotesize\ttfamily void Blaster\+::drawblaster\+\_\+bleu (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{tube\+Quad\mbox{[}4\mbox{]}\mbox{[}2\mbox{]},  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{coef,  }\item[{int}]{rect }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{blaster_8cpp_source_l00127}{127}} of file \mbox{\hyperlink{blaster_8cpp_source}{blaster.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00128 \{}
+\DoxyCodeLine{00129     \textcolor{keywordflow}{if}(tubeQuad[0][1] < tubeQuad[1][1] \&\& tubeQuad[0][0] < tubeQuad[1][0])}
+\DoxyCodeLine{00130     \{}
+\DoxyCodeLine{00131         \textcolor{keywordtype}{int} x1 = tubeQuad[0][0]+rect;}
+\DoxyCodeLine{00132         \textcolor{keywordtype}{int} y1=tubeQuad[0][1]-\/rect;}
+\DoxyCodeLine{00133         \textcolor{keywordtype}{int} x2= tubeQuad[1][0]+rect;}
+\DoxyCodeLine{00134         \textcolor{keywordtype}{int} y2= tubeQuad[1][1]-\/rect;}
+\DoxyCodeLine{00135          SDL\_SetRenderDrawColor(renderer, 0,0,0,255);}
+\DoxyCodeLine{00136         SDL\_RenderDrawLine(renderer,(x+tubeQuad[0][0])*coef,(y+tubeQuad[0][1])*coef,(x+x1)*coef,(y+y1)*coef);}
+\DoxyCodeLine{00137         SDL\_RenderDrawLine(renderer,(x+x1)*coef,(y+y1)*coef,(x+x2)*coef,(y+y2)*coef);}
+\DoxyCodeLine{00138         SDL\_RenderDrawLine(renderer,(x+x2)*coef,(y+y2)*coef,(x+tubeQuad[1][0])*coef,(y+tubeQuad[1][1])*coef);}
+\DoxyCodeLine{00139 }
+\DoxyCodeLine{00140 }
+\DoxyCodeLine{00141     \}}
+\DoxyCodeLine{00142     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(tubeQuad[0][0] > tubeQuad[1][0] \&\& tubeQuad[0][1] > tubeQuad[1][1])}
+\DoxyCodeLine{00143     \{}
+\DoxyCodeLine{00144         }
+\DoxyCodeLine{00145         \textcolor{keywordtype}{int} x1 = tubeQuad[0][0]-\/rect;}
+\DoxyCodeLine{00146         \textcolor{keywordtype}{int} y1=tubeQuad[0][1]+rect;}
+\DoxyCodeLine{00147         \textcolor{keywordtype}{int} x2= tubeQuad[1][0]-\/rect;}
+\DoxyCodeLine{00148         \textcolor{keywordtype}{int} y2= tubeQuad[1][1]+rect;}
+\DoxyCodeLine{00149          SDL\_SetRenderDrawColor(renderer, 0,0,0,255);}
+\DoxyCodeLine{00150         SDL\_RenderDrawLine(renderer,(x+tubeQuad[0][0])*coef,(y+tubeQuad[0][1])*coef,(x+x1)*coef,(y+y1)*coef);}
+\DoxyCodeLine{00151         SDL\_RenderDrawLine(renderer,(x+x1)*coef,(y+y1)*coef,(x+x2)*coef,(y+y2)*coef);}
+\DoxyCodeLine{00152         SDL\_RenderDrawLine(renderer,(x+x2)*coef,(y+y2)*coef,(x+tubeQuad[1][0])*coef,(y+tubeQuad[1][1])*coef);}
+\DoxyCodeLine{00153 }
+\DoxyCodeLine{00154     \}}
+\DoxyCodeLine{00155     }
+\DoxyCodeLine{00156 }
+\DoxyCodeLine{00157 }
+\DoxyCodeLine{00158     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(tubeQuad[0][0] > tubeQuad[1][0])}
+\DoxyCodeLine{00159     \{}
+\DoxyCodeLine{00160        }
+\DoxyCodeLine{00161         \textcolor{keywordtype}{int} x1 = tubeQuad[0][0]+rect;}
+\DoxyCodeLine{00162         \textcolor{keywordtype}{int} y1=tubeQuad[0][1]+rect;}
+\DoxyCodeLine{00163         \textcolor{keywordtype}{int} x2= tubeQuad[1][0]+rect;}
+\DoxyCodeLine{00164         \textcolor{keywordtype}{int} y2= tubeQuad[1][1]+rect;}
+\DoxyCodeLine{00165          SDL\_SetRenderDrawColor(renderer, 0,0,0,255);}
+\DoxyCodeLine{00166         SDL\_RenderDrawLine(renderer,(x+tubeQuad[0][0])*coef,(y+tubeQuad[0][1])*coef,(x+x1)*coef,(y+y1)*coef);}
+\DoxyCodeLine{00167         SDL\_RenderDrawLine(renderer,(x+x1)*coef,(y+y1)*coef,(x+x2)*coef,(y+y2)*coef);}
+\DoxyCodeLine{00168         SDL\_RenderDrawLine(renderer,(x+x2)*coef,(y+y2)*coef,(x+tubeQuad[1][0])*coef,(y+tubeQuad[1][1])*coef);}
+\DoxyCodeLine{00169         }
+\DoxyCodeLine{00170 }
+\DoxyCodeLine{00171 }
+\DoxyCodeLine{00172     \}}
+\DoxyCodeLine{00173     \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00174         }
+\DoxyCodeLine{00175 }
+\DoxyCodeLine{00176         \textcolor{keywordtype}{int} x1 = tubeQuad[0][0]-\/rect;}
+\DoxyCodeLine{00177         \textcolor{keywordtype}{int} y1=tubeQuad[0][1]-\/rect;}
+\DoxyCodeLine{00178         \textcolor{keywordtype}{int} x2= tubeQuad[1][0]-\/rect;}
+\DoxyCodeLine{00179         \textcolor{keywordtype}{int} y2= tubeQuad[1][1]-\/rect;}
+\DoxyCodeLine{00180         SDL\_SetRenderDrawColor(renderer, 0,0,0,255);}
+\DoxyCodeLine{00181         SDL\_RenderDrawLine(renderer,(x+tubeQuad[0][0])*coef,(y+tubeQuad[0][1])*coef,(x+x1)*coef,(y+y1)*coef);}
+\DoxyCodeLine{00182         SDL\_RenderDrawLine(renderer,(x+x1)*coef,(y+y1)*coef,(x+x2)*coef,(y+y2)*coef);}
+\DoxyCodeLine{00183         SDL\_RenderDrawLine(renderer,(x+x2)*coef,(y+y2)*coef,(x+tubeQuad[1][0])*coef,(y+tubeQuad[1][1])*coef);}
+\DoxyCodeLine{00184 }
+\DoxyCodeLine{00185     \}}
+\DoxyCodeLine{00186     SDL\_SetRenderDrawColor(renderer, 0,0,255,0);}
+\DoxyCodeLine{00187     SDL\_RenderDrawLine(renderer,(x+tubeQuad[0][0])*coef,(y+tubeQuad[0][1])*coef,(x+tubeQuad[3][0])*coef,(y+tubeQuad[3][1])*coef);}
+\DoxyCodeLine{00188     SDL\_RenderDrawLine(renderer,(x+tubeQuad[3][0])*coef,(y+tubeQuad[3][1])*coef,(x+tubeQuad[2][0])*coef,(y+tubeQuad[2][1])*coef);}
+\DoxyCodeLine{00189     SDL\_RenderDrawLine(renderer,(x+tubeQuad[2][0])*coef,(y+tubeQuad[2][1])*coef,(x+tubeQuad[1][0])*coef,(y+tubeQuad[1][1])*coef);}
+\DoxyCodeLine{00190     SDL\_RenderDrawLine(renderer,(x+tubeQuad[0][0])*coef,(y+tubeQuad[0][1])*coef,(x+tubeQuad[1][0])*coef,(y+tubeQuad[1][1])*coef);}
+\DoxyCodeLine{00191 }
+\DoxyCodeLine{00192 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_blaster_af7c0abc6375c5c7faf2c41535d6f5a5c}\label{struct_blaster_af7c0abc6375c5c7faf2c41535d6f5a5c}} 
+\index{Blaster@{Blaster}!drawTubeQuads@{drawTubeQuads}}
+\index{drawTubeQuads@{drawTubeQuads}!Blaster@{Blaster}}
+\doxysubsubsection{\texorpdfstring{drawTubeQuads()}{drawTubeQuads()}}
+{\footnotesize\ttfamily void Blaster\+::draw\+Tube\+Quads (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{coef }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{blaster_8cpp_source_l00033}{33}} of file \mbox{\hyperlink{blaster_8cpp_source}{blaster.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00034 \{}
+\DoxyCodeLine{00035     \textcolor{keywordtype}{int}  tubeQuad[4][2]=\{\};}
+\DoxyCodeLine{00036     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i =0;i<16;i++)}
+\DoxyCodeLine{00037     \{}
+\DoxyCodeLine{00038         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j=0;j<4;j++)}
+\DoxyCodeLine{00039         \{}
+\DoxyCodeLine{00040             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} k=0;k<2;k++)}
+\DoxyCodeLine{00041             \{}
+\DoxyCodeLine{00042                 tubeQuad[j][k] = tubeQuads[i][j][k];}
+\DoxyCodeLine{00043             \}}
+\DoxyCodeLine{00044 }
+\DoxyCodeLine{00045         \}}
+\DoxyCodeLine{00046         SDL\_SetRenderDrawColor(renderer, 0,0,255,0);}
+\DoxyCodeLine{00047         SDL\_RenderDrawLine(renderer,(x+tubeQuad[0][0])*coef,(y+tubeQuad[0][1])*coef,(x+tubeQuad[1][0])*coef,(y+tubeQuad[1][1])*coef);}
+\DoxyCodeLine{00048         SDL\_RenderDrawLine(renderer,(x+tubeQuad[1][0])*coef,(y+tubeQuad[1][1])*coef,(x+tubeQuad[2][0])*coef,(y+tubeQuad[2][1])*coef);}
+\DoxyCodeLine{00049         SDL\_RenderDrawLine(renderer,(x+tubeQuad[2][0])*coef,(y+tubeQuad[2][1])*coef,(x+tubeQuad[3][0])*coef,(y+tubeQuad[3][1])*coef);}
+\DoxyCodeLine{00050         SDL\_RenderDrawLine(renderer,(x+tubeQuad[3][0])*coef,(y+tubeQuad[3][1])*coef,(x+tubeQuad[0][0])*coef,(y+tubeQuad[0][1])*coef);}
+\DoxyCodeLine{00051     }
+\DoxyCodeLine{00052         }
+\DoxyCodeLine{00053     \}}
+\DoxyCodeLine{00054         }
+\DoxyCodeLine{00055 }
+\DoxyCodeLine{00056     }
+\DoxyCodeLine{00057 }
+\DoxyCodeLine{00058 }
+\DoxyCodeLine{00059 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_blaster_a178dfbb8a22be5f8e60e943ff5e53011}\label{struct_blaster_a178dfbb8a22be5f8e60e943ff5e53011}} 
+\index{Blaster@{Blaster}!move\_l@{move\_l}}
+\index{move\_l@{move\_l}!Blaster@{Blaster}}
+\doxysubsubsection{\texorpdfstring{move\_l()}{move\_l()}}
+{\footnotesize\ttfamily void Blaster\+::move\+\_\+l (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{i,  }\item[{int}]{tube\+Quads\mbox{[}16\mbox{]}\mbox{[}4\mbox{]}\mbox{[}2\mbox{]},  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{coef,  }\item[{int}]{rect }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{blaster_8cpp_source_l00211}{211}} of file \mbox{\hyperlink{blaster_8cpp_source}{blaster.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00212 \{}
+\DoxyCodeLine{00213     \textcolor{keywordflow}{if}(i==15)}
+\DoxyCodeLine{00214     \{}
+\DoxyCodeLine{00215      this-\/>drawblaster\_bleu(renderer,tubeQuads[0],x,y,coef,rect);}
+\DoxyCodeLine{00216     \}}
+\DoxyCodeLine{00217     \textcolor{keywordflow}{else} }
+\DoxyCodeLine{00218     \{}
+\DoxyCodeLine{00219        this-\/>drawblaster\_bleu(renderer,tubeQuads[i+1],x,y,coef,rect);}
+\DoxyCodeLine{00220     \}}
+\DoxyCodeLine{00221     this-\/>drawblaster(renderer,tubeQuads[i],x,y,coef,rect);}
+\DoxyCodeLine{00222 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{struct_blaster_ae4657f8b6d324c90a77eae01b4e94a30}\label{struct_blaster_ae4657f8b6d324c90a77eae01b4e94a30}} 
+\index{Blaster@{Blaster}!move\_r@{move\_r}}
+\index{move\_r@{move\_r}!Blaster@{Blaster}}
+\doxysubsubsection{\texorpdfstring{move\_r()}{move\_r()}}
+{\footnotesize\ttfamily void Blaster\+::move\+\_\+r (\begin{DoxyParamCaption}\item[{SDL\+\_\+\+Renderer $\ast$}]{renderer,  }\item[{int}]{i,  }\item[{int}]{tube\+Quads\mbox{[}16\mbox{]}\mbox{[}4\mbox{]}\mbox{[}2\mbox{]},  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{coef,  }\item[{int}]{rect }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{blaster_8cpp_source_l00195}{195}} of file \mbox{\hyperlink{blaster_8cpp_source}{blaster.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00196 \{}
+\DoxyCodeLine{00197     \textcolor{keywordflow}{if}(i==0)}
+\DoxyCodeLine{00198     \{}
+\DoxyCodeLine{00199         this-\/>drawblaster\_bleu(renderer,tubeQuads[15],x,y,coef,rect);}
+\DoxyCodeLine{00200     \}}
+\DoxyCodeLine{00201     \textcolor{keywordflow}{else} }
+\DoxyCodeLine{00202     \{}
+\DoxyCodeLine{00203         this-\/>drawblaster\_bleu(renderer,tubeQuads[i-\/1],x,y,coef,rect);}
+\DoxyCodeLine{00204     \}}
+\DoxyCodeLine{00205     this-\/>drawblaster(renderer,tubeQuads[i],x,y,coef,rect);}
+\DoxyCodeLine{00206 }
+\DoxyCodeLine{00207 }
+\DoxyCodeLine{00208 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_blaster_a94fe397709140ee670dc5290e7939365}\label{struct_blaster_a94fe397709140ee670dc5290e7939365}} 
+\index{Blaster@{Blaster}!changingXPos@{changingXPos}}
+\index{changingXPos@{changingXPos}!Blaster@{Blaster}}
+\doxysubsubsection{\texorpdfstring{changingXPos}{changingXPos}}
+{\footnotesize\ttfamily int Blaster\+::changing\+XPos}
+
+
+
+Definition at line \mbox{\hyperlink{blaster_8hpp_source_l00030}{30}} of file \mbox{\hyperlink{blaster_8hpp_source}{blaster.\+hpp}}.
+
+\mbox{\Hypertarget{struct_blaster_a1ed61e52f6d1f667d5428a1517dbcc4b}\label{struct_blaster_a1ed61e52f6d1f667d5428a1517dbcc4b}} 
+\index{Blaster@{Blaster}!renderer@{renderer}}
+\index{renderer@{renderer}!Blaster@{Blaster}}
+\doxysubsubsection{\texorpdfstring{renderer}{renderer}}
+{\footnotesize\ttfamily SDL\+\_\+\+Renderer$\ast$ Blaster\+::renderer}
+
+
+
+Definition at line \mbox{\hyperlink{blaster_8hpp_source_l00026}{26}} of file \mbox{\hyperlink{blaster_8hpp_source}{blaster.\+hpp}}.
+
+\mbox{\Hypertarget{struct_blaster_ac729c5c48438a2022f57291f0d1f7fb0}\label{struct_blaster_ac729c5c48438a2022f57291f0d1f7fb0}} 
+\index{Blaster@{Blaster}!targetPos@{targetPos}}
+\index{targetPos@{targetPos}!Blaster@{Blaster}}
+\doxysubsubsection{\texorpdfstring{targetPos}{targetPos}}
+{\footnotesize\ttfamily int Blaster\+::target\+Pos}
+
+
+
+Definition at line \mbox{\hyperlink{blaster_8hpp_source_l00029}{29}} of file \mbox{\hyperlink{blaster_8hpp_source}{blaster.\+hpp}}.
+
+\mbox{\Hypertarget{struct_blaster_aae1192f99c3d68e7690e2b825e77030b}\label{struct_blaster_aae1192f99c3d68e7690e2b825e77030b}} 
+\index{Blaster@{Blaster}!utils@{utils}}
+\index{utils@{utils}!Blaster@{Blaster}}
+\doxysubsubsection{\texorpdfstring{utils}{utils}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_utils}{Utils}}$\ast$ Blaster\+::utils}
+
+
+
+Definition at line \mbox{\hyperlink{blaster_8hpp_source_l00031}{31}} of file \mbox{\hyperlink{blaster_8hpp_source}{blaster.\+hpp}}.
+
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+blaster.\+hpp\item 
+blaster.\+cpp\end{DoxyCompactItemize}

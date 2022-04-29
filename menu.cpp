@@ -579,7 +579,7 @@ int simplex[95][112] = {
 };
 
 
-Menu::Menu(SDL_Renderer * renderer):renderer(renderer)
+Menu::Menu()
 {    
 }
 Menu::~Menu()
@@ -616,111 +616,5 @@ void Menu::hershey(SDL_Renderer * renderer, std::string str, int start_x, int st
 		start_x += x_space * coeff;
     }
 }
-void Menu::start(SDL_Renderer * renderer,int x,int y,int w,int h)
-{
-    SDL_Rect rectangle;
-    rectangle.x = x;
-    rectangle.y =y ;
-    rectangle.w =w ;
-    rectangle.h = h;
-    SDL_RenderDrawRect(renderer,&rectangle);
-    this->hershey(renderer,"START",x+15, y+60,2);
-}
-void Menu::quit(SDL_Renderer * renderer,int x,int y,int w,int h)
-{
-    SDL_Rect rectangle;
-    rectangle.x = x;
-    rectangle.y =y ;
-    rectangle.w =w ;
-    rectangle.h = h;
-    SDL_RenderDrawRect(renderer,&rectangle);
-    this->hershey(renderer,"QUIT",x+30, y+60,2);
-
-}
-void Menu::circle(SDL_Renderer * renderer, int rayon,int centreX,int centreY)
-{
-    const int32_t diameter = (rayon * 2);
-
-   int32_t x = (rayon - 1);
-   int32_t y = 0;
-   int32_t tx = 1;
-   int32_t ty = 1;
-   int32_t error = (tx - diameter);
-
-   while (x >= y)
-   {
-      //  Each of the following renders an octant of the circle
-      SDL_RenderDrawPoint(renderer, centreX + x, centreY - y);
-      SDL_RenderDrawPoint(renderer, centreX + x, centreY + y);
-      SDL_RenderDrawPoint(renderer, centreX - x, centreY - y);
-      SDL_RenderDrawPoint(renderer, centreX - x, centreY + y);
-      SDL_RenderDrawPoint(renderer, centreX + y, centreY - x);
-      SDL_RenderDrawPoint(renderer, centreX + y, centreY + x);
-      SDL_RenderDrawPoint(renderer, centreX - y, centreY - x);
-      SDL_RenderDrawPoint(renderer, centreX - y, centreY + x);
-
-      if (error <= 0)
-      {
-         ++y;
-         error += ty;
-         ty += 2;
-      }
-
-      if (error > 0)
-      {
-         --x;
-         tx += 2;
-         error += (tx - diameter);
-      }
-   }
-}
-void Menu::couloirs(SDL_Renderer * renderer,int x,int y,int rayon1,int rayon2,int nb_couloirs)
-{
-    
-    SDL_RenderDrawLine(renderer,x+rayon1,y,x+rayon2,y);
-    SDL_RenderDrawLine(renderer,x-rayon1,y,x-rayon2,y);
-    SDL_RenderDrawLine(renderer,x,y+rayon1,x,y+rayon2);
-    SDL_RenderDrawLine(renderer,x,y-rayon1,x,y-rayon2);
-    SDL_RenderDrawLine(renderer,x+rayon1*std::cos(pi/4),y+rayon1* std::sin(pi/4),x+rayon2*std::cos(pi/4),y+rayon2* std::sin(pi/4));
-    SDL_RenderDrawLine(renderer,x+rayon1*std::cos(-pi/4),y+rayon1*std::sin(-pi/4),x+rayon2*std::cos(-pi/4),y+rayon2*std::sin(-pi/4));
-    SDL_RenderDrawLine(renderer,x-rayon1*std::cos(-pi/4),y+rayon1* std::sin(-pi/4),x-rayon2*std::cos(-pi/4),y+rayon2* std::sin(-pi/4));
-    SDL_RenderDrawLine(renderer,x-rayon1*std::cos(-pi/4),y-rayon1*std::sin(-pi/4),x-rayon2*std::cos(-pi/4),y-rayon2*std::sin(-pi/4));
-    
-
-}
-void Menu::draw_tubes(SDL_Renderer * renderer, int start_x, int start_y, int coeff)
-{
-    int old_x = start_x + Tube_Circle[0][0]*coeff;  
-    int old_y = start_y + Tube_Circle[0][1]*coeff;
-    int old_u = start_x + Tube_Circle[17][0]*coeff;  
-    int old_v = start_y + Tube_Circle[17][1]*coeff;
-    int new_x = start_x + Tube_Circle[1][0]*coeff; 
-    int new_y = start_y + Tube_Circle[1][1]*coeff;
-    int new_u = start_x + Tube_Circle[18][0]*coeff;  
-    int new_v = start_y + Tube_Circle[18][1]*coeff;
-    SDL_RenderDrawLine(renderer, old_x, old_y, new_x, new_y);
-    SDL_RenderDrawLine(renderer, old_x, old_y, old_u, old_v);
-    SDL_RenderDrawLine(renderer, old_u, old_v, new_u, new_v);
-    SDL_RenderDrawLine(renderer, new_x, new_y, new_u, new_v);
-    for (int i = 2; i <= 16; i++)
-    {
-        old_x = new_x;
-        old_y = new_y;
-        old_u = new_u;
-        old_v = new_v;
-        new_x = start_x + Tube_Circle[i][0]*coeff;
-        new_y = start_y + Tube_Circle[i][1]*coeff;
-        new_u = start_x + Tube_Circle[i+17][0]*coeff;
-        new_v = start_y + Tube_Circle[i+17][1]*coeff;
-        SDL_RenderDrawLine(renderer, old_x, old_y, new_x, new_y);
-        SDL_RenderDrawLine(renderer, old_x, old_y, old_u, old_v);
-        SDL_RenderDrawLine(renderer, old_u, old_v, new_u, new_v);
-        SDL_RenderDrawLine(renderer, new_x, new_y, new_u, new_v);
-    }
-
-
-}
-
-//void Menu::print_start(int x,int y,int coeff)
 
 

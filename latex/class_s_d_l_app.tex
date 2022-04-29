@@ -1,0 +1,325 @@
+\hypertarget{class_s_d_l_app}{}\doxysection{SDLApp Class Reference}
+\label{class_s_d_l_app}\index{SDLApp@{SDLApp}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_s_d_l_app_a837492c5ef694c6fa04496d033a0f4c6}{SDLApp}} (Uint32 subsystem\+Flags, const char $\ast$title, int x, int y, int w, int h)
+\item 
+void \mbox{\hyperlink{class_s_d_l_app_a76116bb16730cd78fadb86b900a1425e}{Set\+Event\+Callback}} (std\+::function$<$ void(void)$>$ func)
+\item 
+void \mbox{\hyperlink{class_s_d_l_app_a2f6c02bfaa34cb8b1e4e17ec14b7ff0f}{Set\+Update\+Callback}} (std\+::function$<$ void(void)$>$ func)
+\item 
+void \mbox{\hyperlink{class_s_d_l_app_acde11cb416025e95df3ff1f1555a33b8}{Set\+Render\+Callback}} (std\+::function$<$ void(void)$>$ func)
+\item 
+void \mbox{\hyperlink{class_s_d_l_app_a32c191e05c424825c183551ab1e4d5e1}{Run\+Loop}} ()
+\item 
+void \mbox{\hyperlink{class_s_d_l_app_af437e620b587707c1df05b2963ea4e5c}{Set\+Max\+Frame\+Rate}} (int frame\+Rate)
+\item 
+SDL\+\_\+\+Renderer $\ast$ \mbox{\hyperlink{class_s_d_l_app_a079d8f26f6867c4b6ea355cb0e328fa4}{Get\+Renderer}} () const
+\item 
+int \mbox{\hyperlink{class_s_d_l_app_ad6f738cae2105e776fbb21f4aa58bbeb}{Get\+MouseX}} ()
+\item 
+int \mbox{\hyperlink{class_s_d_l_app_a54a7a6b40aad7a0eddb0078bc354cd42}{Get\+MouseY}} ()
+\item 
+int \mbox{\hyperlink{class_s_d_l_app_a42783659dc6e6facb1dae4bf094d306f}{Get\+Window\+Width}} ()
+\item 
+int \mbox{\hyperlink{class_s_d_l_app_a3f6c0554b6caf7e51233251b6eba82f0}{Get\+Window\+Height}} ()
+\item 
+void \mbox{\hyperlink{class_s_d_l_app_a44b994a186b67258e39a4d63b61228fd}{Stop\+App\+Loop}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{sdlapp_8hpp_source_l00009}{9}} of file \mbox{\hyperlink{sdlapp_8hpp_source}{sdlapp.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_s_d_l_app_a837492c5ef694c6fa04496d033a0f4c6}\label{class_s_d_l_app_a837492c5ef694c6fa04496d033a0f4c6}} 
+\index{SDLApp@{SDLApp}!SDLApp@{SDLApp}}
+\index{SDLApp@{SDLApp}!SDLApp@{SDLApp}}
+\doxysubsubsection{\texorpdfstring{SDLApp()}{SDLApp()}}
+{\footnotesize\ttfamily SDLApp\+::\+SDLApp (\begin{DoxyParamCaption}\item[{Uint32}]{subsystem\+Flags,  }\item[{const char $\ast$}]{title,  }\item[{int}]{x,  }\item[{int}]{y,  }\item[{int}]{w,  }\item[{int}]{h }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sdlapp_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{sdlapp_8cpp_source}{sdlapp.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00006                                                                                  \{}
+\DoxyCodeLine{00007 }
+\DoxyCodeLine{00008     m\_width= w;}
+\DoxyCodeLine{00009     m\_height= h;}
+\DoxyCodeLine{00010 }
+\DoxyCodeLine{00011     \textcolor{comment}{// Default value}}
+\DoxyCodeLine{00012     m\_maxFrameRate = 60;}
+\DoxyCodeLine{00013 }
+\DoxyCodeLine{00014     \textcolor{comment}{// Initialize the video subsystem.}}
+\DoxyCodeLine{00015     \textcolor{comment}{// iF it returns less than 1, then an}}
+\DoxyCodeLine{00016     \textcolor{comment}{// error code will be received.}}
+\DoxyCodeLine{00017     \textcolor{keywordflow}{if}(SDL\_Init(subsystemFlags) < 0)\{}
+\DoxyCodeLine{00018         std::cout << \textcolor{stringliteral}{"{}SDL could not be initialized: "{}} <<}
+\DoxyCodeLine{00019                   SDL\_GetError();}
+\DoxyCodeLine{00020     \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00021         std::cout << \textcolor{stringliteral}{"{}SDL video system is ready to go\(\backslash\)n"{}};}
+\DoxyCodeLine{00022     \}}
+\DoxyCodeLine{00023     \textcolor{comment}{// Request a window to be created for our platform}}
+\DoxyCodeLine{00024     \textcolor{comment}{// The parameters are for the title, x and y position,}}
+\DoxyCodeLine{00025     \textcolor{comment}{// and the width and height of the window.}}
+\DoxyCodeLine{00026     m\_window = SDL\_CreateWindow(title,x,y,w,h,SDL\_WINDOW\_SHOWN);}
+\DoxyCodeLine{00027 }
+\DoxyCodeLine{00028     m\_renderer = SDL\_CreateRenderer(m\_window,-\/1,SDL\_RENDERER\_ACCELERATED);}
+\DoxyCodeLine{00029 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_s_d_l_app_aa7174ab70b36fd5269e84ea588eb95a4}\label{class_s_d_l_app_aa7174ab70b36fd5269e84ea588eb95a4}} 
+\index{SDLApp@{SDLApp}!````~SDLApp@{$\sim$SDLApp}}
+\index{````~SDLApp@{$\sim$SDLApp}!SDLApp@{SDLApp}}
+\doxysubsubsection{\texorpdfstring{$\sim$SDLApp()}{~SDLApp()}}
+{\footnotesize\ttfamily SDLApp\+::$\sim$\+SDLApp (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sdlapp_8cpp_source_l00032}{32}} of file \mbox{\hyperlink{sdlapp_8cpp_source}{sdlapp.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00032                \{}
+\DoxyCodeLine{00033     \textcolor{comment}{// Destroy our m\_window}}
+\DoxyCodeLine{00034     SDL\_DestroyWindow(m\_window);}
+\DoxyCodeLine{00035     \textcolor{comment}{// Quit our SDL application}}
+\DoxyCodeLine{00036     SDL\_Quit();}
+\DoxyCodeLine{00037 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_s_d_l_app_ad6f738cae2105e776fbb21f4aa58bbeb}\label{class_s_d_l_app_ad6f738cae2105e776fbb21f4aa58bbeb}} 
+\index{SDLApp@{SDLApp}!GetMouseX@{GetMouseX}}
+\index{GetMouseX@{GetMouseX}!SDLApp@{SDLApp}}
+\doxysubsubsection{\texorpdfstring{GetMouseX()}{GetMouseX()}}
+{\footnotesize\ttfamily int SDLApp\+::\+Get\+MouseX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sdlapp_8cpp_source_l00098}{98}} of file \mbox{\hyperlink{sdlapp_8cpp_source}{sdlapp.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00098                      \{}
+\DoxyCodeLine{00099     \textcolor{keywordflow}{return} m\_mouseX;}
+\DoxyCodeLine{00100 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_s_d_l_app_a54a7a6b40aad7a0eddb0078bc354cd42}\label{class_s_d_l_app_a54a7a6b40aad7a0eddb0078bc354cd42}} 
+\index{SDLApp@{SDLApp}!GetMouseY@{GetMouseY}}
+\index{GetMouseY@{GetMouseY}!SDLApp@{SDLApp}}
+\doxysubsubsection{\texorpdfstring{GetMouseY()}{GetMouseY()}}
+{\footnotesize\ttfamily int SDLApp\+::\+Get\+MouseY (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sdlapp_8cpp_source_l00101}{101}} of file \mbox{\hyperlink{sdlapp_8cpp_source}{sdlapp.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00101                      \{}
+\DoxyCodeLine{00102     \textcolor{keywordflow}{return} m\_mouseY;}
+\DoxyCodeLine{00103 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_s_d_l_app_a079d8f26f6867c4b6ea355cb0e328fa4}\label{class_s_d_l_app_a079d8f26f6867c4b6ea355cb0e328fa4}} 
+\index{SDLApp@{SDLApp}!GetRenderer@{GetRenderer}}
+\index{GetRenderer@{GetRenderer}!SDLApp@{SDLApp}}
+\doxysubsubsection{\texorpdfstring{GetRenderer()}{GetRenderer()}}
+{\footnotesize\ttfamily SDL\+\_\+\+Renderer $\ast$ SDLApp\+::\+Get\+Renderer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{sdlapp_8cpp_source_l00094}{94}} of file \mbox{\hyperlink{sdlapp_8cpp_source}{sdlapp.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00094                                        \{}
+\DoxyCodeLine{00095     \textcolor{keywordflow}{return} m\_renderer;}
+\DoxyCodeLine{00096 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_s_d_l_app_a3f6c0554b6caf7e51233251b6eba82f0}\label{class_s_d_l_app_a3f6c0554b6caf7e51233251b6eba82f0}} 
+\index{SDLApp@{SDLApp}!GetWindowHeight@{GetWindowHeight}}
+\index{GetWindowHeight@{GetWindowHeight}!SDLApp@{SDLApp}}
+\doxysubsubsection{\texorpdfstring{GetWindowHeight()}{GetWindowHeight()}}
+{\footnotesize\ttfamily int SDLApp\+::\+Get\+Window\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sdlapp_8cpp_source_l00109}{109}} of file \mbox{\hyperlink{sdlapp_8cpp_source}{sdlapp.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00109                            \{}
+\DoxyCodeLine{00110     \textcolor{keywordflow}{return} m\_height;}
+\DoxyCodeLine{00111 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_s_d_l_app_a42783659dc6e6facb1dae4bf094d306f}\label{class_s_d_l_app_a42783659dc6e6facb1dae4bf094d306f}} 
+\index{SDLApp@{SDLApp}!GetWindowWidth@{GetWindowWidth}}
+\index{GetWindowWidth@{GetWindowWidth}!SDLApp@{SDLApp}}
+\doxysubsubsection{\texorpdfstring{GetWindowWidth()}{GetWindowWidth()}}
+{\footnotesize\ttfamily int SDLApp\+::\+Get\+Window\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sdlapp_8cpp_source_l00105}{105}} of file \mbox{\hyperlink{sdlapp_8cpp_source}{sdlapp.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00105                           \{}
+\DoxyCodeLine{00106     \textcolor{keywordflow}{return} m\_width;}
+\DoxyCodeLine{00107 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_s_d_l_app_a32c191e05c424825c183551ab1e4d5e1}\label{class_s_d_l_app_a32c191e05c424825c183551ab1e4d5e1}} 
+\index{SDLApp@{SDLApp}!RunLoop@{RunLoop}}
+\index{RunLoop@{RunLoop}!SDLApp@{SDLApp}}
+\doxysubsubsection{\texorpdfstring{RunLoop()}{RunLoop()}}
+{\footnotesize\ttfamily void SDLApp\+::\+Run\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sdlapp_8cpp_source_l00055}{55}} of file \mbox{\hyperlink{sdlapp_8cpp_source}{sdlapp.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00055                     \{}
+\DoxyCodeLine{00056     \textcolor{keywordflow}{while}(m\_gameIsRunning)\{}
+\DoxyCodeLine{00057         Uint32 start = SDL\_GetTicks();}
+\DoxyCodeLine{00058 }
+\DoxyCodeLine{00059         \textcolor{comment}{// }}
+\DoxyCodeLine{00060         Uint32 buttons;}
+\DoxyCodeLine{00061         buttons = SDL\_GetMouseState(\&m\_mouseX,\&m\_mouseY);}
+\DoxyCodeLine{00062         \textcolor{comment}{// (1) Handle events first}}
+\DoxyCodeLine{00063         \textcolor{comment}{// User specifies what to do in the events callback}}
+\DoxyCodeLine{00064         m\_EventCallback();}
+\DoxyCodeLine{00065 }
+\DoxyCodeLine{00066         \textcolor{comment}{// (2) Then handle any updates}}
+\DoxyCodeLine{00067         m\_UpdateCallback();}
+\DoxyCodeLine{00068         \textcolor{comment}{// (3) Then handle our rendering}}
+\DoxyCodeLine{00069         \textcolor{comment}{// Clear and Draw the Screen}}
+\DoxyCodeLine{00070         \textcolor{comment}{// Gives us a clear "{}canvas"{}}}
+\DoxyCodeLine{00071         SDL\_SetRenderDrawColor(m\_renderer,0,0,0,SDL\_ALPHA\_OPAQUE);}
+\DoxyCodeLine{00072         SDL\_RenderClear(m\_renderer);}
+\DoxyCodeLine{00073 }
+\DoxyCodeLine{00074         \textcolor{comment}{// Do our drawing}}
+\DoxyCodeLine{00075         SDL\_SetRenderDrawColor(m\_renderer,255,255,255,SDL\_ALPHA\_OPAQUE);}
+\DoxyCodeLine{00076         \textcolor{comment}{// What the user specifies to happen during the rendering}}
+\DoxyCodeLine{00077         \textcolor{comment}{// stage in this callback function}}
+\DoxyCodeLine{00078         m\_RenderCallback();}
+\DoxyCodeLine{00079         \textcolor{comment}{// Finally show what we've drawn}}
+\DoxyCodeLine{00080         SDL\_RenderPresent(m\_renderer);}
+\DoxyCodeLine{00081 }
+\DoxyCodeLine{00082         \textcolor{comment}{// Perform the frame capping step}}
+\DoxyCodeLine{00083         Uint32 elapsedTime = SDL\_GetTicks() -\/ start;}
+\DoxyCodeLine{00084         \textcolor{keywordflow}{if}(elapsedTime < m\_maxFrameRate)\{}
+\DoxyCodeLine{00085             SDL\_Delay(m\_maxFrameRate -\/ elapsedTime);}
+\DoxyCodeLine{00086         \}}
+\DoxyCodeLine{00087     \}}
+\DoxyCodeLine{00088 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_s_d_l_app_a76116bb16730cd78fadb86b900a1425e}\label{class_s_d_l_app_a76116bb16730cd78fadb86b900a1425e}} 
+\index{SDLApp@{SDLApp}!SetEventCallback@{SetEventCallback}}
+\index{SetEventCallback@{SetEventCallback}!SDLApp@{SDLApp}}
+\doxysubsubsection{\texorpdfstring{SetEventCallback()}{SetEventCallback()}}
+{\footnotesize\ttfamily void SDLApp\+::\+Set\+Event\+Callback (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(void)$>$}]{func }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sdlapp_8cpp_source_l00040}{40}} of file \mbox{\hyperlink{sdlapp_8cpp_source}{sdlapp.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00040                                                          \{}
+\DoxyCodeLine{00041     m\_EventCallback = func;}
+\DoxyCodeLine{00042 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_s_d_l_app_af437e620b587707c1df05b2963ea4e5c}\label{class_s_d_l_app_af437e620b587707c1df05b2963ea4e5c}} 
+\index{SDLApp@{SDLApp}!SetMaxFrameRate@{SetMaxFrameRate}}
+\index{SetMaxFrameRate@{SetMaxFrameRate}!SDLApp@{SDLApp}}
+\doxysubsubsection{\texorpdfstring{SetMaxFrameRate()}{SetMaxFrameRate()}}
+{\footnotesize\ttfamily void SDLApp\+::\+Set\+Max\+Frame\+Rate (\begin{DoxyParamCaption}\item[{int}]{frame\+Rate }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sdlapp_8cpp_source_l00090}{90}} of file \mbox{\hyperlink{sdlapp_8cpp_source}{sdlapp.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00090                                          \{}
+\DoxyCodeLine{00091     m\_maxFrameRate = frameRate;}
+\DoxyCodeLine{00092 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_s_d_l_app_acde11cb416025e95df3ff1f1555a33b8}\label{class_s_d_l_app_acde11cb416025e95df3ff1f1555a33b8}} 
+\index{SDLApp@{SDLApp}!SetRenderCallback@{SetRenderCallback}}
+\index{SetRenderCallback@{SetRenderCallback}!SDLApp@{SDLApp}}
+\doxysubsubsection{\texorpdfstring{SetRenderCallback()}{SetRenderCallback()}}
+{\footnotesize\ttfamily void SDLApp\+::\+Set\+Render\+Callback (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(void)$>$}]{func }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sdlapp_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{sdlapp_8cpp_source}{sdlapp.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00049                                                           \{}
+\DoxyCodeLine{00050     m\_RenderCallback = func;}
+\DoxyCodeLine{00051     }
+\DoxyCodeLine{00052 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_s_d_l_app_a2f6c02bfaa34cb8b1e4e17ec14b7ff0f}\label{class_s_d_l_app_a2f6c02bfaa34cb8b1e4e17ec14b7ff0f}} 
+\index{SDLApp@{SDLApp}!SetUpdateCallback@{SetUpdateCallback}}
+\index{SetUpdateCallback@{SetUpdateCallback}!SDLApp@{SDLApp}}
+\doxysubsubsection{\texorpdfstring{SetUpdateCallback()}{SetUpdateCallback()}}
+{\footnotesize\ttfamily void SDLApp\+::\+Set\+Update\+Callback (\begin{DoxyParamCaption}\item[{std\+::function$<$ void(void)$>$}]{func }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sdlapp_8cpp_source_l00044}{44}} of file \mbox{\hyperlink{sdlapp_8cpp_source}{sdlapp.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00044                                                           \{}
+\DoxyCodeLine{00045     m\_UpdateCallback = func;}
+\DoxyCodeLine{00046 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{class_s_d_l_app_a44b994a186b67258e39a4d63b61228fd}\label{class_s_d_l_app_a44b994a186b67258e39a4d63b61228fd}} 
+\index{SDLApp@{SDLApp}!StopAppLoop@{StopAppLoop}}
+\index{StopAppLoop@{StopAppLoop}!SDLApp@{SDLApp}}
+\doxysubsubsection{\texorpdfstring{StopAppLoop()}{StopAppLoop()}}
+{\footnotesize\ttfamily void SDLApp\+::\+Stop\+App\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{sdlapp_8cpp_source_l00113}{113}} of file \mbox{\hyperlink{sdlapp_8cpp_source}{sdlapp.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00113                         \{}
+\DoxyCodeLine{00114     m\_gameIsRunning = \textcolor{keyword}{false};}
+\DoxyCodeLine{00115 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sdlapp.\+hpp\item 
+sdlapp.\+cpp\end{DoxyCompactItemize}
