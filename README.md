@@ -1,6 +1,6 @@
 # Tempest atari
 
-Code de départ pour les projets utilisant la librarie SDL2 pour faire un remake du jeu Tempest Atari
+Un remake du jeu Tempest Atari utilisant la librarie SDL2
 
 # Compilation
 
