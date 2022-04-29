@@ -1,4 +1,4 @@
-# SDL2_base_vectors
+# Tempest atari
 
 Code de départ pour les projets utilisant la librarie SDL2 pour faire un remake du jeu Tempest Atari
 
