@@ -16,8 +16,8 @@ Pout télécharger le code et le compiler sur tous les systèmes vous pouvez uti
 
 # Utilisation
 
-Appuyez sur "s" pour start ou "q" pour quit.\n
-Faite bouger votre vaisseau "le Blaster" en utilisant le pavé numérique\n
-Tirez sur vos ennemis "Flippers" en utilisant -Space\n
+	Appuyez sur "s" pour start ou "q" pour quit.
+	Faite bouger votre vaisseau "le Blaster" en utilisant le pavé numérique
+	Tirez sur vos ennemis "Flippers" en utilisant -Space
 
-Amusez vous bien!\n
+	Amusez vous bien!\n
