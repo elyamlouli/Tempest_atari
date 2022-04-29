@@ -24,5 +24,6 @@ Pout télécharger le code et le compiler sur tous les systèmes vous pouvez uti
 .
 
 #Contributeur
-Oumayma BENYAHYA\n
-Fatima Zahra EL YAMLOULI
+	Oumayma BENYAHYA
+	Fatima Zahra EL YAMLOULI
+.
